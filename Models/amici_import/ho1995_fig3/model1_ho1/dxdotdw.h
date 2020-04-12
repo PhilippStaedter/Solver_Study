@@ -1,0 +1,1 @@
+#define dxdotdw0 dxdotdw[0]

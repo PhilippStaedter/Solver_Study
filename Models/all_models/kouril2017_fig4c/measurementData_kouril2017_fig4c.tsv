@@ -1,0 +1,25 @@
+observableId	preequilibrationConditionId	simulationConditionId	measurement	time	observableParameters	noiseParameters	observableTransformation	noiseDistribution
+3PG		condition1	2.969047619	0		sigma_3PG	log10	normal
+3PG		condition1	2.3753968254	20		sigma_3PG	log10	normal
+3PG		condition1	1.8285714286	40		sigma_3PG	log10	normal
+3PG		condition1	1.3246031746	60		sigma_3PG	log10	normal
+3PG		condition1	0.8373015873	80		sigma_3PG	log10	normal
+3PG		condition1	0.5047619048	100		sigma_3PG	log10	normal
+3PG		condition1	0.153968254	120		sigma_3PG	log10	normal
+3PG		condition1	0.0706349206	150		sigma_3PG	log10	normal
+PYR		condition1	0.3416666667	0		sigma_PYR	log10	normal
+PYR		condition1	0.9714285714	20		sigma_PYR	log10	normal
+PYR		condition1	1.7694444444	40		sigma_PYR	log10	normal
+PYR		condition1	2.4380952381	60		sigma_PYR	log10	normal
+PYR		condition1	3.0436507937	80		sigma_PYR	log10	normal
+PYR		condition1	3.5325396825	100		sigma_PYR	log10	normal
+PYR		condition1	3.669047619	120		sigma_PYR	log10	normal
+PYR		condition1	3.6793650794	150		sigma_PYR	log10	normal
+GAP		condition1	0.0831349206	0		sigma_GAP	log10	normal
+GAP		condition1	0.1801587302	20		sigma_GAP	log10	normal
+GAP		condition1	0.1630952381	40		sigma_GAP	log10	normal
+GAP		condition1	0.1876984127	60		sigma_GAP	log10	normal
+GAP		condition1	0.1537698413	80		sigma_GAP	log10	normal
+GAP		condition1	0.1220238095	100		sigma_GAP	log10	normal
+GAP		condition1	0.0974206349	120		sigma_GAP	log10	normal
+GAP		condition1	0.0597222222	150		sigma_GAP	log10	normal

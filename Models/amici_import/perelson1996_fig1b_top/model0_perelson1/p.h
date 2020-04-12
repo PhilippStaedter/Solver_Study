@@ -1,0 +1,5 @@
+#define NN p[0]
+#define T0 p[1]
+#define c p[2]
+#define delta p[3]
+#define amici_k p[4]

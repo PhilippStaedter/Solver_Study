@@ -1,0 +1,8 @@
+#define AcCoA x_rdata[0]
+#define AcP x_rdata[1]
+#define Acs x_rdata[2]
+#define HOAc x_rdata[3]
+#define HOAc_E x_rdata[4]
+#define LacI x_rdata[5]
+#define OAc x_rdata[6]
+#define Pta x_rdata[7]

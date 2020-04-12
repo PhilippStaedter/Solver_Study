@@ -1,0 +1,6 @@
+#define Amadori x[0]
+#define CML x[1]
+#define Glucose x[2]
+#define Glyoxal x[3]
+#define Lysine x[4]
+#define Schiff x[5]

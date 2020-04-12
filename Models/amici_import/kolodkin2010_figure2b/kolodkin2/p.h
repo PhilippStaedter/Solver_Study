@@ -1,0 +1,8 @@
+#define Kapb p[0]
+#define Kapf p[1]
+#define Vcytosol p[2]
+#define Vnucleus p[3]
+#define k1 p[4]
+#define k12 p[5]
+#define k2 p[6]
+#define k22 p[7]

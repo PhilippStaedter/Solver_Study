@@ -1,0 +1,7 @@
+#define species_0 x[0]
+#define species_1 x[1]
+#define species_2 x[2]
+#define species_3 x[3]
+#define species_4 x[4]
+#define species_5 x[5]
+#define species_6 x[6]

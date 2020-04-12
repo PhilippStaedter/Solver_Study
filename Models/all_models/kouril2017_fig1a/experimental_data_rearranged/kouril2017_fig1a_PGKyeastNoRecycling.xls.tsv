@@ -1,0 +1,21 @@
+observableId	preequilibrationConditionId	simulationConditionId	measurment	time	observableParameters	noiseParameters	observableTransformation	noiseDistribution
+mM BPG			0.12456140350877191	0	NaN			
+mM BPG			0.2631578947368421	5	NaN			
+mM BPG			0.32982456140350874	10	NaN			
+mM BPG			0.2245614035087719	20	NaN			
+mM BPG			0.29298245614035084	30	NaN			
+stdev			0.04558028440970731	0	NaN			
+stdev			0.25922400792164074	5	NaN			
+stdev			0.15750764767015923	10	NaN			
+stdev			0.2639112025038299	20	NaN			
+stdev			0.18847201114304182	30	NaN			
+mM 3PG			3.6982456140350877	0	NaN			
+mM 3PG			3.3257309941520474	5	NaN			
+mM 3PG			3.337426900584795	10	NaN			
+mM 3PG			3.1228070175438596	20	NaN			
+mM 3PG			3.0538011695906433	30	NaN			
+stdev.1			0.2670415186230662	0	NaN			
+stdev.1			0.3997164789801361	5	NaN			
+stdev.1			0.4724165406865363	10	NaN			
+stdev.1			0.38287438904154136	20	NaN			
+stdev.1			0.4601923043819992	30	NaN			

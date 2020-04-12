@@ -1,0 +1,1 @@
+#define sigmay0 sigmay[0]

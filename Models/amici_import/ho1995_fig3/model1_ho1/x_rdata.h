@@ -1,0 +1,1 @@
+#define T x_rdata[0]

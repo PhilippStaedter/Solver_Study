@@ -1,0 +1,8 @@
+#define at p[0]
+#define eta1 p[1]
+#define eta2 p[2]
+#define eta3 p[3]
+#define gamma p[4]
+#define mu p[5]
+#define amici_p p[6]
+#define sigma p[7]

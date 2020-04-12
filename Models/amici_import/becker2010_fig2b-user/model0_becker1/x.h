@@ -1,0 +1,6 @@
+#define Epo x[0]
+#define EpoR x[1]
+#define Epo_EpoR x[2]
+#define Epo_EpoRi x[3]
+#define dEpoe x[4]
+#define dEpoi x[5]

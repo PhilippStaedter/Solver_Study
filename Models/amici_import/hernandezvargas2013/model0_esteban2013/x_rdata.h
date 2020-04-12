@@ -1,0 +1,5 @@
+#define M x_rdata[0]
+#define MStar x_rdata[1]
+#define T x_rdata[2]
+#define TStar x_rdata[3]
+#define V x_rdata[4]

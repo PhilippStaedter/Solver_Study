@@ -1,0 +1,150 @@
+#include "amici/symbolic_functions.h"
+#include "amici/defines.h"
+#include "sundials/sundials_types.h"
+#include <cmath>
+
+
+#include "w.h"
+#include "p.h"
+#include "k.h"
+#include "x.h"
+#include "dwdx.h"
+
+void JB_model1_hald(realtype *JB, const realtype t, const realtype *x, const realtype *p, const realtype *k, const realtype *h, const realtype *xB, const realtype *w, const realtype *dwdx){
+    JB[0] = -1.0*dwdx0 + 1.0*dwdx1 + 59.0*dwdx2;
+    JB[1] = -1.0*dwdx2;
+    JB[8] = 1.0*dwdx0;
+    JB[20] = 1.0*dwdx0 + 1.0*dwdx1;
+    JB[21] = -1.0*dwdx0 - 1.0*dwdx1;
+    JB[22] = -1.0*dwdx1;
+    JB[31] = 59.0*dwdx5;
+    JB[32] = 1.0*dwdx3 + 1.0*dwdx4 - 1.0*dwdx5;
+    JB[50] = 1.0*dwdx4;
+    JB[61] = -1.0*dwdx4;
+    JB[64] = -2.0*dwdx6 + 1.0*dwdx7 + 1.0*dwdx8;
+    JB[65] = 1.0*dwdx6;
+    JB[66] = 1.0*dwdx6 - 1.0*dwdx7 - 1.0*dwdx8;
+    JB[69] = 1.0*dwdx8;
+    JB[86] = 1.0*dwdx7 - 1.0*dwdx8;
+    JB[87] = -1.0*dwdx7;
+    JB[95] = -1.0*dwdx10 - 2.0*dwdx9;
+    JB[96] = 1.0*dwdx9;
+    JB[97] = 1.0*dwdx10 + 1.0*dwdx9;
+    JB[103] = 1.0*dwdx10;
+    JB[104] = -1.0*dwdx10;
+    JB[126] = -2.0*dwdx11 - 1.0*dwdx12 - 1.0*dwdx13 - 1.0*dwdx14 - 1.0*dwdx15 + 1.0*dwdx16;
+    JB[127] = 1.0*dwdx11;
+    JB[128] = 1.0*dwdx11 + 1.0*dwdx12 + 1.0*dwdx13 + 1.0*dwdx14 + 1.0*dwdx15 - 1.0*dwdx16;
+    JB[131] = 1.0*dwdx16;
+    JB[134] = 1.0*dwdx14;
+    JB[135] = -1.0*dwdx14;
+    JB[136] = -1.0*dwdx13 + 1.0*dwdx15;
+    JB[138] = 1.0*dwdx13;
+    JB[148] = -1.0*dwdx16;
+    JB[153] = -1.0*dwdx15;
+    JB[160] = -1.0*dwdx17 + 1.0*dwdx18 + 1.0*dwdx19 + 1.0*dwdx20;
+    JB[161] = -1.0*dwdx18;
+    JB[166] = 1.0*dwdx17;
+    JB[168] = -1.0*dwdx17 - 1.0*dwdx19;
+    JB[171] = -1.0*dwdx20;
+    JB[173] = 1.0*dwdx18;
+    JB[175] = -1.0*dwdx20;
+    JB[176] = 1.0*dwdx20;
+    JB[191] = 1.0*dwdx21;
+    JB[192] = -1.0*dwdx21;
+    JB[204] = 1.0*dwdx21;
+    JB[219] = 1.0*dwdx23;
+    JB[221] = -1.0*dwdx23;
+    JB[224] = -1.0*dwdx22 + 1.0*dwdx23;
+    JB[230] = 1.0*dwdx22;
+    JB[237] = 1.0*dwdx22;
+    JB[238] = -1.0*dwdx22;
+    JB[241] = -1.0*dwdx23;
+    JB[248] = -1.0*dwdx24;
+    JB[256] = 1.0*dwdx24 + 59.0*dwdx25;
+    JB[257] = -1.0*dwdx25;
+    JB[268] = 1.0*dwdx24;
+    JB[269] = -1.0*dwdx24;
+    JB[287] = 59.0*dwdx26;
+    JB[288] = -1.0*dwdx26;
+    JB[312] = -1.0*dwdx27;
+    JB[314] = 1.0*dwdx27;
+    JB[320] = 1.0*dwdx27 - 1.0*dwdx28;
+    JB[321] = -1.0*dwdx27;
+    JB[322] = 1.0*dwdx28;
+    JB[346] = -1.0*dwdx29;
+    JB[352] = 1.0*dwdx29;
+    JB[354] = -1.0*dwdx29;
+    JB[372] = -1.0*dwdx31;
+    JB[374] = -1.0*dwdx33;
+    JB[376] = 1.0*dwdx33;
+    JB[382] = -1.0*dwdx32;
+    JB[384] = 1.0*dwdx32 + 1.0*dwdx33;
+    JB[386] = -59.0*dwdx30;
+    JB[387] = 1.0*dwdx30;
+    JB[397] = 1.0*dwdx31;
+    JB[401] = -1.0*dwdx33;
+    JB[408] = -1.0*dwdx34 + 1.0*dwdx36;
+    JB[410] = -1.0*dwdx35;
+    JB[414] = 1.0*dwdx34;
+    JB[416] = -1.0*dwdx34 + 1.0*dwdx35 - 1.0*dwdx36;
+    JB[423] = 1.0*dwdx35;
+    JB[424] = -1.0*dwdx35;
+    JB[436] = -1.0*dwdx38;
+    JB[438] = 1.0*dwdx38;
+    JB[446] = -1.0*dwdx38;
+    JB[448] = -59.0*dwdx37 + 1.0*dwdx38;
+    JB[449] = 1.0*dwdx37;
+    JB[479] = -59.0*dwdx39;
+    JB[480] = 1.0*dwdx39;
+    JB[512] = 59.0*dwdx40;
+    JB[513] = -1.0*dwdx40;
+    JB[543] = 59.0*dwdx41;
+    JB[544] = -1.0*dwdx41;
+    JB[563] = 1.0*dwdx42;
+    JB[564] = -1.0*dwdx42;
+    JB[576] = 1.0*dwdx42 + 1.0*dwdx43 + 59.0*dwdx44;
+    JB[577] = -1.0*dwdx44;
+    JB[583] = 1.0*dwdx43;
+    JB[584] = -1.0*dwdx43;
+    JB[590] = 1.0*dwdx46;
+    JB[607] = 59.0*dwdx47;
+    JB[608] = 1.0*dwdx45 + 1.0*dwdx46 - 1.0*dwdx47;
+    JB[619] = -1.0*dwdx46;
+    JB[620] = -1.0*dwdx48 + 1.0*dwdx49;
+    JB[625] = 1.0*dwdx51;
+    JB[627] = -1.0*dwdx50;
+    JB[628] = 1.0*dwdx48;
+    JB[633] = 1.0*dwdx50;
+    JB[636] = -1.0*dwdx51;
+    JB[640] = 1.0*dwdx48 + 1.0*dwdx49 + 1.0*dwdx50 - 1.0*dwdx51;
+    JB[641] = -1.0*dwdx48 - 1.0*dwdx49 - 1.0*dwdx50 + 1.0*dwdx51;
+    JB[642] = -1.0*dwdx49;
+    JB[651] = -1.0*dwdx52;
+    JB[656] = 1.0*dwdx54;
+    JB[658] = -1.0*dwdx53;
+    JB[659] = 1.0*dwdx52;
+    JB[664] = 1.0*dwdx53;
+    JB[667] = -1.0*dwdx54;
+    JB[671] = 1.0*dwdx52 + 1.0*dwdx53 - 1.0*dwdx54;
+    JB[672] = -1.0*dwdx52 - 1.0*dwdx53 + 1.0*dwdx54;
+    JB[704] = 59.0*dwdx55;
+    JB[705] = -1.0*dwdx55;
+    JB[735] = 59.0*dwdx56;
+    JB[736] = -1.0*dwdx56;
+    JB[746] = 1.0*dwdx57 + 1.0*dwdx58;
+    JB[748] = -1.0*dwdx57 - 1.0*dwdx58;
+    JB[751] = 1.0*dwdx58;
+    JB[768] = 1.0*dwdx57 - 1.0*dwdx58;
+    JB[769] = -1.0*dwdx57;
+    JB[775] = -1.0*dwdx59;
+    JB[793] = 1.0*dwdx60;
+    JB[800] = 1.0*dwdx59 + 1.0*dwdx60 + 1.0*dwdx61;
+    JB[801] = -1.0*dwdx60;
+    JB[824] = 1.0*dwdx62;
+    JB[831] = 1.0*dwdx62;
+    JB[832] = -1.0*dwdx62;
+    JB[931] = 1.0*dwdx63;
+    JB[949] = 1.0*dwdx63;
+    JB[960] = -1.0*dwdx63;
+}

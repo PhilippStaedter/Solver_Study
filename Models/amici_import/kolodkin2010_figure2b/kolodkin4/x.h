@@ -1,0 +1,8 @@
+#define Lc x[0]
+#define Ln_ x[1]
+#define NR x[2]
+#define NRLc x[3]
+#define NRLn x[4]
+#define NRc x[5]
+#define RE x[6]
+#define REL x[7]

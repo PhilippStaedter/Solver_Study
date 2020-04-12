@@ -1,0 +1,44 @@
+#include "sundials/sundials_types.h"
+
+void dwdx_rowvals_model6_levchenko1(sunindextype *rowvals){
+    rowvals[0] = 10;
+    rowvals[1] = 12;
+    rowvals[2] = 13;
+    rowvals[3] = 14;
+    rowvals[4] = 20;
+    rowvals[5] = 14;
+    rowvals[6] = 17;
+    rowvals[7] = 15;
+    rowvals[8] = 16;
+    rowvals[9] = 18;
+    rowvals[10] = 19;
+    rowvals[11] = 20;
+    rowvals[12] = 21;
+    rowvals[13] = 23;
+    rowvals[14] = 27;
+    rowvals[15] = 1;
+    rowvals[16] = 7;
+    rowvals[17] = 28;
+    rowvals[18] = 29;
+    rowvals[19] = 1;
+    rowvals[20] = 4;
+    rowvals[21] = 2;
+    rowvals[22] = 3;
+    rowvals[23] = 5;
+    rowvals[24] = 6;
+    rowvals[25] = 7;
+    rowvals[26] = 10;
+    rowvals[27] = 17;
+    rowvals[28] = 8;
+    rowvals[29] = 9;
+    rowvals[30] = 0;
+    rowvals[31] = 0;
+    rowvals[32] = 24;
+    rowvals[33] = 11;
+    rowvals[34] = 22;
+    rowvals[35] = 4;
+    rowvals[36] = 24;
+    rowvals[37] = 27;
+    rowvals[38] = 25;
+    rowvals[39] = 26;
+}

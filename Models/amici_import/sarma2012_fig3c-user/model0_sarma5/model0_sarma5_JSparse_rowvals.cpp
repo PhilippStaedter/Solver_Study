@@ -1,0 +1,45 @@
+#include "sundials/sundials_types.h"
+
+void JSparse_rowvals_model0_sarma5(sunindextype *rowvals){
+    rowvals[0] = 0;
+    rowvals[1] = 1;
+    rowvals[2] = 0;
+    rowvals[3] = 1;
+    rowvals[4] = 3;
+    rowvals[5] = 4;
+    rowvals[6] = 5;
+    rowvals[7] = 6;
+    rowvals[8] = 7;
+    rowvals[9] = 8;
+    rowvals[10] = 3;
+    rowvals[11] = 4;
+    rowvals[12] = 5;
+    rowvals[13] = 3;
+    rowvals[14] = 4;
+    rowvals[15] = 5;
+    rowvals[16] = 3;
+    rowvals[17] = 4;
+    rowvals[18] = 5;
+    rowvals[19] = 6;
+    rowvals[20] = 7;
+    rowvals[21] = 8;
+    rowvals[22] = 6;
+    rowvals[23] = 7;
+    rowvals[24] = 8;
+    rowvals[25] = 6;
+    rowvals[26] = 7;
+    rowvals[27] = 8;
+    rowvals[28] = 0;
+    rowvals[29] = 1;
+    rowvals[30] = 3;
+    rowvals[31] = 4;
+    rowvals[32] = 5;
+    rowvals[33] = 6;
+    rowvals[34] = 7;
+    rowvals[35] = 8;
+    rowvals[36] = 0;
+    rowvals[37] = 1;
+    rowvals[38] = 3;
+    rowvals[39] = 4;
+    rowvals[40] = 5;
+}

@@ -1,0 +1,39 @@
+#include "sundials/sundials_types.h"
+
+void dwdx_colptrs_model0_butenas1(sunindextype *colptrs){
+    colptrs[0] = 0;
+    colptrs[1] = 5;
+    colptrs[2] = 7;
+    colptrs[3] = 11;
+    colptrs[4] = 11;
+    colptrs[5] = 12;
+    colptrs[6] = 15;
+    colptrs[7] = 15;
+    colptrs[8] = 18;
+    colptrs[9] = 21;
+    colptrs[10] = 23;
+    colptrs[11] = 25;
+    colptrs[12] = 26;
+    colptrs[13] = 33;
+    colptrs[14] = 33;
+    colptrs[15] = 35;
+    colptrs[16] = 37;
+    colptrs[17] = 39;
+    colptrs[18] = 40;
+    colptrs[19] = 42;
+    colptrs[20] = 46;
+    colptrs[21] = 47;
+    colptrs[22] = 49;
+    colptrs[23] = 50;
+    colptrs[24] = 51;
+    colptrs[25] = 52;
+    colptrs[26] = 53;
+    colptrs[27] = 56;
+    colptrs[28] = 62;
+    colptrs[29] = 62;
+    colptrs[30] = 64;
+    colptrs[31] = 67;
+    colptrs[32] = 69;
+    colptrs[33] = 72;
+    colptrs[34] = 72;
+}

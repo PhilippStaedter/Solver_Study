@@ -1,0 +1,1 @@
+#define dwdx0 dwdx[0]

@@ -1,0 +1,39 @@
+#include "sundials/sundials_types.h"
+
+void dxdotdw_rowvals_leloup1_Fig2A(sunindextype *rowvals){
+    rowvals[0] = 2;
+    rowvals[1] = 2;
+    rowvals[2] = 3;
+    rowvals[3] = 3;
+    rowvals[4] = 4;
+    rowvals[5] = 4;
+    rowvals[6] = 4;
+    rowvals[7] = 5;
+    rowvals[8] = 5;
+    rowvals[9] = 4;
+    rowvals[10] = 5;
+    rowvals[11] = 5;
+    rowvals[12] = 6;
+    rowvals[13] = 6;
+    rowvals[14] = 5;
+    rowvals[15] = 6;
+    rowvals[16] = 0;
+    rowvals[17] = 0;
+    rowvals[18] = 6;
+    rowvals[19] = 9;
+    rowvals[20] = 0;
+    rowvals[21] = 1;
+    rowvals[22] = 1;
+    rowvals[23] = 7;
+    rowvals[24] = 7;
+    rowvals[25] = 7;
+    rowvals[26] = 8;
+    rowvals[27] = 8;
+    rowvals[28] = 7;
+    rowvals[29] = 8;
+    rowvals[30] = 8;
+    rowvals[31] = 9;
+    rowvals[32] = 9;
+    rowvals[33] = 8;
+    rowvals[34] = 9;
+}

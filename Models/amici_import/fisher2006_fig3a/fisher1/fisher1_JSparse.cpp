@@ -1,0 +1,86 @@
+#include "amici/symbolic_functions.h"
+#include "amici/defines.h"
+#include "sundials/sundials_types.h"
+#include <cmath>
+
+
+#include "w.h"
+#include "p.h"
+#include "k.h"
+#include "x.h"
+#include "dwdx.h"
+
+void JSparse_fisher1(realtype *JSparse, const realtype t, const realtype *x, const realtype *p, const realtype *k, const realtype *h, const realtype *w, const realtype *dwdx){
+    JSparse[0] = 3717472118959.1074*dwdx0 + 3717472118959.1074*dwdx1 + 3717472118959.1074*dwdx2 + 3717472118959.1074*dwdx3;
+    JSparse[1] = -8849557522123.8945*dwdx2;
+    JSparse[2] = -11152416356877.322*dwdx1;
+    JSparse[3] = -3717472118959.1074*dwdx1;
+    JSparse[4] = -3717472118959.1074*dwdx0;
+    JSparse[5] = 3717472118959.1074*dwdx0;
+    JSparse[6] = -3717472118959.1074*dwdx3;
+    JSparse[7] = 3717472118959.1074*dwdx3;
+    JSparse[8] = 3717472118959.1074*dwdx6;
+    JSparse[9] = 8849557522123.8945*dwdx4 - 8849557522123.8945*dwdx5 - 8849557522123.8945*dwdx6 + 8849557522123.8945*dwdx7;
+    JSparse[10] = -26548672566371.684*dwdx4;
+    JSparse[11] = -8849557522123.8945*dwdx4;
+    JSparse[12] = 8849557522123.8945*dwdx5;
+    JSparse[13] = -8849557522123.8945*dwdx5;
+    JSparse[14] = -8849557522123.8945*dwdx7;
+    JSparse[15] = 8849557522123.8945*dwdx7;
+    JSparse[16] = 3717472118959.1074*dwdx8;
+    JSparse[17] = -11152416356877.322*dwdx8 - 3717472118959.1074*dwdx9;
+    JSparse[18] = 8849557522123.8945*dwdx9;
+    JSparse[19] = -3717472118959.1074*dwdx8;
+    JSparse[20] = 8849557522123.8945*dwdx10;
+    JSparse[21] = -3717472118959.1074*dwdx11;
+    JSparse[22] = -26548672566371.684*dwdx10 + 8849557522123.8945*dwdx11;
+    JSparse[23] = -8849557522123.8945*dwdx10;
+    JSparse[24] = 3717472118959.1074*dwdx12;
+    JSparse[25] = -11152416356877.322*dwdx12;
+    JSparse[26] = -3717472118959.1074*dwdx12 - 3717472118959.1074*dwdx13;
+    JSparse[27] = 8849557522123.8945*dwdx13;
+    JSparse[28] = 8849557522123.8945*dwdx14;
+    JSparse[29] = -26548672566371.684*dwdx14;
+    JSparse[30] = -3717472118959.1074*dwdx15;
+    JSparse[31] = -8849557522123.8945*dwdx14 + 8849557522123.8945*dwdx15;
+    JSparse[32] = 3717472118959.1074*dwdx16;
+    JSparse[33] = -3717472118959.1074*dwdx16 + 3717472118959.1074*dwdx17 - 3717472118959.1074*dwdx18;
+    JSparse[34] = -8849557522123.8945*dwdx17;
+    JSparse[35] = 3717472118959.1074*dwdx16;
+    JSparse[36] = 3717472118959.1074*dwdx18;
+    JSparse[37] = -8849557522123.8945*dwdx19;
+    JSparse[38] = 3717472118959.1074*dwdx21;
+    JSparse[39] = 8849557522123.8945*dwdx19 - 8849557522123.8945*dwdx20 - 8849557522123.8945*dwdx21;
+    JSparse[40] = -8849557522123.8945*dwdx19;
+    JSparse[41] = 8849557522123.8945*dwdx20;
+    JSparse[42] = 3717472118959.1074*dwdx22;
+    JSparse[43] = -3717472118959.1074*dwdx22;
+    JSparse[44] = 3717472118959.1074*dwdx22 + 3717472118959.1074*dwdx23 + 3717472118959.1074*dwdx24;
+    JSparse[45] = -8849557522123.8945*dwdx24;
+    JSparse[46] = -3717472118959.1074*dwdx23;
+    JSparse[47] = -8849557522123.8945*dwdx26;
+    JSparse[48] = 8849557522123.8945*dwdx26;
+    JSparse[49] = 3717472118959.1074*dwdx27;
+    JSparse[50] = 8849557522123.8945*dwdx25 - 8849557522123.8945*dwdx26 - 8849557522123.8945*dwdx27;
+    JSparse[51] = -8849557522123.8945*dwdx25;
+    JSparse[52] = 3717472118959.1074*dwdx30;
+    JSparse[53] = -3717472118959.1074*dwdx29;
+    JSparse[54] = -3717472118959.1074*dwdx28 + 3717472118959.1074*dwdx29 - 3717472118959.1074*dwdx30;
+    JSparse[55] = 8849557522123.8945*dwdx28;
+    JSparse[56] = 3717472118959.1074*dwdx30;
+    JSparse[57] = 8849557522123.8945*dwdx33;
+    JSparse[58] = -8849557522123.8945*dwdx32;
+    JSparse[59] = -3717472118959.1074*dwdx31;
+    JSparse[60] = 8849557522123.8945*dwdx31 + 8849557522123.8945*dwdx32 - 8849557522123.8945*dwdx33;
+    JSparse[61] = 8849557522123.8945*dwdx33;
+    JSparse[62] = 3717472118959.1074*dwdx36;
+    JSparse[63] = 3717472118959.1074*dwdx35;
+    JSparse[64] = -3717472118959.1074*dwdx36;
+    JSparse[65] = -3717472118959.1074*dwdx34 - 3717472118959.1074*dwdx35 + 3717472118959.1074*dwdx36;
+    JSparse[66] = 8849557522123.8945*dwdx34;
+    JSparse[67] = 8849557522123.8945*dwdx39;
+    JSparse[68] = 8849557522123.8945*dwdx37;
+    JSparse[69] = -8849557522123.8945*dwdx39;
+    JSparse[70] = -3717472118959.1074*dwdx38;
+    JSparse[71] = -8849557522123.8945*dwdx37 + 8849557522123.8945*dwdx38 + 8849557522123.8945*dwdx39;
+}

@@ -1,0 +1,7 @@
+#define ACA x[0]
+#define CAR1 x[1]
+#define ERK2 x[2]
+#define PKA x[3]
+#define REGA x[4]
+#define excAMP x[5]
+#define incAMP x[6]

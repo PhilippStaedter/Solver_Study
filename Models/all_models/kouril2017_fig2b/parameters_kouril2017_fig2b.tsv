@@ -1,0 +1,6 @@
+parameterId	parameterName	parameterScale	lowerBound	upperBound	nominalValue	estimate	priorType	priorParameters	HierarchicalOptimization (optional)
+kd	kd	log10	-5	5	-0.1328767842	1			
+sigma_mM_BPG	sigma_mM_BPG	log10	-5	5	4	1			
+sigma_stdev	sigma_stdev	log10	-5	5	4	1			
+sigma_mM_3PG	sigma_mM_3PG	log10	-5	5	4	1			
+sigma_stdev_1	sigma_stdev_1	log10	-5	5	4	1			

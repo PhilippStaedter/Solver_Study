@@ -1,0 +1,7 @@
+#define ACA x_rdata[0]
+#define CAR1 x_rdata[1]
+#define ERK2 x_rdata[2]
+#define PKA x_rdata[3]
+#define REGA x_rdata[4]
+#define excAMP x_rdata[5]
+#define incAMP x_rdata[6]

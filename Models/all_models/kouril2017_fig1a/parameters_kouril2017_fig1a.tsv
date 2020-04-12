@@ -1,0 +1,16 @@
+parameterId	parameterName	parameterScale	lowerBound	upperBound	nominalValue	estimate	priorType	priorParameters	HierarchicalOptimization (optional)
+KeqPGK	KeqPGK	log10	-5	5	3.5051499783	0			
+KmPGKADP	KmPGKADP	log10	-5	5	-0.6989700043	1			
+KmPGKATP	KmPGKATP	log10	-5	5	-0.5228787453	0			
+KmPGKBPG	KmPGKBPG	log10	-5	5	-2.5228787453	1			
+KmPGKP3G	KmPGKP3G	log10	-5	5	-0.2757241304	1			
+VmPGK	VmPGK	log10	-5	5	0.6637009254	0			
+kPK	kPK	log10	-5	5	1.6989700043	0			
+sigma_mM_BPG	sigma_mM_BPG	log10	-5	5	4	1			
+sigma_stdev	sigma_stdev	log10	-5	5	4	1			
+sigma_mM_3PG	sigma_mM_3PG	log10	-5	5	4	1			
+sigma_stdev_1	sigma_stdev_1	log10	-5	5	4	1			
+sigma_stdev	sigma_stdev	log10	-5	5	4	1			
+sigma_mM_3PG	sigma_mM_3PG	log10	-5	5	4	1			
+sigma_stdev_1	sigma_stdev_1	log10	-5	5	4	1			
+sigma_mM_PYR	sigma_mM_PYR	log10	-5	5	4	1			

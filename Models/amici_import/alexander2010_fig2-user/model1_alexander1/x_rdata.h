@@ -1,0 +1,5 @@
+#define A x_rdata[0]
+#define A_im x_rdata[1]
+#define E x_rdata[2]
+#define G x_rdata[3]
+#define R x_rdata[4]

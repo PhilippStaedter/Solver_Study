@@ -1,0 +1,8 @@
+#define Alpha p[0]
+#define Beta p[1]
+#define a p[2]
+#define b p[3]
+#define c p[4]
+#define d p[5]
+#define k1 p[6]
+#define k2 p[7]

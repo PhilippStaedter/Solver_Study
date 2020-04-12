@@ -1,0 +1,5 @@
+#define A x_rdata[0]
+#define EXT x_rdata[1]
+#define I1 x_rdata[2]
+#define I2 x_rdata[3]
+#define S x_rdata[4]

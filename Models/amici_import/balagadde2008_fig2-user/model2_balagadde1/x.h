@@ -1,0 +1,7 @@
+#define A1 x[0]
+#define A2 x[1]
+#define C1 x[2]
+#define C2 x[3]
+#define IPTG x[4]
+#define sink x[5]
+#define source x[6]

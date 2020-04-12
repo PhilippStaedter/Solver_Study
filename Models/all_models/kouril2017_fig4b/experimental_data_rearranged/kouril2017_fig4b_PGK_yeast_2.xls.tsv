@@ -1,0 +1,17 @@
+observableId	preequilibrationConditionId	simulationConditionId	measurment	time	observableParameters	noiseParameters	observableTransformation	noiseDistribution
+Pyr			0.156084656	0	NaN			
+Pyr			0.631746032	20	NaN			
+Pyr			1.225925926	40	NaN			
+Pyr			1.65026455	60	NaN			
+Pyr			2.051851852	80	NaN			
+Pyr			2.45978836	100	NaN			
+Pyr			2.803174603	120	NaN			
+Pyr			3.092063492	150	NaN			
+stdev			0.200806721	0	NaN			
+stdev			0.145071029	20	NaN			
+stdev			0.14094249	40	NaN			
+stdev			0.061256955	60	NaN			
+stdev			0.126908046	80	NaN			
+stdev			0.124634344	100	NaN			
+stdev			0.237973514	120	NaN			
+stdev			0.096225045	150	NaN			

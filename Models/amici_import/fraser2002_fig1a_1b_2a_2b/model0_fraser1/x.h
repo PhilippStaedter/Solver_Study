@@ -1,0 +1,6 @@
+#define a1 x[0]
+#define a2 x[1]
+#define a3 x[2]
+#define x1 x[3]
+#define x2 x[4]
+#define x3 x[5]

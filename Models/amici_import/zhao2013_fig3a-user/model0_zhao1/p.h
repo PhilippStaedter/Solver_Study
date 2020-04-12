@@ -1,0 +1,8 @@
+#define Lambda p[0]
+#define alphai p[1]
+#define alphas p[2]
+#define ba p[3]
+#define d p[4]
+#define amici_k p[5]
+#define mu p[6]
+#define n p[7]

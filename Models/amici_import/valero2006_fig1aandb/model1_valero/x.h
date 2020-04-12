@@ -1,0 +1,6 @@
+#define ADP x[0]
+#define AMP x[1]
+#define ATP x[2]
+#define Lac x[3]
+#define NADH x[4]
+#define Pyr x[5]

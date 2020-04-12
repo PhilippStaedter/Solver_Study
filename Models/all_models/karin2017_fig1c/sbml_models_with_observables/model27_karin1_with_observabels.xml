@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="karin1" name="karin1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="y" name="y" compartment="default" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="z" name="z" compartment="default" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_3" id="M" name="M" value="25" constant="false"/>
+      <parameter metaid="metaid_4" id="lambdaMinus" name="lambdaMinus" value="0.5" constant="false"/>
+      <parameter metaid="metaid_5" id="lambdaPlus" name="lambdaPlus" constant="false"/>
+      <parameter metaid="metaid_6" id="mu" name="mu" value="0.25" constant="false"/>
+      <parameter id="observable_plot4_z_datagen1" constant="false"/>
+      <parameter id="observable_plot10_z_datagen1" constant="false"/>
+      <parameter id="observable_plot6_y_datagen1" constant="false"/>
+      <parameter id="observable_plot12_y_datagen1" constant="false"/>
+      <parameter id="observable_plot18_y_datagen1" constant="false"/>
+      <parameter id="observable_task0_model0_karin1_z" constant="false"/>
+      <parameter id="observable_plot5_y_datagen1" constant="false"/>
+      <parameter id="observable_plot5_z_datagen1" constant="false"/>
+      <parameter id="observable_task11_model11_karin1_z" constant="false"/>
+      <parameter id="observable_plot7_y_datagen1" constant="false"/>
+      <parameter id="observable_plot13_y_datagen1" constant="false"/>
+      <parameter id="observable_plot19_y_datagen1" constant="false"/>
+      <parameter id="observable_plot1_z_datagen1" constant="false"/>
+      <parameter id="observable_plot6_z_datagen1" constant="false"/>
+      <parameter id="observable_plot1_y_datagen1" constant="false"/>
+      <parameter id="observable_plot8_y_datagen1" constant="false"/>
+      <parameter id="observable_plot14_y_datagen1" constant="false"/>
+      <parameter id="observable_plot20_y_datagen1" constant="false"/>
+      <parameter id="observable_plot2_z_datagen1" constant="false"/>
+      <parameter id="observable_plot7_z_datagen1" constant="false"/>
+      <parameter id="observable_plot2_y_datagen1" constant="false"/>
+      <parameter id="observable_plot9_y_datagen1" constant="false"/>
+      <parameter id="observable_plot15_y_datagen1" constant="false"/>
+      <parameter id="observable_plot8_z_datagen1" constant="false"/>
+      <parameter id="observable_plot3_y_datagen1" constant="false"/>
+      <parameter id="observable_plot10_y_datagen1" constant="false"/>
+      <parameter id="observable_plot16_y_datagen1" constant="false"/>
+      <parameter id="observable_plot3_z_datagen1" constant="false"/>
+      <parameter id="observable_plot9_z_datagen1" constant="false"/>
+      <parameter id="observable_plot4_y_datagen1" constant="false"/>
+      <parameter id="observable_plot11_y_datagen1" constant="false"/>
+      <parameter id="observable_plot17_y_datagen1" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_7" variable="lambdaPlus">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> y </ci>
+            <cn> 10 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot4_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task4_model4_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot10_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task10_model10_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot6_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task16_model16_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot12_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task22_model22_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot18_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task28_model28_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_task0_model0_karin1_z">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot5_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task0_model0_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot5_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task5_model5_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_task11_model11_karin1_z">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot7_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task17_model17_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot13_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task23_model23_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot19_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task29_model29_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot1_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task1_model1_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot6_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task6_model6_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot1_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task12_model12_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot8_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task18_model18_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot14_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task24_model24_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot20_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task30_model30_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot2_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task2_model2_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot7_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task7_model7_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot2_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task13_model13_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot9_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task19_model19_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot15_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task25_model25_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot8_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task8_model8_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot3_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task14_model14_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot10_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task20_model20_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot16_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task26_model26_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot3_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task3_model3_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot9_z_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task9_model9_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot4_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task15_model15_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot11_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task21_model21_karin1_z </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="observable_plot17_y_datagen1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> task27_model27_karin1_z </ci>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_9" id="v1" name="v1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_8" species="z" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> z </ci>
+              <ci> lambdaPlus </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_11" id="v2" name="v2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_10" species="z" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> z </ci>
+              <ci> lambdaMinus </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_14" id="v3" name="v3" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_12" species="y" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_13" species="z"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mu </ci>
+              <apply>
+                <minus/>
+                <ci> M </ci>
+                <apply>
+                  <times/>
+                  <ci> z </ci>
+                  <ci> y </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

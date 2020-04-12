@@ -1,0 +1,41 @@
+#include "sundials/sundials_types.h"
+
+void JSparse_colptrs_hatakeyama1_Fig5G(sunindextype *colptrs){
+    colptrs[0] = 0;
+    colptrs[1] = 3;
+    colptrs[2] = 8;
+    colptrs[3] = 13;
+    colptrs[4] = 21;
+    colptrs[5] = 23;
+    colptrs[6] = 26;
+    colptrs[7] = 29;
+    colptrs[8] = 32;
+    colptrs[9] = 37;
+    colptrs[10] = 40;
+    colptrs[11] = 43;
+    colptrs[12] = 49;
+    colptrs[13] = 58;
+    colptrs[14] = 61;
+    colptrs[15] = 64;
+    colptrs[16] = 70;
+    colptrs[17] = 74;
+    colptrs[18] = 80;
+    colptrs[19] = 82;
+    colptrs[20] = 85;
+    colptrs[21] = 89;
+    colptrs[22] = 92;
+    colptrs[23] = 103;
+    colptrs[24] = 107;
+    colptrs[25] = 111;
+    colptrs[26] = 116;
+    colptrs[27] = 120;
+    colptrs[28] = 124;
+    colptrs[29] = 126;
+    colptrs[30] = 131;
+    colptrs[31] = 133;
+    colptrs[32] = 137;
+    colptrs[33] = 144;
+    colptrs[34] = 148;
+    colptrs[35] = 151;
+    colptrs[36] = 153;
+}

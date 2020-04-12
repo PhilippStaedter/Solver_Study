@@ -1,0 +1,5 @@
+#define EC x[0]
+#define Fraction_Inactive_Channels x[1]
+#define Rho x[2]
+#define Y x[3]
+#define Z x[4]

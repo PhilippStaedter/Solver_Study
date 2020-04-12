@@ -1,0 +1,1 @@
+#define kd p[0]
