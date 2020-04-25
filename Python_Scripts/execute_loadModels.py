@@ -7,15 +7,15 @@ import amici.plotting
 import numpy as np
 import matplotlib.pyplot as plt
 import libsedml
-from setTime_BenchmarkModels import *
+#from setTime_BenchmarkModels import *
 
 
 def all_settings(iModel, iFile):
 
     # insert specific model properties as strings, e.g.:
-    base_path_sbml2amici = '../sbml2amici/amici_models_newest_version_0.10.19'
-    base_path_sedml = './sedml_models'
-    BioModels_path = './BioModelsDatabase_models'
+    base_path_sbml2amici = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/amici_models_newest_version_0.10.19'
+    base_path_sedml = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'
+    BioModels_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models'
     benchmark_path = '../benchmark-models/hackathon_contributions_new_data_format'
 
     # iFile without extension
@@ -34,7 +34,7 @@ def all_settings(iModel, iFile):
         model = changeValues(model, iModel, iFile)                                                      ################# call function from 'changeValues.py'
 
         # open sedml to get tasks + time courses
-        sedml_path = './sedml_models/' + iModel + '/' + iModel + '.sedml'
+        sedml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/' + iModel + '.sedml'
 
         # tasks
         sedml_file = libsedml.readSedML(sedml_path)
