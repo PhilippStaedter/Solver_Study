@@ -28,7 +28,7 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
     s_solAlg = str(solAlg)
 
     # create .tsv file
-    tsv_table = pd.DataFrame(columns=['id', 't_intern_ms', 't_extern_ms', 'state_variables', 'parameters', 'status', 'error_message'])
+    tsv_table = pd.DataFrame(columns=['id', 't_intern_ms', 't_extern_ms', 'state_variables', 'reactions', 'parameters', 'status', 'error_message'])
 
     # set row counter for .tsv file
     counter = 0
@@ -37,10 +37,18 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
     sim_rep = 40
 
     # insert specific model properties as strings, e.g.:
-    base_path_sbml2amici = '../sbml2amici/correct_amici_models_paper'
-    base_path_sedml = './sedml_models'
-    tsv_file_path = '../sbml2amici'
-    benchmark_path = '../benchmark-models/hackathon_contributions_new_data_format'
+    if skip_indicator == 0:
+        base_path_sbml2amici = '../Models/amici_import'
+        base_path_sedml = '../Models/all_models'
+    elif skip_indicator == 0.33:
+        base_path_sbml2amici = '../../Models/amici_import'
+        base_path_sedml = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'
+    elif skip_indicator == 0.67:
+        base_path_sbml2amici = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/correct_amici_models_paper'
+        base_path_sedml = '../Models/all_models'
+    elif skip_indicator == 1:
+        base_path_sbml2amici = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/correct_amici_models_paper'
+        base_path_sedml = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'
 
     # list of all directories + SBML files
     list_directory_sedml = os.listdir(base_path_sbml2amici)   #(base_path_sedml)
@@ -70,19 +78,21 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
                 #error_file.loc[counter].id = '{' + iModel + '}' + '_' + '{' + iFile + '}'
 
                 try:
-                    # read in SBML file for state variables and parameters
-                    #file = libsbml.readSBML(base_path_sedml + '/' + iModel + '/sbml_models/' + iFile + '.sbml')
-                    #all_properties = file.getModel()
-                    #num_states = len(all_properties.getListOfSpecies())
-                    #num_par = len(all_properties.getListOfParameters())
-                    #tsv_table.loc[counter].state_variables = num_states
-                    #tsv_table.loc[counter].parameters = num_par
+                    # read in SBML file for reactions since AMICI has no functions to count all reactions
+                    if os.path.isfile(base_path_sedml + '/' + iModel + '/sbml_models/' + iFile + '.sbml'):
+                        file = libsbml.readSBML(base_path_sedml + '/' + iModel + '/sbml_models/' + iFile + '.sbml')
+                    else:
+                        file = libsbml.readSBML(base_path_sedml + '/' + iModel + '/sbml_models/' + iFile + '.xml')
+                    all_properties = file.getModel()
+                    num_reactions = all_properties.getNumReactions()
+                    tsv_table.loc[counter].reactions = num_reactions
 
                     # read in model
-                    model = all_settings(iModel, iFile)                                         ##################### call function from 'execute_loadModels.py'
+                    model = all_settings(iModel, iFile, skip_indicator)                   ##################### call function from 'execute_loadModels.py'
 
-                    # save state_variables and parameters
+                    # save state_variables, reactions and parameters
                     num_states = len(model.getStateNames())
+                    num_reactions = len(model.getListOfReactions())
                     num_par = len(model.getParameters())
                     tsv_table.loc[counter].state_variables = num_states
                     tsv_table.loc[counter].parameters = num_par

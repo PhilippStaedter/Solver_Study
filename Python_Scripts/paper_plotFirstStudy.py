@@ -6,6 +6,18 @@ from averageTime import *
 import numpy as np
 
 
+# check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' and
+# 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files' exists
+skip_indicator = 0
+if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data') and \
+        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
+    skip_indicator = 0.33
+elif not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files') and \
+        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data'):
+    skip_indicator = 0.67
+elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data') and \
+        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
+    skip_indicator = 1
 
 # all axes objects
 fontsize = 9
@@ -50,7 +62,10 @@ for iTolerance in range(0, len(all_log_abs_tol)):
             counter = 0
             total_counter = 0
             tol_str = f"{float(tol):.0e}"
-            base_dir = f"json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+            if skip_indicator in [0, 0.67]:
+                base_dir = f"../Data/JWS_AMICI_state_trajectory_comparison/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+            elif skip_indicator in [0.33, 1]:
+                base_dir = f"../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
             sedml_models = os.listdir(base_dir)
             for sedml_model in sedml_models:
                 sedml_dir = base_dir + "/" + sedml_model
@@ -106,8 +121,11 @@ plt.gcf().tight_layout()
 
 
 ################ plot bar plot #################
-# open two .tsv file
-path = '../sbml2amici/NEW_stat_reac_par_paper.tsv'
+# open one .tsv file from 'WholeStudy'
+if skip_indicator in [0,0.33]:
+    path = '../Data/WholeStudy/1_1_1_06_08.tsv'
+elif skip_indicator in [0.67,1]:
+    path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy/1_1_1_06_08.tsv'
 tsv_file = pd.read_csv(path, sep='\t')
 tsv_file = averaging(tsv_file)
 

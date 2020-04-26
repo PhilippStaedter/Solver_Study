@@ -22,8 +22,15 @@ iter = [1, 2]
 solAlg = [1, 2]
 maxStep = 10000
 study_indicator = 1                                         # for the main study, don't change!
-skip_indicator = 0                                          # tracks whether the step 1 was skipped (0) or not (1)
-if os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'):
+skip_indicator = 0                                          # tracks whether the step 1 was skipped (0), partially skipped (0.33, 0.67) or not skipped (1)
+if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici') and \
+        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'):
+    skip_indicator = 0.33
+elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models') and \
+        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici'):
+    skip_indicator = 0.67
+elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici') and \
+        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'):
     skip_indicator = 1
 
 # run simulation

@@ -10,13 +10,15 @@ import libsedml
 #from setTime_BenchmarkModels import *
 
 
-def all_settings(iModel, iFile):
+def all_settings(iModel, iFile, skip_indicator):
 
     # insert specific model properties as strings, e.g.:
-    base_path_sbml2amici = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/amici_models_newest_version_0.10.19'
-    base_path_sedml = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'
-    BioModels_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models'
-    benchmark_path = '../benchmark-models/hackathon_contributions_new_data_format'
+    if skip_indicator == 0:
+        BioModels_path = '../Models/BioModelsDatabase_models'
+        sedml_path = '../Models/all_models/' + iModel + '/' + iModel + '.sedml'
+    elif skip_indicator == 1:
+        BioModels_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models'
+        sedml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/' + iModel + '.sedml'
 
     # iFile without extension
     try:
@@ -25,16 +27,13 @@ def all_settings(iModel, iFile):
         'No extension'
 
     # run function
-    model = load_specific_model(iModel, iFile)                                                          ################ call function from 'loadModels.py'
+    model = load_specific_model(iModel, iFile, skip_indicator)                                                          ################ call function from 'loadModels.py'
 
     if os.path.exists(BioModels_path + '/' + iModel):                                     #(benchmark_path + '/' + iModel):
         sim_start_time, sim_end_time, sim_num_time_points, y_bound = timePointsBioModels(iModel)   #time_array = timePointsBenchmarkModels(iModel, iFile) ################### call function from 'setTime_BioModels.py'
     else:
         # change parameter and species according to SEDML file
-        model = changeValues(model, iModel, iFile)                                                      ################# call function from 'changeValues.py'
-
-        # open sedml to get tasks + time courses
-        sedml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/' + iModel + '.sedml'
+        model = changeValues(model, iModel, iFile, skip_indicator)                                                      ################# call function from 'changeValues.py'
 
         # tasks
         sedml_file = libsedml.readSedML(sedml_path)

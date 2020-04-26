@@ -4,10 +4,13 @@ import os
 import importlib
 
 
-def load_specific_model(model_name, explicit_model):
+def load_specific_model(model_name, explicit_model, skip_indicator):
 
     # path to one specific model
-    path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/amici_models_newest_version_0.10.19'               #amici_Benchmark_models'                  #amici_models'
+    if skip_indicator == 0:
+        path = '../Models/amici_import'
+    elif skip_indicator == 1:
+        path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/correct_amici_models_paper'               #amici_Benchmark_models'                  #amici_models'
     model_output_dir = path + '/' + model_name + '/' + explicit_model
 
     # load specific model

@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+# check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files' exists
+skip_indicator = 0
+if os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
+    skip_indicator = 1
+
 all_log_abs_tol = ['03', '06', '06', '16', '12']
 all_log_rel_tol = ['03', '03', '06', '08', '12']
 all_abs_tol = [r'$10^{-3}$', r'$10^{-6}$', r'$10^{-6}$', r'$10^{-16}$', r'$10^{-12}$']
@@ -29,7 +34,10 @@ for iTolerance in range(0, len(all_log_abs_tol)):
             counter = 0
             total_counter = 0
             tol_str = f"{float(tol):.0e}"
-            base_dir = f"json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+            if skip_indicator == 0:
+                base_dir = f"../Data/JWS_AMICI_state_trajectory_comparison/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+            elif skip_indicator == 1:
+                base_dir = f"../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
             sedml_models = os.listdir(base_dir)
             for sedml_model in sedml_models:
                 sedml_dir = base_dir + "/" + sedml_model
