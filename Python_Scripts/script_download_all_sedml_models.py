@@ -4,7 +4,7 @@ import logging
 
 
 log_to_console(level=logging.INFO)
-log_to_file(level=logging.WARN, filename="import_warnings.log")
+log_to_file(level=logging.WARN, filename="../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/import_warnings.log")
 logger = logging.getLogger(LOGGER_NAME)
 logger.setLevel(logging.INFO)
 

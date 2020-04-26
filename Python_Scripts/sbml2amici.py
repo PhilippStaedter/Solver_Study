@@ -15,9 +15,9 @@ from transferObservables import *
 tsv_table = pd.DataFrame(columns=['id', 'states', 'reactions', 'error_message'])      # index=range() can be left out
 
 # important paths
-models_path = "../sbml2amici/amici_models_newest_version_0.10.19"
-models_base_path = "../sbml2amici"
-base_path = "./sedml_models"
+models_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/amici_models_newest_version_0.10.19"
+models_base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici"
+base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models"
 
 
 # create directory for all future amici models

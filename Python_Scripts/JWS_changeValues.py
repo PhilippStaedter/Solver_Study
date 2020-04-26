@@ -1,7 +1,5 @@
 # script to cahange all values for JWS simulation
 
-
-
 def JWS_changeValues(iFile, sedml_file):
 
     # get all changes from sedml file
@@ -22,7 +20,5 @@ def JWS_changeValues(iFile, sedml_file):
 
                 # append information into list_of_strings
                 list_of_strings.append(id + '=' + new_val +';')
-
-
 
     return list_of_strings

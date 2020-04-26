@@ -5,14 +5,15 @@ import shutil
 import pandas as pd
 from setTime_BioModels import *
 
-# important paths --- for abs_error = rel_error = 1e-1
-json_path = './json_files_all_results_BDF/json_files_1e-01_1e-01'
-sedml_path = './sedml_models'
-old_path = '../sbml2amici/amici_models'
-new_path = '../sbml2amici/correct_amici_models_paper'
+# important paths --- for abs_error = rel_error = 1e-4, abs_tolerance = rel_tolerance = qe-12 and BDF
+base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes'
+json_path = base_path + '/json_files/json_files_all_results_BDF_12_12/json_files_1e-04_1e-04'
+sedml_path = base_path + '/sedml_models'
+old_path = base_path + '/sbml2amici/amici_models_newest_version_0.10.19'
+new_path = base_path + '/sbml2amici/correct_amici_models_paper'
 
+# copy all successfully imported amici models and eliminate those witch don't have matching state trajectories to JWS
 if not os.path.exists(new_path):
-    # correct amici models
     shutil.copytree(old_path, new_path)
 
 # set counter
@@ -74,6 +75,6 @@ for iModel in list_directory_sedml:
 
     if len(os.listdir(new_path + '/' + iModel)) == 0:
         os.rmdir(new_path + '/' + iModel)
-        print('Deleated model ' + iModel)
+        print('Deleted model ' + iModel)
         delete_counter = delete_counter + 1
 print('Delete Counter = ' + str(delete_counter))

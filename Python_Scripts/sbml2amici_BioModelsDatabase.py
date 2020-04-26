@@ -11,12 +11,12 @@ import pandas as pd
 
 
 # create .tsv file
-tsv_table = pd.DataFrame(columns=['id', 'states', 'reactions', 'error_message'])      # index=range() can be left out
+tsv_table = pd.DataFrame(columns=['id', 'states', 'reactions', 'error_message'])
 
 # important paths
-models_path = "../sbml2amici/amici_models"
-models_base_path = "../sbml2amici"
-base_path = "./BioModelsDatabase_models"
+models_base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici"
+models_path = models_base_path + "/amici_models_newest_version_0.10.19"
+base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models"
 
 
 # create directory for all future amici models
@@ -27,7 +27,7 @@ if not os.path.exists(models_path):
 logger = logging.getLogger()
 
 # initialize the log settings
-logging.basicConfig(filename='all_logs',level=logging.DEBUG)
+logging.basicConfig(filename=models_base_path + '/all_logs_Biomodels',level=logging.DEBUG)
 
 # list of all directories + SBML files
 list_directory = os.listdir(base_path)
@@ -38,7 +38,7 @@ counter = 0
 
 for models in list_directory:
 
-    models = 'Bungay2003'
+    #models = 'Bungay2003'
 
     list_files = os.listdir(base_path + '/' + models + '/sbml_models')
     list_files = sorted(list_files)
@@ -106,8 +106,3 @@ for models in list_directory:
 # print tsv_table + save it
 # print(tsv_table)
 tsv_table.to_csv(path_or_buf=models_base_path + '/table_BioModelsDatabase.tsv', sep='\t', index=True)
-
-# copy file 'all_logs' in new directory 'sbml2amici'
-old_path = './all_logs'
-new_path = models_base_path + '/all_logs'
-shutil.move(old_path, new_path)

@@ -3,20 +3,23 @@
 This repository contains all python files, (supplementary) figures and references for the paper 'Assessment and Prediction of ODE Solver Performance for BiologicalProcesses'.
 
 ## Problems that can occur by downloading this repository on Windows:
-	names for specific models can be too long to save (e.g. for the model 'Morris2002')
+	names for specific models can be too long to save (error could occur e.g. for the model 'Morris2002')
         Work-around ???
 
-The study can be reproduced by following the order in which all scripts must be executed.
+## Problems that can occur by working with python packages
+	if the package tqdm does not show a progress bar, the button "Emulate terminal in output console" in pythons' configurations must be siwtched on. 
+
+The study can be reproduced by following the order in which all scripts have to be executed.
 All python scripts can be found in 'Solver_Study/Python_Scripts'.
 The study was done by using the software versions listed in 'Solver_Study/Software/requirements.txt'.
+By reproducing this study, all results are stored in a therefore created folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' on the same level as the downloaded repository.
 
 ## 1 Create model collection 
 ### 1.1 Download all sedml and sbml models from the JWS Online Database
 	script_download_all_sedml_models.py
 
 ### 1.2 Download chosen sbml models from the BioModels Database
-	downloaded "by hand" --- no script available
-	all those models are included in 'Solver_Study/Models/all_models' and their amici-imported-versions in 'Solver_Study/all_models/amici_import'
+	script_download_all_sbml_biomodels.py
 
 ### 1.3 Import all sbml models to AMICI
 	sbml2amici.py
@@ -29,7 +32,9 @@ The study was done by using the software versions listed in 'Solver_Study/Softwa
 ### 1.5 Derive the whole model collection
 	correctStateTrajectories.py
 
-To skip step 1, the whole benchmark collection is available in 'Solver_Study/Models'
+To skip step 1, the whole benchmark collection is available in 'Solver_Study/Models'.
+If step 1 was skipped, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' or the subfolders 'json_files', 'sbml2amici' and 'sedml_models' will not exist. 
+In this case, the next functions will automatically take the results from 'Solver_Study/Models' of the repository. 
 
 ## 2 Solver settings study
 ### 2.1 Get all Data
@@ -37,6 +42,8 @@ To skip step 1, the whole benchmark collection is available in 'Solver_Study/Mod
 	execute_Tolerances.py
 
 To skip step 2.1, all data files can be found in 'Solver_Study/Data'
+If step 2.1 was skipped, the subfolder 'Data' will not exist.
+In this case, the next functions will automatically take the results from 'Solver_Study/Data' of the repository.
 
 ### 2.2 Visualize all results according to the ordner seen in the paper
 ##### 2.2.1 Basic Properties

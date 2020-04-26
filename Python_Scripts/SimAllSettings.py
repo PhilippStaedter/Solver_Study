@@ -10,13 +10,13 @@ import statistics
 import pandas as pd
 
 
-def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator):                                                                 #, error_file):
+def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_indicator):
 
     # Create new folder structure for study
     if study_indicator == 1:
-        tolerance_path = '../paper_SolverSettings/WholeStudy'
+        tolerance_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'
     elif study_indicator == 2:
-        tolerance_path = '../paper_SolverSettings/Tolerances_1e4'
+        tolerance_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/TolerancesStudy'
     if not os.path.exists(tolerance_path):
         os.makedirs(tolerance_path)
 
