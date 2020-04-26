@@ -2,12 +2,17 @@
 
 This repository contains all python files, (supplementary) figures and references for the paper 'Assessment and Prediction of ODE Solver Performance for BiologicalProcesses'.
 
-## Problems that can occur by downloading this repository on Windows:
+## 0 Problems that can oocur
+### 0.1 by downloading this repository on Windows:
 	names for specific models can be too long to save (error could occur e.g. for the model 'Morris2002')
-        Work-around ???
+        Work-around: Omit this/these model(s)
 
-## Problems that can occur by working with python packages
-	if the package tqdm does not show a progress bar, the button "Emulate terminal in output console" in pythons' configurations must be siwtched on. 
+### 0.2 by working with python packages
+	if the package tqdm does not show a progress bar, the button "Emulate terminal in output console" in pythons' configurations must be siwtched on.
+
+### 0.3 by doing step 1 only partially
+	in step 1, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' with its subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will be 	 created. If some but not all steps in 1 are executed, the following scripts in step 2 might not work as intended. To some extend, all scripts cover many possibilities but maybe not all.
+	Hence, to guarantee a successful reproduction of the study, please execute step 1 with all substeps or not at all.
 
 The study can be reproduced by following the order in which all scripts have to be executed.
 All python scripts can be found in 'Solver_Study/Python_Scripts'.
@@ -33,8 +38,9 @@ By reproducing this study, all results are stored in a therefore created folder 
 	correctStateTrajectories.py
 
 To skip step 1, the whole benchmark collection is available in 'Solver_Study/Models'.
-If step 1 was skipped, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' or the subfolders 'json_files', 'sbml2amici' and 'sedml_models' will not exist. 
-In this case, the next functions will automatically take the results from 'Solver_Study/Models' of the repository. 
+If step 1 was skipped, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' or the subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will not exist. 
+In this case, the next functions will automatically take the results from 'Solver_Study/Models' of the repository.
+Additionally, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will be created. 
 
 ## 2 Solver settings study
 ### 2.1 Get all Data
@@ -43,14 +49,17 @@ In this case, the next functions will automatically take the results from 'Solve
 
 To skip step 2.1, all data files can be found in 'Solver_Study/Data'
 If step 2.1 was skipped, the subfolder 'Data' will not exist.
+If step 1 was skipped, the subfolder 'json_files' will not exist.
 In this case, the next functions will automatically take the results from 'Solver_Study/Data' of the repository.
+Additionally, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will be created. 
 
 ### 2.2 Visualize all results according to the ordner seen in the paper
+Important: All figures created by the following scripts are not stored automatically!
 ##### 2.2.1 Basic Properties
-	    paper_plotCompareStateTrajectories.py
- 	    paper_plotCompareStateTrajectories_2.py
-	    paper_plotFirstResults.py
-	    paper_plotFirstStudy.py
+	    paper_plotCompareStateTrajectories.py (not needed)
+ 	    paper_plotCompareStateTrajectories_2.py (Supplementary)
+	    paper_plotFirstResults.py (not needed)
+	    paper_plotFirstStudy.py (Main Manuskript)
 
 ##### 2.2.2 Non-linear solver study
 	    paper_plotNonLinSol.py
