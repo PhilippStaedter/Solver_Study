@@ -11,4 +11,5 @@ def get_observables(sbml_model, remove=False):
     return observables
 
 def sbml_parameter_is_observable(sbml_parameter):
-  return sbml_parameter.getId().startswith('observable_')
+    return sbml_parameter.getId().startswith('observable_')
+

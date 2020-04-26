@@ -38,3 +38,4 @@ add_Froehlich2018()
 
 # create an additional folder consisting of all BioModels
 add_BioModels_Folder(list(model_name))
+

@@ -13,6 +13,7 @@ from SimAllSettings import *
 from tqdm import trange
 import os
 
+
 # settings
 atol = [1e-8, 1e-6, 1e-12, 1e-10, 1e-14, 1e-16, 1e-8]
 rtol = [1e-6, 1e-8, 1e-10, 1e-12, 1e-14, 1e-8, 1e-16]
@@ -32,4 +33,4 @@ for iSolALg in trange(0, len(solAlg)):
             for iToleranceTupel in trange(0, len(atol)):
                 simulate(atol[iToleranceTupel], rtol[iToleranceTupel], linSol[iLinSol], iter[iNonLin], solAlg[iSolALg], maxStep, study_indicator, skip_indicator)
                 useless_variable = os.system('clear')
-pass
+                pass
