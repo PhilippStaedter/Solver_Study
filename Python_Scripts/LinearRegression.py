@@ -7,7 +7,7 @@ import math
 def linearRegression(tsv_file, x_catagory, y_catagory):
 
     if len(tsv_file[x_catagory]) != len(tsv_file[y_catagory]):
-        print('Error: Length of catagories does not match!')
+        print('Error: Length of categories does not match!')
 
     # take those num_x and num_p where 'error_message' == nan
     x_data_point = []

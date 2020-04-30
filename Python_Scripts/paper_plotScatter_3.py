@@ -33,8 +33,11 @@ def Scatter(solAlg, nonLinSol, variation):
 
     column_names = []
 
-    # important paths
-    base_path = '../paper_SolverSettings/WholeStudy'
+    # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
+    if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+        base_path = '../Data/WholeStudy'
+    elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+        base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'
 
     # choose only the correct files
     all_files = sorted(os.listdir(base_path))

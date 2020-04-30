@@ -9,13 +9,13 @@ import numpy as np
 # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' and
 # 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files' exists
 skip_indicator = 0
-if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data') and \
+if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy') and \
         os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
     skip_indicator = 0.33
 elif not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files') and \
-        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data'):
+        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
     skip_indicator = 0.67
-elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data') and \
+elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy') and \
         os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
     skip_indicator = 1
 

@@ -1,4 +1,4 @@
-# scrip to plot a bar plot to investigate the difference for the Multistep Method - study 5
+# scrip to plot a scatter and histogram plot to investigate the difference between the non-linear solvers - study 4
 
 import pandas as pd
 import os
@@ -10,8 +10,11 @@ import math
 
 def Multistep():
 
-    # important paths
-    base_path = '../paper_SolverSettings/WholeStudy'
+    # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
+    if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+        base_path = '../Data/WholeStudy'
+    elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+        base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'
 
     # list of all data frames for nonLinSol == 1 for better indexing in the future
     all_intern_columns_1 = [pd.DataFrame(columns=[]), pd.DataFrame(columns=[]), pd.DataFrame(columns=[]), pd.DataFrame(columns=[]),
@@ -244,7 +247,8 @@ def Multistep():
 
     # show figure
     plt.show()
-    # adjustment values
+
+    # adjustment values to replicate the exact plot seen in the main manuscript
     #top = 0.96,
     #bottom = 0.328,
     #left = 0.11,

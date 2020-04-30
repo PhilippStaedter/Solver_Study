@@ -6,8 +6,12 @@ from scipy.stats import gaussian_kde
 from averageTime import *
 from matplotlib.colors import LinearSegmentedColormap
 
-# important paths
-base_path = '../paper_SolverSettings/WholeStudy'
+
+# check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
+if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+    base_path = '../Data/WholeStudy'
+elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+    base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'
 Adams_base_path = base_path
 BDF_base_path = base_path
 #Adams_base_path = '../bachelor_thesis/SolverAlgorithm/Adams'
@@ -20,9 +24,9 @@ list_directory_bdf = []
 for iFile in range(0, int(len(list_directory_general)/2)):
     adams_split = list_directory_general[iFile].split('_')
     bdf_split = list_directory_general[iFile + int(len(list_directory_general)/2)].split('_')
-    if adams_split[1] == '2' and adams_split[2] == '9':
+    if adams_split[1] == '2':
         list_directory_adams.append(list_directory_general[iFile])
-    if bdf_split[1] == '2' and bdf_split[2] == '9':
+    if bdf_split[1] == '2':
         list_directory_bdf.append(list_directory_general[iFile + int(len(list_directory_general)/2)])
 #list_directory_adams = sorted(os.listdir(Adams_base_path))
 #list_directory_bdf = sorted(os.listdir(BDF_base_path))

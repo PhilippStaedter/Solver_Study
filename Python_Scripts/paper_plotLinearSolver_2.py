@@ -252,7 +252,7 @@ def LinearSolver(solAlg, nonLinSol):
 
 
 ########## call both functions + some global properties
-LinearSolver('2','2')
+LinearSolver('1','2')
 
 # better layout
 plt.tight_layout()
