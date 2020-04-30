@@ -1,17 +1,25 @@
 # scatter plot of the prediction settings against amici default settings
 
 import numpy as np
+import os
+import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import gaussian_kde
-from averageTime import *
+from averageTime import averaging
 from matplotlib.colors import LinearSegmentedColormap
 
 # important paths
-base_path = '../paper_SolverSettings/WholeStudy'
+base_path = '../Data/WholeStudy'
 Adams_base_path = base_path
 BDF_base_path = base_path
 #Adams_base_path = '../bachelor_thesis/SolverAlgorithm/Adams'
 #BDF_base_path = '../bachelor_thesis/SolverAlgorithm/BDF'
+
+# general plotting settings
+plt.rcParams['figure.figsize'] = [15.0, 7.]
+plt.rcParams['figure.dpi'] = 80
+plt.rcParams['savefig.dpi'] = 200
+plt.rcParams['font.size'] = 17
 
 # open .tsv files
 list_directory_general = sorted(os.listdir(base_path))
@@ -32,6 +40,19 @@ adams_bdf_x = []          # red
 adams_bdf_y = []
 bdf_adams_x = []          # green
 bdf_adams_y = []
+ratio_adams_bdf = []
+ratio_bdf_adams = []
+ratio_equal = []
+ratio_adams_zero = []
+ratio_bdf_zero = []
+ratio_equal_zero = []
+num_states_adams_bdf = []
+num_states_bdf_adams = []
+num_states_equal = []
+num_states_adams_zero = []
+num_states_bdf_zero = []
+num_states_equal_zero = []
+
 equal_x = []                    # yellow
 equal_y = []
 adams_zero_x = []
@@ -46,32 +67,48 @@ for iTsvFile in range(0, len(list_directory_adams)):
     bdf_tsv_file = pd.read_csv(BDF_base_path + '/' + list_directory_bdf[iTsvFile], sep='\t')
 
     # average from 210 to 166 models
-    adams_tsv_file = averaging(adams_tsv_file)
-    bdf_tsv_file = averaging(bdf_tsv_file)
+    #adams_tsv_file = averaging(adams_tsv_file)
+    #bdf_tsv_file = averaging(bdf_tsv_file)
 
     for iModel in range(0, len(adams_tsv_file['t_intern_ms'])):
         x_adams_data = adams_tsv_file['t_intern_ms'][iModel]
         y_bdf_data = bdf_tsv_file['t_intern_ms'][iModel]
+        states_data = adams_tsv_file['state_variables'][iModel]
 
         if x_adams_data != 0 and y_bdf_data != 0:
             if x_adams_data > y_bdf_data:
                 bdf_adams_x.append(x_adams_data)
                 bdf_adams_y.append(y_bdf_data)
+                ratio_adams_bdf.append(np.log10(x_adams_data / y_bdf_data))
+                num_states_adams_bdf.append(states_data)
             elif y_bdf_data > x_adams_data:
                 adams_bdf_x.append(x_adams_data)
                 adams_bdf_y.append(y_bdf_data)
+                ratio_bdf_adams.append(np.log10(x_adams_data / y_bdf_data))
+                num_states_bdf_adams.append(states_data)
             elif x_adams_data == y_bdf_data:
                 equal_x.append(x_adams_data)
                 equal_y.append(y_bdf_data)
+                ratio_equal.append(np.log10(x_adams_data / y_bdf_data))
+                num_states_equal.append(states_data)
+
         elif x_adams_data == 0 and y_bdf_data != 0:
             adams_zero_x.append(45000)
             adams_zero_y.append(y_bdf_data)
+            ratio_adams_zero.append(np.log10(400.))
+            num_states_adams_zero.append(states_data)
+
         elif x_adams_data != 0 and y_bdf_data == 0:
             bdf_zero_x.append(x_adams_data)
             bdf_zero_y.append(45000)
+            ratio_bdf_zero.append(-np.log10(400.))
+            num_states_bdf_zero.append(states_data)
+
         elif x_adams_data == 0 and y_bdf_data == 0:
             equal_zero_x.append(45000)
             equal_zero_y.append(45000)
+            ratio_equal_zero.append(np.log10(float('nan')))
+            num_states_equal_zero.append(states_data)
 
     # display progress
     print(iTsvFile)
@@ -141,8 +178,8 @@ bdf_zero_x, bdf_zero_y, kde_blue_edge = np.array(bdf_zero_x)[ids_blue_edge], np.
 
 
 # plot scatter plot
-ax = plt.axes([0.1, 0.12, 0.8, 0.8])
-plt.gcf().subplots_adjust(bottom=0.2)
+ax = plt.axes([0.06, 0.1, 0.41, 0.85])
+ax2 = plt.axes([0.57, 0.1, 0.41, 0.85])
 z = range(0,45000)
 plt1 = ax.scatter(adams_bdf_x, adams_bdf_y, s=marker_size, c=kde_orange, cmap=cm_1, label='AM faster: ' + str(round(len(adams_bdf_x) / len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', zorder=10, clip_on=False, alpha=alpha)
 plt2 = ax.scatter(bdf_adams_x, bdf_adams_y, s=marker_size, c=kde_blue, cmap=cm_2, label='BDF faster: ' + str(round(len(bdf_adams_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', zorder=10, clip_on=False, alpha=alpha)
@@ -169,33 +206,85 @@ plt.text(0.6, 20000, 'AM faster: ' + str(round(len(adams_bdf_x) / len(adams_tsv_
 plt.text(0.6, 10000, 'BDF faster: ' + str(round(len(bdf_adams_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=labelsize)
 
 plt.tick_params(labelsize=labelsize)
-plt.gca().set_aspect('equal', adjustable='box')
+# plt.gca().set_aspect('equal', adjustable='box')
 ax.spines['top'].set_linestyle(linestyle)
 ax.spines['top'].set_linewidth(linewidth)
 ax.spines['right'].set_linestyle(linestyle)
 ax.spines['right'].set_linewidth(linewidth)
-ax.spines['top'].set_color('red')
-ax.spines['right'].set_color('red')
+ax.spines['top'].set_color('grey')
+ax.spines['right'].set_color('grey')
 
 # write text over axis
-ax.text(55000, 1,'only AM failed: ' + str(round(len(adams_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize, rotation=-90)
-ax.text(1, 55000, 'only BDF failed: ' + str(round(len(bdf_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize)
-ax.text(70000, 4000, 'Both failed:', fontsize=fontsize, rotation=-45)
-ax.text(50000, 6000, str(round(len(equal_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize, rotation=-45)
+ax.text(55000, 100,'only AM failed: ' + str(round(len(adams_zero_x) / len(
+    adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %',
+        fontsize=fontsize, rotation=-90, va='center')
+ax.text(100, 55000, 'only BDF failed: ' + str(round(len(bdf_zero_x) / len(
+    adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %',
+        fontsize=fontsize, ha='center')
+ax.text(70000, 55000, 'Both failed:', fontsize=fontsize,
+        ha='center')
+ax.text(130000, 40000, str(round(len(equal_zero_x) / len(adams_tsv_file[
+    't_intern_ms'])*100/len(list_directory_adams), 2)) + ' %',
+        fontsize=fontsize, ha='center', va='center')
 #ax.text(0.1, 70000, 'Adams-Moulton vs. BDF settings', fontsize=titlesize, fontweight='bold', pad=30)
 
 
-# change plotting size
-plt.gcf().subplots_adjust(bottom=0.2)
-#fig = plt.gcf()
-#fig.set_size_inches(18.5, 10.5)
-#plt.gcf().subplots_adjust(bottom=0.5)
+# choose second axes object
+plt.sca(ax2)
 
-# better layout
-#plt.tight_layout()
+# create and adapt spines
+ax2.spines['left'].set_visible(False)
+ax2.spines['right'].set_visible(False)
+ax2.spines['top'].set_visible(False)
+
+# plot left and right "spines"
+plt.plot([-np.log10(400), -np.log10(400)], [0.8, 2000], '--', color='grey',
+         linestyle=linestyle, linewidth=linewidth)
+plt.plot([np.log10(400), np.log10(400)], [0.8, 2000], '--', color='grey',
+         linestyle=linestyle, linewidth=linewidth)
+
+# plot data
+plt.scatter(ratio_adams_bdf, num_states_adams_bdf,
+            s=marker_size, c=kde_blue, cmap=cm_1, alpha=alpha)
+plt.scatter(ratio_bdf_adams, num_states_bdf_adams,
+            s=marker_size, c=kde_orange, cmap=cm_2, alpha=alpha)
+plt.scatter(ratio_equal, num_states_equal,
+            s=marker_size, c='grey', alpha=alpha)
+plt.scatter(ratio_adams_zero, num_states_adams_zero,
+            s=marker_size, c=kde_orange_edge, cmap=cm_1, alpha=alpha)
+plt.scatter(ratio_bdf_zero, num_states_bdf_zero,
+            s=marker_size, c=kde_blue_edge, cmap=cm_2, alpha=alpha)
+# plt.plot(ratio_equal_zero, num_states_equal_zero, '.', color=[0.8,0,0.8,0.9])
+
+# plot central spine
+plt.plot([0, 0], [.8, 2000], 'k-', linewidth=linewidth)
+plt.plot([-.05, .05], [1000, 1000], 'k-', linewidth=linewidth)
+for iMajor in range(3):
+    plt.plot([-.05, .05], [10**iMajor, 10**iMajor], 'k-', linewidth=linewidth)
+    for iMinor in range(2,10):
+        plt.plot([-.02, .02], [iMinor * 10**iMajor, iMinor * 10**iMajor],
+                 'k-',linewidth=linewidth)
+
+# formating
+ax2.set_yscale('log')
+plt.ylim((0.8, 1900))
+plt.xlim((-np.log10(450), np.log10(450)))
+plt.yticks([])
+plt.minorticks_off()
+plt.xticks([-np.log10(400), -2, -1, 0, 1, 2, np.log10(400)],
+           ['AM\nfailed', '$10^{-2}$', '$10^{-1}$', '1', '$10^1$', '$10^2$',
+            'BDF\nfailed'], fontsize=17)
+
+ax2.text(0, 2000, 'number of state variables',
+        fontsize=fontsize, ha='center')
+ax2.text(.1, 1, '$10^0$', fontsize=fontsize, va='center', ha='left')
+ax2.text(.1, 10, '$10^1$', fontsize=fontsize, va='center', ha='left')
+ax2.text(.1, 100, '$10^2$', fontsize=fontsize, va='center', ha='left')
+ax2.text(.1, 1000, '$10^3$', fontsize=fontsize, va='center', ha='left')
+plt.xlabel('computation time ratio AM / BDF')
 
 # save figure
-#plt.savefig('../bachelor_thesis/New_Figures/Figures_study_5/Adams_vs_BDF_2_166SBML.pdf')
+#plt.savefig('testidea_fig5.pdf')
 
 # show figure
 plt.show()
