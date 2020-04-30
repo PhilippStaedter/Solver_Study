@@ -50,39 +50,33 @@ Additionally, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biologic
 To skip step 2.1, all data files can be found in 'Solver_Study/Data'
 If step 2.1 was skipped, the subfolder 'Data' will not exist.
 If step 1 was skipped, the subfolder 'json_files' will not exist.
-In this case, the next functions will automatically take the results from 'Solver_Study/Data' of the repository.
-Additionally, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will be created. 
+In this case, the next functions will automatically take the results from 'Solver_Study/Data' of the repository. 
 
 ### 2.2 Visualize all results according to the ordner seen in the paper
-Important: All figures created by the following scripts are not stored automatically!
+Remark: All figures created by the following scripts are not stored automatically! Thus, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will not be created if it does not already exists.
 ##### 2.2.1 Basic Properties
-	    paper_plotCompareStateTrajectories.py (not needed)
- 	    paper_plotCompareStateTrajectories_2.py (Supplementary)
-	    paper_plotFirstResults.py (not needed)
-	    paper_plotFirstStudy.py (Main Manuskript)
+ 	    paper_plotCompareStateTrajectories_2.py (Supplementary, Figure 1)
+	    paper_plotFirstStudy.py (Main Manuscript, Figure S1)
 
 ##### 2.2.2 Non-linear solver study
-	    paper_plotNonLinSol.py
-	    paper_plotNonLinSol_2.py
-	    paper_plotNonLinSol_3.py
-	    paper_plotNonLinSol_4.py
+	    paper_plotNonLinSol_3.py (Main Manuscript, Figure 2)
+	    paper_plotNonLinSol_4.py (Supplementary, Figure S2)
 
 ##### 2.2.3 Linear solver study
-	    paper_plotLinearSolver.py
-	    paper_plotScatter.py
-	    paper_plotScatter_2.py
-	    paper_plotScatter_3.py
-	    paper_plotScatter_4.py	
+	    paper_plotLinearSolver.py (Main Manuscript, Figure 3)
+	    paper_plotLinearSolver_2.py (Supplementary, Figure S3)
+	    paper_plotScatter_3.py (Supplementary, Figure S5)
+	    paper_plotScatter_4.py (Supplementary, Figure S4)
 
 ##### 2.2.4 Tolerances study
-	    paper_plotBoxPlot.py
-	    paper_plotBoxPlot_2.py
-	    paper_plotHistogram.py
+	    paper_plotBoxPlot_2.py (Main Manuscript, Figure 4)
+	    paper_plotHistogram.py (Supplementary, Figure S6)
 
 ##### 2.2.5 Solver algorithm study
-	    paper_plotAdamsBDF.py
-	    paper_plotAdamsBDF_2.py	
+	    paper_plotAdamsBDF.py (Main Manuscript, Figure 5)
+	    paper_plotAdamsBDF_2.py (Supplementary, Figure S8)
+	    paper_plotAdamsBDF_3.py (Supplementary, Figure S7)
 
-To skip step 2.2, all figures can be found in 'Solver_Study/Figures'
+To skip step 2.2, all figures can be found in 'Solver_Study/Figures'.
 
 
