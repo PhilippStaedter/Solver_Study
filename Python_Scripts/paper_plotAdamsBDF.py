@@ -183,7 +183,7 @@ bdf_adams_x, bdf_adams_y, kde_blue = np.array(bdf_adams_x)[ids_blue], np.array(b
 
 # plot scatter plot
 ax = plt.axes([0.08, 0.11, 0.37, 0.84])
-ax2 = plt.axes([0.54, 0.11, 0.43, 0.84])
+ax2 = plt.axes([0.57, 0.11, 0.40, 0.84])
 z = range(0,45000)
 plt1 = ax.scatter(adams_bdf_x, adams_bdf_y, s=marker_size, c=kde_orange, cmap=cm_1, label='AM faster: ' + str(round(len(adams_bdf_x) / len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', zorder=10, clip_on=False, alpha=alpha)
 plt2 = ax.scatter(bdf_adams_x, bdf_adams_y, s=marker_size, c=kde_blue, cmap=cm_2, label='BDF faster: ' + str(round(len(bdf_adams_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', zorder=10, clip_on=False, alpha=alpha)
@@ -227,10 +227,12 @@ ax.text(100, 55000, 'only BDF failed: ' + str(round(len(bdf_zero_x) / len(
         fontsize=fontsize, ha='center')
 ax.text(70000, 55000, 'Both failed:', fontsize=fontsize,
         ha='center')
-ax.text(150000, 40000, str(round(len(equal_zero_x) / len(adams_tsv_file[
+ax.text(150000, 30000, str(round(len(equal_zero_x) / len(adams_tsv_file[
     't_intern_ms'])*100/len(list_directory_adams), 2)) + ' %',
         fontsize=fontsize, ha='center', va='center')
-#ax.text(0.1, 70000, 'Adams-Moulton vs. BDF settings', fontsize=titlesize, fontweight='bold', pad=30)
+
+# plot text 'A'
+ax.text(-0.18, 1, 'A', fontsize=fontsize + 5, transform=ax.transAxes)
 
 
 # choose second axes object
@@ -293,8 +295,11 @@ ax2.set_xlabel('Computation time ratio AM / BDF', fontsize=fontsize)
 plt.xticks([-np.log10(400), -2, -1, 0, 1, 2, np.log10(400)],
            ['', '$10^{-2}$', '$10^{-1}$', '1', '$10^1$', '$10^2$',
             ''], fontsize=fontsize)
-ax2.text(-np.log10(600), 20, 'AM failed', fontsize=fontsize, rotation=90, ha='center')
-ax2.text(np.log10(600), 20, 'BDF failed', fontsize=fontsize, rotation=-90, ha='center')
+ax2.text(-np.log10(600), 20, 'BDF failed', fontsize=fontsize, rotation=90, ha='center')
+ax2.text(np.log10(600), 20, 'AM failed', fontsize=fontsize, rotation=-90, ha='center')
+
+# plot text 'B'
+ax.text(-0.08, 1, 'B', fontsize=fontsize + 5, transform=ax2.transAxes)
 
 # save figure
 #plt.savefig('testidea_fig5.pdf')
