@@ -1,4 +1,4 @@
-# Solve Study
+# Solver Study
 
 This repository contains all python files and (supplementary) figures for the manuscript 'Assessment and Prediction of ODE Solver Performance for Biological Processes'.
 
