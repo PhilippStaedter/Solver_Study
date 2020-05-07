@@ -55,27 +55,27 @@ In this case, the next functions will automatically take the results from 'Solve
 ### 2.2 Visualize all results according to the ordner seen in the paper
 Remark: All figures created by the following scripts are not stored automatically! Thus, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will not be created if it does not already exists.
 ##### 2.2.1 Basic Properties
- 	    paper_plotCompareStateTrajectories_2.py (Supplementary, Figure 1)
-	    paper_plotFirstStudy.py (Main Manuscript, Figure S1)
+	    plot_BasicProperties_Main.py (Main Manuscript, Figure 1)
+ 	    plot_BasicProperties_Supp.py (Supplementary, Figure S1)
 
 ##### 2.2.2 Non-linear solver study
-	    paper_plotNonLinSol_3.py (Main Manuscript, Figure 2)
-	    paper_plotNonLinSol_4.py (Supplementary, Figure S2)
+	    plot_NonLinSol_Main.py (Main Manuscript, Figure 2)
+	    plot_NonLinSol_Supp.py (Supplementary, Figure S2)
 
 ##### 2.2.3 Linear solver study
-	    paper_plotLinearSolver.py (Main Manuscript, Figure 3)
-	    paper_plotLinearSolver_2.py (Supplementary, Figure S3)
-	    paper_plotScatter_3.py (Supplementary, Figure S5)
-	    paper_plotScatter_4.py (Supplementary, Figure S4)
+	    plot_LinearSolver_Main.py (Main Manuscript, Figure 3)
+	    plot_LinearSolver_Supp1.py (Supplementary, Figure S3)
+	    plot_LinearSolver_Supp2.py (Supplementary, Figure S4)
+	    plot_LinearSolver_Supp3.py (Supplementary, Figure S5)
 
 ##### 2.2.4 Tolerances study
-	    paper_plotBoxPlot_2.py (Main Manuscript, Figure 4)
-	    paper_plotHistogram.py (Supplementary, Figure S6)
+	    plot_Tolerances_Main.py (Main Manuscript, Figure 4)
+	    plot_Tolerances_Supp.py (Supplementary, Figure S6)
 
 ##### 2.2.5 Solver algorithm study
-	    paper_plotAdamsBDF.py (Main Manuscript, Figure 5)
-	    paper_plotAdamsBDF_2.py (Supplementary, Figure S8)
-	    paper_plotAdamsBDF_3.py (Supplementary, Figure S7)
+	    plot_SolAlg_Main.py (Main Manuscript, Figure 5)
+	    plot_SolAlg_Supp1.py (Supplementary, Figure S7)
+	    plot_SolAlg_Supp2.py (Supplementary, Figure S8)
 
 To skip step 2.2, all figures can be found in 'Solver_Study/Figures'.
 
