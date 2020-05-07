@@ -1,3 +1,5 @@
+# download all specific biomodels from the BioModels database
+
 from sbml_bio_import import *
 from logging_util import *
 import logging
@@ -10,7 +12,7 @@ logger = logging.getLogger(LOGGER_NAME)
 logger.setLevel(logging.INFO)
 
 # all unique model identifications consisting of pairs of id and name
-### all ids at BioModels are unique and don't change over time
+### Remark: all ids at BioModels are unique and don't change over time
 models = pd.DataFrame(columns=['model_id', 'model_name'], data=[])
 model_id = pd.Series(['BIOMD0000000334', 'BIOMD0000000332', 'BIOMD0000000333', 'BIOMD0000000451', 'BIOMD0000000161',
                       'BIOMD0000000070', 'BIOMD0000000560', 'BIOMD0000000574', 'BIOMD0000000583', 'BIOMD0000000021',
@@ -30,12 +32,13 @@ model_name = pd.Series(['Bungay2003', 'Bungay2006', 'Bungay2006a', 'Carbo2013', 
 models.model_id = model_id
 models.model_name = model_name
 
+# download all specified models
 download_specific_sbml_biomodels_from_jws(list(model_id), list(model_name))
 
 # model Froehlich2018 is not available on neither BioModels nor JWS but on a github repository ---
 # the github repository is accessible via https://github.com/ICB-DCM/CS_Signalling_ERBB_RAS_AKT/tree/master/FroehlichKes2018
 add_Froehlich2018()
 
-# create an additional folder consisting of all BioModels
+# create an additional folder consisting of all models form the BioModels database
 add_BioModels_Folder(list(model_name))
 

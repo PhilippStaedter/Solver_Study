@@ -1,12 +1,9 @@
-# SBML2AMICI
+# AMICI import of a BioModels sbml model from the model collection
+
 import libsbml
-import importlib
 import amici
 import os
-import sys
-import numpy as np
 import logging
-import shutil
 import pandas as pd
 
 
@@ -17,7 +14,6 @@ tsv_table = pd.DataFrame(columns=['id', 'states', 'reactions', 'error_message'])
 models_base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici"
 models_path = models_base_path + "/amici_models_newest_version_0.10.19"
 base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models"
-
 
 # create directory for all future amici models
 if not os.path.exists(models_path):
@@ -37,9 +33,6 @@ list_directory = sorted(list_directory)
 counter = 0
 
 for models in list_directory:
-
-    #models = 'Bungay2003'
-
     list_files = os.listdir(base_path + '/' + models + '/sbml_models')
     list_files = sorted(list_files)
 
@@ -48,14 +41,11 @@ for models in list_directory:
         model_name, other_stuff = files.split(".",1)
         model_output_dir = models_path + '/' + models + '/' + model_name
 
-        # get new_observables()
-
         try:
-            ## entry = {'id': None, 'states': None, 'reactions': None, 'parameters': None, 'error_message': None}
             # Append additional row in .tsv file
             tsv_table = tsv_table.append({}, ignore_index=True)
 
-            # name
+            # define the model id
             tsv_table.loc[counter].id = '{' + models + '}' + '_' + '{' + files + '}'
 
             # read accompanying sbml file
@@ -64,7 +54,7 @@ for models in list_directory:
             num_states = len(all_properties.getListOfSpecies())
             num_reactions = len(all_properties.getListOfReactions())
 
-            # Fill in .tsv file
+            # fill in .tsv file
             tsv_table.loc[counter].states = num_states
             tsv_table.loc[counter].reactions = num_reactions
 
@@ -74,12 +64,9 @@ for models in list_directory:
             # SBML2AMICI
             sbml_importer.sbml2amici(model_name,
                         model_output_dir,
-                        verbose=False)                                                                  # TRUE instead of FALSE?
+                        verbose=False)
 
-            # read data out
-            # sbml_importer.
-
-            # Write 'OK' in 'error_message' coloumn
+            # Write 'OK' in 'error_message' column
             tsv_table.loc[counter].error_message = 'OK'
 
             # increase counter by 1
@@ -87,22 +74,13 @@ for models in list_directory:
 
         except Exception as e:
             error_info = str(e)
-            # error_info = sys.exc_info()[0]
             print(error_info)
             logging.exception('Model failed: %s, %s', models, files)
             logging.info('\n')
 
-            # Write the error message in 'error_message' coloumn
+            # Write the error message in 'error_message' column
             tsv_table.loc[counter].error_message = error_info
-            ## tsv_table.append(entry)
-            # increase counter by 1
             counter = counter + 1
 
-            # logging.exception(str(Exception))
-            # except Exception as e:
-            # logging.exeption(str(e), exc_info=True)
-            # continue
-
-# print tsv_table + save it
-# print(tsv_table)
+# save .tsv file
 tsv_table.to_csv(path_or_buf=models_base_path + '/table_BioModelsDatabase.tsv', sep='\t', index=True)

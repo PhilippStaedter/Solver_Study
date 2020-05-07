@@ -1,8 +1,6 @@
 import os
 import urllib.request
 import shutil
-import sys
-
 import logging
 from logging_util import LOGGER_NAME
 
@@ -46,14 +44,7 @@ def download_sbml_model(sbml_url, sbml_file):
 
 
 def add_Froehlich2018():
-    #basic_path_to_Froehlich2018 = '../Models/all_models'
-    #all_models = sorted(os.listdir(basic_path_to_Froehlich2018))
-    #if not 'Froehlich2018' in all_models:
-    #    print('The name of the repository might have been altered or the folder is missing!')
-    #    sys.exit()
-    #if not os.path.isfile(basic_path_to_Froehlich2018 + '/Froehlich2018/sbml_models/Froehlich2018.xml'):
-    #    print('The name of the .xml file might have been altered or it is missing!')
-    #    sys.exit()
+    # import Froehlich model from Github repository
     if not os.path.exists(BASE_FOLDER + '/Froehlich2018/sbml_models'):
         os.makedirs(BASE_FOLDER + '/Froehlich2018/sbml_models')
     froehlich2018_url = 'https://raw.githubusercontent.com/ICB-DCM/CS_Signalling_ERBB_RAS_AKT/master/FroehlichKes2018/PEtab/CS_Signalling_ERBB_RAS_AKT_petab.xml'
@@ -66,6 +57,7 @@ def add_Froehlich2018():
 
 
 def add_BioModels_Folder(model_names):
+    # create a folder for all biomodels
     if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models'):
         os.makedirs('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models')
     all_models = sorted(os.listdir(BASE_FOLDER))

@@ -1,3 +1,4 @@
+# Supplementary Plot --- Figure S2
 # script to plot Scatter Plot and Box Plot for non-linear solver study
 
 import pandas as pd
@@ -6,7 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from averageTime import *
 from LinearRegression import *
-
 
 
 left = 0.07
@@ -31,8 +31,6 @@ def NonLinearSolver(solAlg, LinSol):
                           pd.DataFrame(columns=[]), pd.DataFrame(columns=[]),
                           pd.DataFrame(columns=[]), pd.DataFrame(columns=[]),
                           pd.DataFrame(columns=[]), pd.DataFrame(columns=[])]
-
-
     column_names = []
 
     # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
@@ -60,7 +58,7 @@ def NonLinearSolver(solAlg, LinSol):
         next_tsv = averaging(next_tsv)
 
         # get the correct values
-        for iFile in range(0, len(next_tsv['id'])):  # each file
+        for iFile in range(0, len(next_tsv['id'])):
             if next_tsv['t_intern_ms'][iFile] != 0:
                 next_time_value.append(next_tsv['t_intern_ms'][iFile])
                 num_x.append(next_tsv['state_variables'][iFile])
@@ -70,7 +68,7 @@ def NonLinearSolver(solAlg, LinSol):
         all_intern_columns[iCorrectFile]['state_variables'] = pd.Series(num_x)
         all_intern_columns[iCorrectFile]['simulation_time'] = pd.Series(next_time_value)
 
-    # plot scatter plot of all data points for the accompynying linear solver + linear regressions
+    # plot scatter plot and linear regressions of all data points for the accompanying linear solver
     fontsize = 12
     labelsize = 8
     alpha = 0.5
@@ -82,12 +80,6 @@ def NonLinearSolver(solAlg, LinSol):
     ax1.set_xlabel('Number of state variables', fontsize=fontsize)
     ax1.set_ylabel('Simulation time [ms]', fontsize=fontsize)
     ax1.tick_params(labelsize=labelsize)
-
-    # create five custom color maps
-
-    # calculate point density
-
-    # sort points by density
 
     linSol_for_Legend = ['Functional', 'Newton-type']
     colors = ['#e66101', '#5e3c99']
@@ -101,8 +93,6 @@ def NonLinearSolver(solAlg, LinSol):
 
         # do a linear regression
         y_axis_interception, slope = linearRegression(vertically_stacked_tsv, 'state_variables', 'simulation_time')
-        #y_axis_interceptions.append(y_axis_interception)
-        #slopes.append(slope)
 
         # plot a scatter plot + linear regressions
         num_x = [np.log10(p) for p in vertically_stacked_tsv['state_variables']]
@@ -112,7 +102,6 @@ def NonLinearSolver(solAlg, LinSol):
         exp_simulation_time = [10 ** n for n in list(data_simulation_time)]
         ax1.scatter(exp_num_x, exp_simulation_time, s=marker_size, alpha=alpha, c=colors[iLinearSolverDataPoints])
         ax1.plot(exp_num_x, data_regression, c=colors[iLinearSolverDataPoints], label=linSol_for_Legend[iLinearSolverDataPoints] + ': slope = ' + str(np.round(slope[0], 4)))
-        #print('y_axis_interception: ' + str(y_axis_interception))
 
     # plot legend
     ax1.legend(loc=2, fontsize=fontsize - 2, frameon=False)
@@ -180,14 +169,10 @@ def NonLinearSolver(solAlg, LinSol):
     for flier in bp['fliers']:
         flier.set(marker='+', color='#e7298a', alpha=0.5, markersize=3)
 
-    # ax2.set_title('Comparison of percentiles and median', fontsize=titlesize, fontweight='bold')
-    #ax2.set_ylabel('Simulation time', fontsize=fontsize)
     ax2.tick_params(labelsize=labelsize)
     ax2.set_xticklabels([])
     ax2.set_xlim([0, 21])
     specific_xticks = ax2.xaxis.get_major_ticks()
-    #for iTick in [0, 7, 14, 21, 28, 35]:
-    #    specific_xticks[iTick].set_visible(False)
 
     # create major and minor ticklabels
     Abs_xTickLabels = ['', '', r'$10^{-6}$', '', '', r'$10^{-8}$',
@@ -221,13 +206,8 @@ def NonLinearSolver(solAlg, LinSol):
     for iTick in [2, 5, 8, 11, 14, 17, 20]:
         specific_xticks_minor[iTick].set_visible(True)
 
-    # add grit
-    #ax2.yaxis.grid(True, linestyle='-', which='both', color='lightgrey', alpha=0.25)
-
     # plot text 'B'
     ax2.text(-0.13, 1, 'B', fontsize=labelsize + 5, transform=ax2.transAxes)
-
-
 
 
 ########## call both functions + some global properties
@@ -239,9 +219,6 @@ plt.tight_layout()
 # change plotting size
 fig = plt.gcf()
 fig.set_size_inches(18.5, 10.5)
-
-# save figure
-# plt.savefig('../paper_SolverSettings/Figures/Study_3/13012020/LinSol_' + solAlg + '_' + nonLinSol + '_Scatter.pdf')
 
 # show figure
 plt.show()

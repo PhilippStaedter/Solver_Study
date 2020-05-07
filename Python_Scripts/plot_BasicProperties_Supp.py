@@ -1,3 +1,6 @@
+# Supplementary Plot --- Figure S1
+# plot some basic properties of the model collection
+
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
@@ -29,7 +32,7 @@ for iTolerance in range(0, len(all_log_abs_tol)):
     for Multistep in ['Adams', 'BDF']:
         print(Multistep)
         tol_exps = []
-        for tol_exp in range(-20, 10):                # range(-20,10)
+        for tol_exp in range(-20, 10):
             tol = 10**tol_exp
             counter = 0
             total_counter = 0
@@ -75,7 +78,6 @@ for iTolerance in range(0, len(all_log_abs_tol)):
         counter_Tol_4.append(counters_Adams)
         counter_Tol_4.append(counters_BDF)
 
-
 ax = plt.axes()
 ax.plot(tol_exps, counter_Tol_0[0], '-*', c='#fdae61', label=f'AM & {all_abs_tol[0]} & {all_rel_tol[0]}')
 ax.plot(tol_exps, counter_Tol_0[1], '-*', c='#abd9e9', label=f'BDF & {all_abs_tol[0]} & {all_rel_tol[0]}')
@@ -97,15 +99,11 @@ ax.set_xticklabels(np.array(['', r'$10^{-20}$', r'$10^{-15}$', r'$10^{-10}$', r'
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
-
+# tight layout
 plt.legend(loc=2)
-#plt.gca().set_title('Comparison of all State Trajectories to JWS for AM vs BDF', fontsize=fontsize)
 plt.gca().set_xlabel('Acceptance Threshold for matching State Trajectories', fontsize=fontsize)
 plt.gca().set_ylabel('Matching models', fontsize=fontsize)
 plt.gcf().tight_layout()
-
-# save plot
-#plt.savefig(f"figures_paper/Study_1/compareStateTrajectories_summary_{abs_tol}_{rel_tol}.pdf")
 
 # show plot
 plt.show()

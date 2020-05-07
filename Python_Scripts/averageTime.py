@@ -1,4 +1,4 @@
-# script to average simulation time of specific models
+# script to average simulation time of all models from the model collection
 
 import os
 import pandas as pd
@@ -24,7 +24,7 @@ def averaging(next_tsv):
     for iFile in iter_object:
         new_df = new_df.append({}, ignore_index=True)
         if iFile == 0:
-            if next_tsv['id'][iFile] == next_tsv['id'][iFile + 1] and next_tsv['state_variables'][iFile] == next_tsv['state_variables'][iFile + 1]:    # first element
+            if next_tsv['id'][iFile] == next_tsv['id'][iFile + 1] and next_tsv['state_variables'][iFile] == next_tsv['state_variables'][iFile + 1]:
                 # find all exceptions by hand and type them in manually --- no clear rule existing
                 if next_tsv['id'][iFile] == '{kolodkin2010_figure2b}':
                     if 'id' in columns:
@@ -136,7 +136,7 @@ def averaging(next_tsv):
                 if 'reactions' in columns:
                     new_df.loc[iFile - repetition].reactions = next_tsv['reactions'][iFile]
         else:
-            if next_tsv['id'][iFile] == next_tsv['id'][iFile - 1] and next_tsv['state_variables'][iFile] == next_tsv['state_variables'][iFile + 1]:  # last element
+            if next_tsv['id'][iFile] == next_tsv['id'][iFile - 1] and next_tsv['state_variables'][iFile] == next_tsv['state_variables'][iFile + 1]:
                 # find all exceptions by hand and type them in manually --- no clear rule existing
                 if next_tsv['id'][iFile] == '{kolodkin2010_figure2b}':
                     if 'id' in columns:
@@ -190,7 +190,7 @@ def averaging(next_tsv):
                 if 'reactions' in columns:
                     new_df.loc[iFile - repetition].reactions = next_tsv['reactions'][iFile]
 
-    # repeat for round(max(repetition_of_else)/2) --- find out by hand for efficiency, otherwise high number will do as well
+    # repeat for round(max(repetition_of_else)/2) --- find out manually, otherwise high number will work as well
     repetition = 1
     for iEffcy in range(0, 1000):
 
@@ -214,11 +214,10 @@ def averaging(next_tsv):
 
                         # jump over one file
                         for counter in range(0, 1):
-                            #iFile = next(iter_object)
                             repetition = repetition + 1
                 else:
                     'Do nothing for now'
-            else:                                                                                                           # last element of the list --- can't be dublicate any more
+            else:
                 'Do nothing for now'
 
     if 't_intern_ms' in columns or 't_extern_ms' in columns:
@@ -272,9 +271,3 @@ def averaging(next_tsv):
             new_df['id'][iMod] = '{kolodkin2010_figure2b}' + '_' + str(iMod)
 
     return(new_df)
-
-
-# example
-#file = pd.read_csv('../paper_SolverSettings/WholeStudy/1_1_1_06_08.tsv', sep='\t')
-#file = pd.read_csv('../bachelor_thesis/LinearSolver/1_08_06.tsv', sep='\t')
-#averaging(file)

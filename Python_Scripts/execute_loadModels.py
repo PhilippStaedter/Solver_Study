@@ -1,13 +1,10 @@
-# execute script loadModels.py + simulate model
+# execute script loadModels.py for model simulation
 
 from setTime_BioModels import *
 from loadModels import *
 from changeValues import *
-import amici.plotting
 import numpy as np
-import matplotlib.pyplot as plt
 import libsedml
-#from setTime_BenchmarkModels import *
 
 
 def all_settings(iModel, iFile, skip_indicator):
@@ -26,30 +23,30 @@ def all_settings(iModel, iFile, skip_indicator):
     except:
         'No extension'
 
-    # run function
-    model = load_specific_model(iModel, iFile, skip_indicator)                                                          ################ call function from 'loadModels.py'
+    # call function from 'loadModels.py'
+    model = load_specific_model(iModel, iFile, skip_indicator)
 
-    if os.path.exists(BioModels_path + '/' + iModel):                                     #(benchmark_path + '/' + iModel):
-        sim_start_time, sim_end_time, sim_num_time_points, y_bound = timePointsBioModels(iModel)   #time_array = timePointsBenchmarkModels(iModel, iFile) ################### call function from 'setTime_BioModels.py'
+    # call function from 'setTime_BioModels.py'
+    if os.path.exists(BioModels_path + '/' + iModel):
+        sim_start_time, sim_end_time, sim_num_time_points, y_bound = timePointsBioModels(iModel)
     else:
+        # call function from 'changeValues.py'
         # change parameter and species according to SEDML file
-        model = changeValues(model, iModel, iFile, skip_indicator)                                                      ################# call function from 'changeValues.py'
+        model = changeValues(model, iModel, iFile, skip_indicator)
 
         # tasks
         sedml_file = libsedml.readSedML(sedml_path)
 
         for iTask in range(0, sedml_file.getNumTasks()):
             all_tasks = sedml_file.getTask(iTask)
-            tsk_Id = all_tasks.getId()
-            task_name = all_tasks.getName()
-            task_modRef = all_tasks.getModelReference()
             task_simReference = all_tasks.getSimulationReference()
 
             # time courses
             try:
                 all_simulations = sedml_file.getSimulation(iTask)
                 sim_Id = all_simulations.getId()
-            except:                                                                                         # need 'except' clause if more models have same time period
+            except:
+                # need 'except' clause if more models have same time period
                 if all_simulations == None:
                     all_simulations = sedml_file.getSimulation(0)
                     sim_Id = all_simulations.getId()
@@ -69,11 +66,7 @@ def all_settings(iModel, iFile, skip_indicator):
             sim_end_time = all_simulations.getOutputEndTime()
             sim_num_time_points = all_simulations.getNumberOfPoints()
 
-            # load script 'changeValues'
-            # model = changeValues(iModel, iFile)
-
-    # set timepoints for which we want to simulate the model
-    model.setTimepoints(np.linspace(sim_start_time, sim_end_time, sim_num_time_points))                     #model.setTimepoints(time_array)
-
+    # set time points for which we want to simulate the model
+    model.setTimepoints(np.linspace(sim_start_time, sim_end_time, sim_num_time_points))
 
     return model

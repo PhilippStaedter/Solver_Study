@@ -9,7 +9,6 @@ from logging_util import LOGGER_NAME
 
 logger = logging.getLogger(LOGGER_NAME)
 
-
 BASE_URL = "https://jjj.bio.vu.nl"
 BASE_FOLDER = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models"
 

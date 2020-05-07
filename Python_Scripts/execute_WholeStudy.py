@@ -1,4 +1,4 @@
-# execute simulation script with all solver setiing combinations
+# execute simulation script with ALL solver setting combinations
 
 ######################################################################################
 # very important: linSol, nonLinSolIter, solAlg must be their corresponding integers #

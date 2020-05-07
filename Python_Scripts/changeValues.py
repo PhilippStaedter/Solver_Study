@@ -1,4 +1,5 @@
-# script for changing sbml vectors through sedml vectors
+# script for changing sbml information through sedml information
+
 import libsedml
 import libsbml
 import os
@@ -33,7 +34,7 @@ def changeValues(model, model_name, explicit_model, skip_indicator):
 
         # old parameter settings of SBML model that have to be replaced
         par_id = model.getParameterIds()
-        par_id = list(par_id)                                                                         # probelm: some IDs get changed to 'amici_'
+        par_id = list(par_id)
         for iCount in range(0, len(par_id)):
             try:
                 a, b = par_id[iCount].split('_', 1)
@@ -75,7 +76,7 @@ def changeValues(model, model_name, explicit_model, skip_indicator):
                     # counter
                     counter = 0
 
-                    try:                                                                    # SBML model sometimes doesn't have the SEDML ID
+                    try:
                         # swap species settings
                         while id != spcs_id[counter]:
                             counter = counter + 1
@@ -119,7 +120,7 @@ def changeValues(model, model_name, explicit_model, skip_indicator):
                         'Compartment-ID can be omitted'
 
         # transform par_num into an array
-        par_num = np.asarray(par_num)                                                   # is never being reached
+        par_num = np.asarray(par_num)
         p_num = []
         for iCount in range(0, len(par_num)):
             p_num.append(float(par_num[iCount]))

@@ -1,3 +1,4 @@
+# Main Manuscript Plot --- Figure 1
 # combined plot for study one
 
 import matplotlib.pyplot as plt
@@ -24,7 +25,7 @@ fontsize = 9
 labelsize = 9
 
 rotation = 90
-left = 0.07             #0.07
+left = 0.07
 bottom = 0.75
 width = 0.4
 height = 0.22
@@ -36,7 +37,7 @@ alpha = 1
 ax1 = plt.axes([0.57, bottom, width, height])
 ax2 = plt.axes([0.57, bottom - column_factor - height, width, height])
 ax3 = plt.axes([0.57, bottom - 2 * column_factor - 2 * height, width, height])
-ax4 = plt.axes([left, 0.09, 0.41, 0.88]) #0.12
+ax4 = plt.axes([left, 0.09, 0.41, 0.88])
 
 ############## plot scatter plot ################
 all_log_abs_tol = ['03', '06', '06', '16', '12']
@@ -57,7 +58,7 @@ for iTolerance in range(0, len(all_log_abs_tol)):
     for Multistep in ['BDF']:
         print(Multistep)
         tol_exps = []
-        for tol_exp in range(-20, 10):                # range(-20,10)
+        for tol_exp in range(-20, 10):
             tol = 10**tol_exp
             counter = 0
             total_counter = 0
@@ -130,7 +131,7 @@ tsv_file = pd.read_csv(path, sep='\t')
 tsv_file = averaging(tsv_file)
 
 # no BioModels yet + delete nans at the end
-tsv_file = tsv_file#[27:423]
+tsv_file = tsv_file
 tsv_file = tsv_file.reset_index()
 del tsv_file['index']
 
@@ -138,7 +139,7 @@ del tsv_file['index']
 # take number of states for those models that worked
 data_states_ok = []
 for iLine in range(0, len(tsv_file['id'])):
-    data_states_ok.append(np.log10(tsv_file['state_variables'][iLine])   )              # no 'ignore_index=True' permitted
+    data_states_ok.append(np.log10(tsv_file['state_variables'][iLine]))
 
 # take number of reactions for those models that worked
 data_reactions_ok = []
@@ -152,15 +153,9 @@ for iLine in range(0, len(tsv_file['id'])):
 
 
 # histogram of states
-#bins=np.logspace(0,4,200)
 bins = 80
-
-#plt.subplot(3,1,1)
-# add title
-#plt.title('Basic properties of all models', fontsize=20)
-plot1 = ax1.hist(x=data_states_ok, range=[-1,4], bins=bins, log=True) # range=[0,250],
-#ax1.set_xscale('log')
-ax1.set_xlim((-0.1, 4)) #2000 #250 #100                                                                       # Froehlich2018: 1396
+plot1 = ax1.hist(x=data_states_ok, range=[-1,4], bins=bins, log=True)
+ax1.set_xlim((-0.1, 4))
 ax1.set_ylim((0.5, 150))
 ax1.set_xticklabels(['', r'$10^{0}$', '', r'$10^{1}$', '', r'$10^{2}$', '', r'$10^{3}$', '', r'$10^{4}$'])
 ax1.set_xlabel('Number of state variables', fontsize=fontsize)
@@ -171,10 +166,8 @@ ax1.tick_params(labelsize=labelsize)
 ax1.text(-0.22, 1, 'B', fontsize=labelsize + 3, transform=ax1.transAxes)
 
 # histogram of reactions
-#plt.subplot(3,1,2)
-plot2 = ax2.hist(x=data_reactions_ok, range=[-1,4], bins=bins, log=True) # range=[0,600],
-#ax2.set_xscale('log')
-ax2.set_xlim((-0.1, 4)) #3000 #600 #100                                                                       # Froehlich2018: 2686
+plot2 = ax2.hist(x=data_reactions_ok, range=[-1,4], bins=bins, log=True)
+ax2.set_xlim((-0.1, 4))
 ax2.set_ylim((0.5, 150))
 ax2.set_xticklabels(['', r'$10^{0}$', '', r'$10^{1}$', '', r'$10^{2}$', '', r'$10^{3}$', '', r'$10^{4}$'])
 ax2.set_xlabel('Number of reactions', fontsize=fontsize)
@@ -182,10 +175,8 @@ ax2.set_ylabel('Number of models', fontsize=fontsize)
 ax2.tick_params(labelsize=labelsize)
 
 # histogram of parameters
-#plt.subplot(3,1,3)
-plot3 = ax3.hist(x=data_parameters_ok, range=[-1,4], bins=bins, log=True) # range=[0,350],
-#ax3.set_xscale('log')
-ax3.set_xlim((-0.1, 4)) #5000 #350 #1000                                                                       # Froehlich2018: 4704
+plot3 = ax3.hist(x=data_parameters_ok, range=[-1,4], bins=bins, log=True)
+ax3.set_xlim((-0.1, 4))
 ax3.set_ylim((0.5, 150))
 ax3.set_xticklabels(['', r'$10^{0}$', '', r'$10^{1}$', '', r'$10^{2}$', '', r'$10^{3}$', '', r'$10^{4}$'])
 ax3.set_xlabel('Number of parameters',  fontsize=fontsize)
@@ -200,23 +191,16 @@ ax2.spines['right'].set_visible(False)
 ax3.spines['top'].set_visible(False)
 ax3.spines['right'].set_visible(False)
 
+# change plotting size
+fig = plt.gcf()
+fig.set_size_inches(18.5, 10.5)
+
 # better layout
 plt.tight_layout()
 
 # change plotting size
 fig = plt.gcf()
 fig.set_size_inches(18.5, 10.5)
-
-
-# better layout
-plt.tight_layout()
-
-# change plotting size
-fig = plt.gcf()
-fig.set_size_inches(18.5, 10.5)
-
-# save figure
-#plt.savefig('../paper_SOlverSettings/Figures/Study_1/stat_reac_par_ylog.pdf')
 
 # show figure
 plt.show()

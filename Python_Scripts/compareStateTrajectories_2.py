@@ -3,19 +3,9 @@
 
 # Attention:    boundary conditions are not being simulated by JWS!
 
-from execute_loadModels import *
-import amici.plotting
 import numpy as np
-import matplotlib.pyplot as plt
-import libsbml
-import libsedml
-import time
-import statistics
 import pandas as pd
 import os
-import urllib.request
-import json
-import itertools
 import time
 
 
@@ -35,8 +25,8 @@ for solAlg in [1, 2]:
     for iTolerance in Tolerance_combination:
 
         # split atol and rtol for naming purposes
-        _, atol_exp = str(iTolerance[0]).split('-')
-        _, rtol_exp = str(iTolerance[1]).split('-')
+        _,atol_exp = str(iTolerance[0]).split('-')
+        _,rtol_exp = str(iTolerance[1]).split('-')
         if len(atol_exp) != 2:
             atol_exp = '0' + atol_exp
         if len(rtol_exp) != 2:
@@ -54,7 +44,7 @@ for solAlg in [1, 2]:
                     continue
 
                 # set errors
-                abs_error = float('1e' + str(AbsError_1[iAbsError]))                                 # tighter conditions give back 'False' most of the time
+                abs_error = float('1e' + str(AbsError_1[iAbsError]))
                 rel_error = float('1e' + str(RelError_2[iRelError]))
 
                 # int2str
@@ -71,7 +61,6 @@ for solAlg in [1, 2]:
                 counter = 0
 
                 # get all models
-                # list_directory_amici = sorted(os.listdir('../sbml2amici/amici_models_newest_version_0.10.19'))
                 list_directory_amici = sorted(os.listdir('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/'))
 
                 # measure time needed for all mdoels
@@ -80,7 +69,6 @@ for solAlg in [1, 2]:
                 # iterate over all models again
                 for iMod in range(0, len(list_directory_amici)):
                     iModel = list_directory_amici[iMod]
-                    #iModel = 'vanheerden2014_fig4-user'
                     list_files = sorted(os.listdir('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/sbml_models'))
 
                     for iFile in list_files:
@@ -98,13 +86,12 @@ for solAlg in [1, 2]:
 
 
                         if os.path.exists(BioModels_path + '/' + iModel):
-                            print('Model is still not part of JWS-database!')                                                                       # error 1
+                            print('Model is still not part of JWS-database!')
                         else:
 
                             if not os.path.exists(old_json_save_path):
-                                print('Model ' + iModel + '_' + iFile + ' crashed some other way!')                                                 # error 2
+                                print('Model ' + iModel + '_' + iFile + ' crashed some other way!')
                             else:
-
                                 # create folder
                                 if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files/' + f'json_files_all_results_{MultistepMethod}_{atol_exp}_{rtol_exp}' + '/json_files_' + abs_str + '_' + rel_str + '/' + iModel + '/' + iFile):
                                     os.makedirs('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files/' + f'json_files_all_results_{MultistepMethod}_{atol_exp}_{rtol_exp}' + '/json_files_' + abs_str + '_' + rel_str + '/' + iModel + '/' + iFile)
@@ -119,7 +106,6 @@ for solAlg in [1, 2]:
                                 column_names = list(tsv_file.columns)
                                 column_names.remove('time')
                                 del tsv_file['time']
-
 
                                 # comparison
                                 amount_col = len(column_names)
@@ -167,5 +153,5 @@ for solAlg in [1, 2]:
 
                 # print number of all models with correct state trajectories
                 print('Amount of models with correct state trajectories: ' + str(counter))
-
+                # print time needed for the comparison
                 print('time needed: ' + str(time.time() - start_time))

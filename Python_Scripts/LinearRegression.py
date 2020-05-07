@@ -2,7 +2,7 @@
 # attention: the data in the .tsv file must not be in log scale or negative values will crash the linear regression
 
 import numpy as np
-import math
+
 
 def linearRegression(tsv_file, x_catagory, y_catagory):
 
@@ -12,9 +12,8 @@ def linearRegression(tsv_file, x_catagory, y_catagory):
     # take those num_x and num_p where 'error_message' == nan
     x_data_point = []
     y_data_point = []
-    for iCount in range(0, len(tsv_file[x_catagory])):                                     # switch between 0 and 27
+    for iCount in range(0, len(tsv_file[x_catagory])):
         if tsv_file[x_catagory][iCount] != 0 and tsv_file[y_catagory][iCount] != 0:
-        # if type(tsv_file['error_message'][iCount]) != type(x_catagory):
             x_data_point.append(np.log10(tsv_file[x_catagory][iCount]))
             y_data_point.append(np.log10(tsv_file[y_catagory][iCount]))
 
@@ -31,12 +30,11 @@ def linearRegression(tsv_file, x_catagory, y_catagory):
     a = numerical_solution[0]
     b = numerical_solution[1]
 
-################## only for comparison ##################
+    ################## only for comparison ##################
     x_data_point_bio = []
     y_data_point_bio = []
-    for iCount in range(0, 27):  # switch between 0 and 27
+    for iCount in range(0, 27):
         if tsv_file[x_catagory][iCount] != 0 and tsv_file[y_catagory][iCount] != 0:
-            # if type(tsv_file['error_message'][iCount]) != type(x_catagory):
             x_data_point_bio.append(np.log10(tsv_file[x_catagory][iCount]))
             y_data_point_bio.append(np.log10(tsv_file[y_catagory][iCount]))
 
@@ -53,6 +51,4 @@ def linearRegression(tsv_file, x_catagory, y_catagory):
     d = numerical_solution[0]
     e = numerical_solution[1]
 
-    ######################################################
-
-    return a,b      #,d,e
+    return a,b

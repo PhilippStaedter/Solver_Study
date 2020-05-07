@@ -11,7 +11,7 @@
 
 from SimAllSettings import *
 from tqdm import trange
-import pandas as pd
+
 
 # settings
 atol = [1e-6, 1e-8, 1e-10, 1e-12, 1e-14, 1e-16]

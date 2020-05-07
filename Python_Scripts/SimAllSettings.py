@@ -1,9 +1,7 @@
-# run all models with defined settings
+# simulate all models with defined settings
 
 from execute_loadModels import *
 import amici.plotting
-import numpy as np
-import matplotlib.pyplot as plt
 import libsbml
 import time
 import statistics
@@ -51,31 +49,23 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
         base_path_sedml = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'
 
     # list of all directories + SBML files
-    list_directory_sedml = os.listdir(base_path_sbml2amici)   #(base_path_sedml)
+    list_directory_sedml = os.listdir(base_path_sbml2amici)
     list_directory_sedml = sorted(list_directory_sedml)
-    #list_directory_sedml = list_directory_sedml[27:]
-    #list_directory_sedml.remove('ReadMe.MD')
 
-    # list only specific models ---- should only simulate those models where sbml to amicic worked!
+    # list only specific models ---- should only simulate those models where sbml to AMICI worked!
     for iModel in list_directory_sedml:
-
-        #iModel = 'Becker_Science2010'
 
         if os.path.exists(base_path_sbml2amici + '/' + iModel):
             list_files = os.listdir(base_path_sbml2amici + '/' + iModel)
-            list_files = sorted(list_files)                                                      # sorted() could maybe change the order needed for later
+            list_files = sorted(list_files)
 
-            #list_directory_xml = [filename for filename in sorted(os.listdir(benchmark_path + '/' + iModel)) if filename.startswith('model_')]
-            for iFile in list_files:                                                     #list_directory_xml:
-
+            for iFile in list_files:
                 # Append additional row in .tsv file
                 tsv_table = tsv_table.append({}, ignore_index=True)
-                #error_file = error_file.append({}, ignore_index=True)
 
                 # save id in .tsv
                 tsv_table.loc[counter].id = '{' + iModel + '}' + '_' + '{' + iFile + '}'
                 tsv_table.loc[counter].setting = s_solAlg + '_' + s_atol + '_' + s_rtol
-                #error_file.loc[counter].id = '{' + iModel + '}' + '_' + '{' + iFile + '}'
 
                 try:
                     # read in SBML file for reactions since AMICI has no functions to count all reactions
@@ -87,12 +77,11 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
                     num_reactions = all_properties.getNumReactions()
                     tsv_table.loc[counter].reactions = num_reactions
 
-                    # read in model
-                    model = all_settings(iModel, iFile, skip_indicator)                   ##################### call function from 'execute_loadModels.py'
+                    # call function from 'execute_loadModels.py'
+                    model = all_settings(iModel, iFile, skip_indicator)
 
                     # save state_variables, reactions and parameters
                     num_states = len(model.getStateNames())
-                    num_reactions = len(model.getListOfReactions())
                     num_par = len(model.getParameters())
                     tsv_table.loc[counter].state_variables = num_states
                     tsv_table.loc[counter].parameters = num_par
@@ -122,57 +111,39 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
 
                             sim_data = amici.runAmiciSimulation(model, solver)
 
-                            end_time.append(time.time())                             # x1000 for milliseconds
+                            end_time.append(time.time())
                             ind_time.append(sim_data['cpu_time'])
 
                             external_time.append(1000*(end_time[iSim] - start_time))
                             if iSim == 0:
-                                built_in_time.append(ind_time[iSim])                                # internal data
+                                built_in_time.append(ind_time[iSim])
                             else:
                                 built_in_time.append(ind_time[iSim] - ind_time[iSim - 1])
 
                         # take status + median of time_vector
                         sim_status = sim_data['status']
-                        internal = statistics.median(built_in_time)                                   # median internal data
+                        internal = statistics.median(built_in_time)
                         external = statistics.median(external_time)
 
                         # save status + time data in .tsv
                         tsv_table.loc[counter].status = sim_status
-                        tsv_table.loc[counter].t_intern_ms = internal                                    # add internal to .tsv file
+                        tsv_table.loc[counter].t_intern_ms = internal
                         tsv_table.loc[counter].t_extern_ms = external
-                        #error_file.loc[counter].error = sim_status
-
-                        # np.set_printoptions(threshold=8, edgeitems=2)
-                        #for key, value in sim_data.items():
-                        #    print('%12s: ' % key, value)
-
-                        # plot sim_data
-                        # amici.plotting.plotStateTrajectories(sim_data)
-                        # amici.plotting.plotObservableTrajectories(sim_data)
-
-                        # save plot in therefore created folder
-                        # if not os.path.exists('../sbml2amici/Figures/' + iModel + '/' + iModel):
-                        #   os.makedirs('../sbml2amici/Figures/' + iModel + '/' + iModel)
-                        # plt.savefig('../sbml2amici/Figures/' + iModel + '/' + iModel + '/' + iFile + '.png')
-
-                        # show plot
-                        # plt.show()
 
                         # raise counter
                         counter = counter + 1
 
                     except Exception as e:
                         error_info_3 = str(e)
-                        # print('Model ' + iModel + '_' + iFile + ' could not be simulated with this setting!')
                         tsv_table.loc[counter].t_intern_ms = 'nan'
                         tsv_table.loc[counter].t_extern_ms = 'nan'
                         tsv_table.loc[counter].error_message = 'Error_3: ' + error_info_3
 
                         # raise counter
                         counter = counter + 1
+
                 except Exception as e:
                     error_info_2 = str(e)
-                    # print('Error_2: Loading Model ' + iModel + '_' + iFile + ' did not work!')
                     tsv_table.loc[counter].t_intern_ms = 'nan'
                     tsv_table.loc[counter].t_extern_ms = 'nan'
                     tsv_table.loc[counter].error_message = 'Error_2: ' + error_info_2
@@ -180,11 +151,5 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
                     # raise counter
                     counter = counter + 1
 
-        ''' (Should not happen, since all models have been simulated before!)
-        else:
-            'Error_1: Model ' + iModel + ' import to amici did not work!'
-        '''
     # save data frame as .tsv file
     tsv_table.to_csv(path_or_buf=tolerance_path + '/' + s_solAlg + '_' + s_iter + '_' + s_linSol + '_' + s_atol + '_' + s_rtol + '.tsv', sep='\t', index=False)
-
-    #return error_file

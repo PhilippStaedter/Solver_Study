@@ -5,7 +5,7 @@ import shutil
 import pandas as pd
 from setTime_BioModels import *
 
-# important paths --- for abs_error = rel_error = 1e-4, abs_tolerance = rel_tolerance = qe-12 and BDF
+# important paths --- for abs_error = rel_error = 1e-4, abs_tolerance = rel_tolerance = 1e-12 and BDF
 base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes'
 json_path = base_path + '/json_files/json_files_all_results_BDF_12_12/json_files_1e-04_1e-04'
 sedml_path = base_path + '/sedml_models'
@@ -29,39 +29,39 @@ for iModel in list_directory_sedml:
 
     for iFile in list_directory_sbml:
 
-         iFile_name = iFile             #, rest = iFile.split('.',1)
+        iFile_name = iFile
 
-         # check if file exists in correct_amici_models folder
-         if os.path.exists(new_path + '/' + iModel + '/' + iFile_name):
-             counter_model = counter_model + 1
+        # check if file exists in correct_amici_models folder
+        if os.path.exists(new_path + '/' + iModel + '/' + iFile_name):
+            counter_model = counter_model + 1
 
-             # check if file exists in json folder
-             if os.path.exists(json_path + '/' + iModel + '/' + iFile_name):
-                 csv_file = pd.read_csv(json_path + '/' + iModel + '/' + iFile_name + '/whole_error.csv', sep='\t')
+            # check if file exists in json folder
+            if os.path.exists(json_path + '/' + iModel + '/' + iFile_name):
+                csv_file = pd.read_csv(json_path + '/' + iModel + '/' + iFile_name + '/whole_error.csv', sep='\t')
 
-                 # check for True
-                 if csv_file['trajectories_match'][0] == True:
-                     counter_true = counter_true + 1
-                 else:
-                     print(iModel + '_' + iFile_name + ' is False!')
+                # check for True
+                if csv_file['trajectories_match'][0] == True:
+                    counter_true = counter_true + 1
+                else:
+                    print(iModel + '_' + iFile_name + ' is False!')
 
-                     # delete folder
-                     shutil.rmtree(new_path + '/' + iModel + '/' + iFile_name)
+                    # delete folder
+                    shutil.rmtree(new_path + '/' + iModel + '/' + iFile_name)
 
-             else:
-                 # check for BioModels
-                 try:
-                     sim_start_time, sim_end_time, sim_num_time_points = timePointsBioModels(iModel)
-                     counter_true = counter_true + 1
-                 except:
-                     print('BioModels model could not be imported!')
+            else:
+                # check for BioModels
+                try:
+                    sim_start_time, sim_end_time, sim_num_time_points = timePointsBioModels(iModel)
+                    counter_true = counter_true + 1
+                except:
+                    print('BioModels model could not be imported!')
 
-                     # delete folder
-                     shutil.rmtree(new_path + '/' + iModel + '/' + iFile_name)
+                    # delete folder
+                    shutil.rmtree(new_path + '/' + iModel + '/' + iFile_name)
 
-         else:
-             print(iModel + '_' + iFile_name + ' has already been deleted!')
-             counter_model = counter_model + 1
+        else:
+            print(iModel + '_' + iFile_name + ' has already been deleted!')
+            counter_model = counter_model + 1
 
 print(counter_true)
 print(counter_model)
@@ -72,9 +72,10 @@ print('Difference: ' + str(counter_difference))
 delete_counter = 0
 list_directory_sedml = sorted(os.listdir(new_path))
 for iModel in list_directory_sedml:
-
     if len(os.listdir(new_path + '/' + iModel)) == 0:
         os.rmdir(new_path + '/' + iModel)
         print('Deleted model ' + iModel)
         delete_counter = delete_counter + 1
+
+# print the number of deleted folders
 print('Delete Counter = ' + str(delete_counter))

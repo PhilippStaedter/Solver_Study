@@ -1,4 +1,4 @@
-# script 1 to compare state trajectories from JWS with trajectories of the simulation
+# script 1 to compare state trajectories from JWS with trajectories of the AMICI simulation
 # => creates two important .tsv files
 
 # Attention:    boundary conditions are not being simulated by JWS!
@@ -7,11 +7,8 @@ from execute_loadModels import *
 from JWS_changeValues import *
 import amici.plotting
 import numpy as np
-import matplotlib.pyplot as plt
 import libsbml
 import libsedml
-import time
-import statistics
 import pandas as pd
 import os
 import urllib.request
@@ -41,10 +38,6 @@ def compStaTraj(delete_counter):
             if len(rtol_exp) != 2:
                 rtol_exp = '0' + rtol_exp
 
-            # create folder for all .csv files of the trajectories
-            #if not os.path.exists('./json_files_BDf'):
-             #   os.makedirs('./json_files_BDF')
-
             # get name of jws reference
             url = "https://jjj.bio.vu.nl/rest/models/?format=json"
             view_source = requests.get(url)
@@ -62,10 +55,6 @@ def compStaTraj(delete_counter):
                 list_files = sorted(os.listdir('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/sbml_models'))
 
                 for iFile in list_files:
-
-                    #iModel = 'aguda1999_fig5c'
-                    #iFile = 'model0_aguda1.sbml'
-
                     # iFile without .sbml extension
                     iFile, extension = iFile.split('.', 1)
 
@@ -77,9 +66,8 @@ def compStaTraj(delete_counter):
 
 
                     if os.path.exists(BioModels_path + '/' + iModel):
-                        print('Model is not part of JWS-database!')                                                                                             # error 1
+                        print('Model is not part of JWS-database!')
                     else:
-
                         # Open SBML file
                         sbml_model = libsbml.readSBML(sbml_path)
 
@@ -106,13 +94,13 @@ def compStaTraj(delete_counter):
                         # check if 'all_settings' works
                         try:
                             # Get whole model
-                            model = all_settings(iModel,iFile)
+                            model = all_settings(iModel,iFile,1)
 
                             # create folder
                             if not os.path.exists(json_save_path):
                                 os.makedirs(json_save_path)
                         except:
-                            print('Model ' + iModel + ' extension is missing!')                                                                                 # error 2
+                            print('Model ' + iModel + ' extension is missing!')
                             continue
 
 
@@ -121,7 +109,7 @@ def compStaTraj(delete_counter):
                         t_data = model.getTimepoints()
                         sim_start_time = t_data[0]
                         sim_end_time = t_data[len(t_data) - 1]
-                        sim_num_time_points = 101                                                                           #len(t_data)
+                        sim_num_time_points = 101
                         model.setTimepoints(np.linspace(sim_start_time, sim_end_time, sim_num_time_points))
 
                         # Open sedml file
@@ -170,7 +158,7 @@ def compStaTraj(delete_counter):
                         # Simulate model
                         sim_data = amici.runAmiciSimulation(model, solver)
 
-                        # np.set_printoptions(threshold=8, edgeitems=2)
+                        # print some values
                         for key, value in sim_data.items():
                             print('%12s: ' % key, value)
 
@@ -191,7 +179,7 @@ def compStaTraj(delete_counter):
                                 state_trajectory = state_trajectory.transpose()
                                 delete_counter = delete_counter + 1
 
-                        # Convert ndarray 'state-trajectory' to data frame + save it
+                        # Convert ndarray 'state-trajectory' to data frame and save it
                         try:
                             df_state_trajectory = pd.DataFrame(columns=column_names, data=state_trajectory)
                         except:

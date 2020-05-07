@@ -1,12 +1,9 @@
-# script to plot Scatter Plot and Box Plot for linear solver study
+# Supplementary Plot --- Figure S3
+# script to plot Scatter Plot and Box Plot for the linear solver study
 
-import pandas as pd
-import os
-import numpy as np
 import matplotlib.pyplot as plt
 from averageTime import *
 from LinearRegression import *
-
 
 
 left = 0.07
@@ -44,7 +41,6 @@ def LinearSolver(solAlg, nonLinSol):
                           pd.DataFrame(columns=[]),
                           pd.DataFrame(columns=[]),
                           pd.DataFrame(columns=[])]
-
     column_names = []
 
     # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
@@ -95,12 +91,6 @@ def LinearSolver(solAlg, nonLinSol):
     ax1.set_ylabel('Simulation time [ms]', fontsize=fontsize)
     ax1.tick_params(labelsize=labelsize)
 
-    # create five custom color maps
-
-    # calculate point density
-
-    # sort points by density
-
     linSol_for_Legend = ['DENSE', 'GMRES', 'BICGSTAB', 'TFQMR', 'KLU']
     colors = ['#d73027', '#fc8d59', '#fee090', '#91bfdb', '#4575b4']
     for iLinearSolverDataPoints in range(0, int(len(correct_files)/7)):
@@ -113,8 +103,6 @@ def LinearSolver(solAlg, nonLinSol):
 
         # do a linear regression
         y_axis_interception, slope = linearRegression(vertically_stacked_tsv, 'state_variables', 'simulation_time')
-        #y_axis_interceptions.append(y_axis_interception)
-        #slopes.append(slope)
 
         # plot a scatter plot + linear regressions
         num_x = [np.log10(p) for p in vertically_stacked_tsv['state_variables']]
@@ -124,7 +112,6 @@ def LinearSolver(solAlg, nonLinSol):
         exp_simulation_time = [10 ** n for n in list(data_simulation_time)]
         ax1.scatter(exp_num_x, exp_simulation_time, s=marker_size, alpha=alpha, c=colors[iLinearSolverDataPoints])
         ax1.plot(exp_num_x, data_regression, c=colors[iLinearSolverDataPoints], label=linSol_for_Legend[iLinearSolverDataPoints] + ': slope = ' + str(np.round(slope[0], 4)))
-        #print('y_axis_interception: ' + str(y_axis_interception))
 
     # plot legend
     ax1.legend(loc=1, fontsize=labelsize - 2, frameon=False)
@@ -197,14 +184,10 @@ def LinearSolver(solAlg, nonLinSol):
     for flier in bp['fliers']:
         flier.set(marker='+', color='#e7298a', alpha=0.5, markersize=3)
 
-    # ax2.set_title('Comparison of percentiles and median', fontsize=titlesize, fontweight='bold')
-    #ax2.set_ylabel('Simulation time', fontsize=fontsize)
     ax2.tick_params(labelsize=labelsize)
     ax2.set_xticklabels([])
     ax2.set_xlim([0, 42])
     specific_xticks = ax2.xaxis.get_major_ticks()
-    #for iTick in [0, 7, 14, 21, 28, 35]:
-    #    specific_xticks[iTick].set_visible(False)
 
     # create major and minor ticklabels
     Abs_xTickLabels = ['', '', '', r'$10^{-6}$', '', '',
@@ -242,13 +225,8 @@ def LinearSolver(solAlg, nonLinSol):
     for iTick in [3, 9, 15, 21, 27, 33, 39]:
         specific_xticks_minor[iTick].set_visible(True)
 
-    # add grit
-    #ax2.yaxis.grid(True, linestyle='-', which='both', color='lightgrey', alpha=0.25)
-
     # plot text 'B'
     ax2.text(-0.13, 1, 'B', fontsize=labelsize + 5, transform=ax2.transAxes)
-
-
 
 
 ########## call both functions + some global properties
@@ -260,9 +238,6 @@ plt.tight_layout()
 # change plotting size
 fig = plt.gcf()
 fig.set_size_inches(18.5, 10.5)
-
-# save figure
-# plt.savefig('../paper_SolverSettings/Figures/Study_3/13012020/LinSol_' + solAlg + '_' + nonLinSol + '_Scatter.pdf')
 
 # show figure
 plt.show()

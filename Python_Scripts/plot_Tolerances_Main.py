@@ -1,13 +1,9 @@
-# script to create box plot with percentiles and median - with failure rates
+# Main Manuscript Plot --- Figure 4
+# script to create box plot with percentiles and median with failure rates
 
-import pandas as pd
-import os
 import matplotlib.pyplot as plt
 import numpy as np
 from averageTime import *
-from matplotlib import ticker
-from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
-
 
 
 def Tolerances(Multistep_Method, prefix):
@@ -19,29 +15,27 @@ def Tolerances(Multistep_Method, prefix):
         tolerance_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/TolerancesStudy/' + Multistep_Method
 
     # main .tsv file to norm all other files
-    main_tsv = pd.read_csv(tolerance_path + '/' + prefix + '06_06.tsv', sep='\t')                                                       #
+    main_tsv = pd.read_csv(tolerance_path + '/' + prefix + '06_06.tsv', sep='\t')
 
     # get new .tsv file
     main_tsv = averaging(main_tsv)
 
     # set two axes objects
     figure = plt.figure()
-    ax1 = figure.add_axes([0.11, 0.55, 0.86, 0.4])                 # ax = plt.axes()
+    ax1 = figure.add_axes([0.11, 0.55, 0.86, 0.4])
     ax2 = figure.add_axes([0.11, 0.15, 0.86, 0.35])
 
     # get list for all data
-    xTickLabel = []
     total_data = []
 
     # open all .tsv tolerance files
     tolerance_files_old = sorted(os.listdir(tolerance_path))
-    #del tolerance_files[0]
     tolerance_files = []
     for iTolFile in range(0, len(tolerance_files_old)):
         if len(tolerance_files_old[iTolFile].split(prefix)) > 2:
             tolerance_files.append(tolerance_files_old[iTolFile].split('_')[1] + '_' + tolerance_files_old[iTolFile].split('_')[2])
         else:
-            tolerance_files.append(tolerance_files_old[iTolFile].split(prefix)[1])                                                #
+            tolerance_files.append(tolerance_files_old[iTolFile].split(prefix)[1])
 
     ######## 1.PART: create Box Plot
     all_averaged_files = []
@@ -58,7 +52,7 @@ def Tolerances(Multistep_Method, prefix):
 
         else:
             # open next .tsv file
-            next_tsv = pd.read_csv(tolerance_path + '/' + prefix + tolerance_files[iTolerance], sep='\t')                          #
+            next_tsv = pd.read_csv(tolerance_path + '/' + prefix + tolerance_files[iTolerance], sep='\t')
 
             # get new .tsv file
             next_tsv = averaging(next_tsv)
@@ -71,7 +65,6 @@ def Tolerances(Multistep_Method, prefix):
 
                 # norm all internal + external time by 06_06
                 if main_intern == 0:
-                    #quotient = 0
                     quotient = next_intern
                 else:
                     quotient = next_intern/main_intern
@@ -85,29 +78,19 @@ def Tolerances(Multistep_Method, prefix):
             # add list to total_data
             total_data.append(normed_list)
 
-
     # create box_plot
-    linestyle = (0,(2,5,2,5))
-    linewidth = 0.1
-
     fontsize = 12
     labelsize = 8
-    titlesize = 30 + 4
-
     rotation = 45
     ax1.set_yscale('log')
     print(np.shape(total_data))
-    bp = ax1.boxplot(total_data, sym='+', widths=0.5, patch_artist=True, positions=range(1,42))#, manage_ticks=True)
+    bp = ax1.boxplot(total_data, sym='+', widths=0.5, patch_artist=True, positions=range(1,42))
 
     ####### set more options
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
-    #ax2.spines['top'].set_linestyle(linestyle)
-    #ax2.spines['top'].set_linewidth(linewidth)
-    #ax2.spines['right'].set_linestyle(linestyle)
-    #ax2.spines['right'].set_linewidth(linewidth)
-
     ax1.set_ylim([0.1,100])
+
     # change colour for each set
     color1 = '#66c2a5'
     color2 = '#fc8d62'
@@ -128,7 +111,7 @@ def Tolerances(Multistep_Method, prefix):
               'white',
               color6, color6, color6, color6, color6, color6]
 
-    #for bplot in bp:
+    # for bplot in bp:
     for patch, color in zip(bp['boxes'], colors):
         patch.set_facecolor(color)
     for whisker in bp['whiskers']:
@@ -140,8 +123,7 @@ def Tolerances(Multistep_Method, prefix):
     for flier in bp['fliers']:
         flier.set(marker='+', color='#e7298a', alpha=0.5)
 
-
-    #ax1.set_title('Comparison of percentiles and median', fontsize=titlesize, fontweight='bold')
+    # more settings
     ax1.set_ylabel('Relative simulation time', fontsize=fontsize)
     ax1.tick_params(labelsize=labelsize)
     ax1.set_xticklabels([])
@@ -157,10 +139,9 @@ def Tolerances(Multistep_Method, prefix):
     ax1.text(-0.12, 1, 'A', fontsize=fontsize + 3, transform=ax1.transAxes)
 
 
-    ######### 2.PART: add bar plot with failure rate
+    ######## 2.PART: add bar plot with failure rate
     fontsize = 12
     labelsize = 8
-    titlesize = 30
 
     all_percentages = []
     counter = 0
@@ -172,7 +153,6 @@ def Tolerances(Multistep_Method, prefix):
 
         # get new .tsv file
         next_tsv = all_averaged_files[iTolerance - counter]
-        #next_tsv = averaging(next_tsv)
 
         # store non-zero and zero values
         non_zero_value_counter = 0
@@ -195,11 +175,6 @@ def Tolerances(Multistep_Method, prefix):
     # make top and right boxlines invisible
     ax2.spines['top'].set_visible(False)
     ax2.spines['right'].set_visible(False)
-    #ax2.spines['top'].set_linestyle(linestyle)
-    #ax2.spines['top'].set_linewidth(linewidth)
-    #ax2.spines['right'].set_linestyle(linestyle)
-    #ax2.spines['right'].set_linewidth(linewidth)
-
     ax2.set_yscale('log')
     ax2.set_xlim([-1,41])
     ax2.set_ylim([0.1,100])
@@ -210,7 +185,6 @@ def Tolerances(Multistep_Method, prefix):
     ax2.yaxis.grid(True, linestyle='-', which='both', color='lightgrey', alpha=0.25)
 
     # create major and minor ticklabels
-    #ax2.minorticks_on()
     Abs_xTickLabels = [r'$10^{-6}$', '', '', '', '', '', '',
                        r'$10^{-8}$', '', '', '', '', '', '',
                        r'$10^{-10}$', '', '', '', '', '', '',
@@ -235,9 +209,6 @@ def Tolerances(Multistep_Method, prefix):
     ax2.tick_params(axis='x', which='minor', pad=26)
     ax2.text(-0.1, -0.20, 'Abs. tol.: ', fontsize=fontsize, transform=ax2.transAxes)
     ax2.text(-0.1, -0.40, 'Rel. tol.: ', fontsize=fontsize, transform=ax2.transAxes)
-    #ax2.text(-0.05, -0.1, 'Lin. sol.: ', fontsize=fontsize, transform=ax2.transAxes)
-    #ax2.text(-0.05, -0.18, 'Abs. tol.: ', fontsize=fontsize, transform=ax2.transAxes)
-    #ax2.text(-0.05, -0.27, 'Rel. tol.: ', fontsize=fontsize, transform=ax2.transAxes)
     specific_xticks_major = ax2.xaxis.get_major_ticks()
     for iTick in [6,13,20,27,34,41]:
         specific_xticks_major[iTick].set_visible(False)
@@ -248,16 +219,12 @@ def Tolerances(Multistep_Method, prefix):
     # plot text 'B'
     ax2.text(-0.12, 1, 'B', fontsize=fontsize + 3, transform=ax2.transAxes)
 
-
-    ## better layout
+    # better layout
     plt.tight_layout()
 
     # change plotting size
     fig = plt.gcf()
     fig.set_size_inches(18.5, 10.5)
-
-    # save figure
-    #plt.savefig('../paper_SolverSettings/Figures/Study_2/Tolerances_BoxPlot_BarPlot_' + Multistep_Method + '.pdf')
 
     # show figure
     plt.show()

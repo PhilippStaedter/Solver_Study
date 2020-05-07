@@ -1,3 +1,5 @@
+# log information about failed downloads
+
 import logging
 
 

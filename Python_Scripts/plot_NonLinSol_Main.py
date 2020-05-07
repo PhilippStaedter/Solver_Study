@@ -1,7 +1,6 @@
-# scrip to plot a scatter and histogram plot to investigate the difference between the non-linear solvers - study 4
+# Main Manuscript Plot --- Figure 2
+# scrip to plot a Scatter and Histogram plot to investigate the difference between the non-linear solvers
 
-import pandas as pd
-import os
 import matplotlib.pyplot as plt
 import numpy as np
 from averageTime import *
@@ -9,7 +8,6 @@ import math
 
 
 def Multistep():
-
     # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
     if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
         base_path = '../Data/WholeStudy'
@@ -72,7 +70,7 @@ def Multistep():
 
     # open all .tsv linear solver files + save right column in data frame
     for iNonLinSol in range(0, len(correct_files)):
-        for iCorrectFile in range(0, len(correct_files_1)):  # each .tsv file
+        for iCorrectFile in range(0, len(correct_files_1)):
             next_tsv = pd.read_csv(base_path + '/' + correct_files[iNonLinSol][iCorrectFile], sep='\t')
 
             # change .tsv-id form e.g. 1_06_10.tsv to 06_10
@@ -104,18 +102,7 @@ def Multistep():
     # plot a customized bar plot
     labelsize = 8
     fontsize = 12
-    titlesize = 22
-
     rotation = 45
-    left = 0.07
-    bottom = 0.6
-    width = 0.86
-    height = 0.3
-    row_factor = 0.45
-    column_factor = 0.1
-    rotation_factor = 70
-    alpha = 1
-    bar_width = 0.35
     linewidth = 1
 
     # plot one density plot
@@ -127,7 +114,6 @@ def Multistep():
     bdf_data_1 = []
     adams_data_2 = []
     bdf_data_2 = []
-
 
     # Functional
     blank_space_counter = 0
@@ -155,37 +141,16 @@ def Multistep():
     nonLinSol12 = ax.plot(index, adams_data_2, '-x', c='#b2abd2', label='Newton-type AM')
     nonLinSol22 = ax.plot(index, bdf_data_2, '-x', c='#5e3c99', label='Newton-type BDF')
 
-    #ax.set_title('Non-Linear solver: Functional', fontsize=titlesize)
     ax.set_ylabel('Failure rate [%]', fontsize=fontsize)
-    #ax.set_title('Non-Linear solver: Newton-type', fontsize=titlesize)
     ax.set_xlim([-0.5, 38.5])
     ax.set_ylim([0, 0.3])
-    #ax.set_ylim([0.001, 1])
-    #ax.set_yscale('log')
     ax.set_yticklabels(['0', '5', '10', '15', '20', '25', '30'], fontsize=labelsize)
-    #ax.set_yticklabels(['', '0.1', '1', '10', '100'], fontsize=labelsize)
 
     # plot black separation line
     for iLine in [7,15,23,31]:
-        #ax.plot([iLine,iLine], [0.001, 1], '--k', linewidth=linewidth)
         ax.plot([iLine,iLine], [0, 0.3], '--k', linewidth=linewidth)
 
     # create major and minor ticklabels
-    '''
-    upper_labels = ['D', '', '', '', '', '', '', 'G', '', '', '', '', '', '', 'B', '', '', '', '', '', '',
-                    'T', '', '', '', '', '', '', 'K', '', '', '', '', '', '']
-    Abs_Rel_Tol = [r'$10^{-6}$' '\n' r'$10^{-8}$', r'$10^{-8}$' '\n' r'$10^{-6}$', r'$10^{-8}$' '\n' r'$10^{-16}$', r'$10^{-10}$' '\n' r'$10^{-12}$',
-                   r'$10^{-12}$' '\n'  r'$10^{-10}$', r'$10^{-14}$' '\n' r'$10^{-14}$', r'$10^{-16}$' '\n' r'$10^{-8}$',
-                   r'$10^{-6}$' '\n' r'$10^{-8}$', r'$10^{-8}$' '\n' r'$10^{-6}$', r'$10^{-8}$' '\n' r'$10^{-16}$', r'$10^{-10}$' '\n' r'$10^{-12}$',
-                   r'$10^{-12}$' '\n'  r'$10^{-10}$', r'$10^{-14}$' '\n' r'$10^{-14}$', r'$10^{-16}$' '\n' r'$10^{-8}$',
-                   r'$10^{-6}$' '\n' r'$10^{-8}$', r'$10^{-8}$' '\n' r'$10^{-6}$', r'$10^{-8}$' '\n' r'$10^{-16}$', r'$10^{-10}$' '\n' r'$10^{-12}$',
-                   r'$10^{-12}$' '\n'  r'$10^{-10}$', r'$10^{-14}$' '\n' r'$10^{-14}$', r'$10^{-16}$' '\n' r'$10^{-8}$',
-                   r'$10^{-6}$' '\n' r'$10^{-8}$', r'$10^{-8}$' '\n' r'$10^{-6}$', r'$10^{-8}$' '\n' r'$10^{-16}$', r'$10^{-10}$' '\n' r'$10^{-12}$',
-                   r'$10^{-12}$' '\n'  r'$10^{-10}$', r'$10^{-14}$' '\n' r'$10^{-14}$', r'$10^{-16}$' '\n' r'$10^{-8}$',
-                   r'$10^{-6}$' '\n' r'$10^{-8}$', r'$10^{-8}$' '\n' r'$10^{-6}$', r'$10^{-8}$' '\n' r'$10^{-16}$', r'$10^{-10}$' '\n' r'$10^{-12}$',
-                   r'$10^{-12}$' '\n'  r'$10^{-10}$', r'$10^{-14}$' '\n' r'$10^{-14}$', r'$10^{-16}$' '\n' r'$10^{-8}$']
-    '''
-
     ax.text(0, -0.1, '--------------DENSE--------------- ---------------GMRES--------------- -------------BICGSTAB'
                      '------------- ---------------TFQMR--------------- ----------------KLU-----------------', fontsize=labelsize, transform=ax.transAxes)
     upper_labels = [r'$10^{-6}$', r'$10^{-8}$', r'$10^{-8}$', r'$10^{-10}$', r'$10^{-12}$', r'$10^{-14}$', r'$10^{-16}$', '',
@@ -198,7 +163,6 @@ def Multistep():
                     r'$10^{-8}$', r'$10^{-6}$', r'$10^{-16}$', r'$10^{-12}$', r'$10^{-10}$', r'$10^{-14}$', r'$10^{-8}$', '',
                     r'$10^{-8}$', r'$10^{-6}$', r'$10^{-16}$', r'$10^{-12}$', r'$10^{-10}$', r'$10^{-14}$', r'$10^{-8}$', '',
                     r'$10^{-8}$', r'$10^{-6}$', r'$10^{-16}$', r'$10^{-12}$', r'$10^{-10}$', r'$10^{-14}$', r'$10^{-8}$']
-
 
     ax.set_xticks(list(range(39)))
     minor_list_1 = [x + 0.001 for x in list(range(39))]
@@ -219,21 +183,12 @@ def Multistep():
     for iTick in [7, 15, 23, 31]:
         specific_xticks_minor[iTick].set_visible(False)
 
-    # create new empty invisible axis for legend
-    #ax3 = figure.add_axes([0.15, 0.4, 0.02, 0.02])
-    #ax3.plot(range(2), c='orange', label='AM')
-    #ax3.plot(range(2), c='blue', label='BDF')
+    # plot legend
     ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.4), fancybox=True, shadow=True, ncol=5, frameon=False, fontsize=fontsize)
-    #ax.legend(loc=4, fontsize=labelsize)
-    #ax.text(0.15, -0.48, 'D: DENSE,  G: GMRES,  B: BCG,  T: TFQMR,  K: KLU', fontsize=fontsize, transform=ax.transAxes)
 
     # make top and right boxlines invisible
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-
-    # set global labels
-    #ax1.set_title('Adams-Moulton vs BDF - Failure Rate', fontsize=titlesize, fontweight='bold', pad=30)
-    #plt.text(0.3, 2.75, 'Adams-Moulton vs BDF - Failure Rate', fontsize=titlesize, fontweight='bold', transform=ax2.transAxes)
 
     # better layout
     plt.tight_layout()
@@ -242,13 +197,10 @@ def Multistep():
     fig = plt.gcf()
     fig.set_size_inches(18.5, 10.5)
 
-    # save figure
-    #plt.savefig('../paper_SolverSettings/Figures/Study_5/Success_Rate_SolAlg.pdf')
-
     # show figure
     plt.show()
 
-    # adjustment values to replicate the exact plot seen in the main manuscript
+    ##### adjustment values for a plot editor to replicate the exact plot seen in the main manuscript
     #top = 0.96,
     #bottom = 0.328,
     #left = 0.11,

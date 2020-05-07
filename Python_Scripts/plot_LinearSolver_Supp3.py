@@ -1,3 +1,4 @@
+# Supplementary Plot --- Figure S5
 # plot range of linear regressions for linear solver study
 
 import numpy as np
@@ -30,7 +31,6 @@ def Scatter(solAlg, nonLinSol, variation):
                           pd.DataFrame(columns=[]),
                           pd.DataFrame(columns=[]),
                           pd.DataFrame(columns=[])]
-
     column_names = []
 
     # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
@@ -46,10 +46,10 @@ def Scatter(solAlg, nonLinSol, variation):
         if all_files[iFile].split('_')[0] == solAlg and all_files[iFile].split('_')[1] == nonLinSol:
             correct_files.append(all_files[iFile])
 
-    # open all .tsv linear solver files + save right column in data frame
+    # open all .tsv linear solver files and save right column in data frame
     y_axis_interceptions = []
     slopes = []
-    for iCorrectFile in range(0, len(correct_files)):  # each .tsv file
+    for iCorrectFile in range(0, len(correct_files)):
         next_tsv = pd.read_csv(base_path + '/' + correct_files[iCorrectFile], sep='\t')
 
         # change .tsv-id form e.g. 1_06_10.tsv to 06_10
@@ -68,7 +68,7 @@ def Scatter(solAlg, nonLinSol, variation):
         slopes.append(slope)
 
         # get the correct values
-        for iFile in range(0, len(next_tsv['id'])):  # each file
+        for iFile in range(0, len(next_tsv['id'])):
             if next_tsv['t_intern_ms'][iFile] != 0:
                 next_time_value.append(np.log10(next_tsv['t_intern_ms'][iFile]))
                 num_x.append(np.log10(next_tsv['state_variables'][iFile]))
@@ -77,7 +77,6 @@ def Scatter(solAlg, nonLinSol, variation):
         column_names.append(str(new_name))
         all_intern_columns[iCorrectFile]['state_variables'] = pd.Series(num_x)
         all_intern_columns[iCorrectFile][str(new_name)] = pd.Series(next_time_value)
-
 
     # find range for every linear solver
     column_names_Dense = column_names[0:7]
@@ -191,30 +190,10 @@ def Scatter(solAlg, nonLinSol, variation):
         y_axis_interception_KLU = list(sorted(y_axis_interception_KLU))
         slope_KLU = list(sorted(slope_KLU))
 
-        #ax.set_title('Sorted by slope and y-axis-interception independently --- data of y-axis-interception')
-
-    # length of the last file
-    file_length = len(next_tsv['id'])
-
     # get correct data for all five linear solvers and their linear regressions
     # plot a customized plot
     fontsize = 18
     labelsize = 12
-    titlesize = 22
-
-    rotation = 90
-    left = 0.07
-    bottom = 0.75
-    width = 0.4
-    height = 0.18
-    row_factor = 0.5
-    column_factor = 0.22
-    rotation_factor = 90
-    alpha = 0.7
-
-    linestyle = (0, (2, 5, 2, 5))
-    linewidth = 0.1
-
     colors = ['#d73027', '#fc8d59', '#fee090', '#91bfdb', '#4575b4']
 
     # num_x
@@ -253,32 +232,24 @@ def Scatter(solAlg, nonLinSol, variation):
     exp_fifth_x_lowerbound = [10 ** m for m in list(all_intern_columns[column_names.index(column_names_KLU[0]) + 28]['state_variables'])]
     exp_fifth_x_upperbound = [10 ** m for m in list(all_intern_columns[column_names.index(column_names_KLU[6]) + 28]['state_variables'])]
 
-    # change .tsv-id form e.g. 1_06_10.tsv to 06_10
-    #linSol4legend_1 = 'DENSE'
-    #linSol4legend_2 = 'GMRES '
-    #linSol4legend_3 = 'BICGSTAB'
-    #linSol4legend_4 = 'TFQMR'
-    #linSol5legend_5 = 'KLU'
-
     # scatter plot
     ax.set_xlim([0.8, 1500])
-    ax.set_ylim([0.1, 100000])  # 50000
+    ax.set_ylim([0.1, 100000])
     ax.set_xscale('log')
     ax.set_yscale('log')
-    ax.plot(exp_first_x_lowerbound, first_data_lowerbound, c=colors[0])#, label=str(linSol4legend_1))
+    ax.plot(exp_first_x_lowerbound, first_data_lowerbound, c=colors[0])
     ax.plot(exp_first_x_upperbound, first_data_upperbound, c=colors[0])
-    ax.plot(exp_second_x_lowerbound, second_data_lowerbound, c=colors[1])#, label=str(linSol4legend_2))
+    ax.plot(exp_second_x_lowerbound, second_data_lowerbound, c=colors[1])
     ax.plot(exp_second_x_upperbound, second_data_upperbound, c=colors[1])
-    ax.plot(exp_third_x_lowerbound, third_data_lowerbound, c=colors[2])#, label=str(linSol4legend_3))
+    ax.plot(exp_third_x_lowerbound, third_data_lowerbound, c=colors[2])
     ax.plot(exp_third_x_upperbound, third_data_upperbound, c=colors[2])
-    ax.plot(exp_fourth_x_lowerbound, fourth_data_lowerbound, c=colors[3])#, label=str(linSol4legend_4))
+    ax.plot(exp_fourth_x_lowerbound, fourth_data_lowerbound, c=colors[3])
     ax.plot(exp_fourth_x_upperbound, fourth_data_upperbound, c=colors[3])
-    ax.plot(exp_fifth_x_lowerbound, fifth_data_lowerbound, c=colors[4])#, label=str(linSol5legend_5))
+    ax.plot(exp_fifth_x_lowerbound, fifth_data_lowerbound, c=colors[4])
     ax.plot(exp_fifth_x_upperbound, fifth_data_upperbound, c=colors[4])
     plt.tick_params(labelsize=labelsize)
     ax.set_xlabel('Number of state variables', fontsize=fontsize)
     ax.set_ylabel('Simulation time [ms]', fontsize=fontsize)
-    # '#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854'
 
     # fill area under curves
     ax.fill([np.nanmin(exp_first_x_lowerbound), np.nanmax(exp_first_x_lowerbound), np.nanmax(exp_first_x_upperbound), np.nanmin(exp_first_x_upperbound)],
@@ -296,12 +267,6 @@ def Scatter(solAlg, nonLinSol, variation):
     ax.fill([np.nanmin(exp_fifth_x_lowerbound), np.nanmax(exp_fifth_x_lowerbound), np.nanmax(exp_fifth_x_upperbound), np.nanmin(exp_fifth_x_upperbound)],
             [np.nanmin(fifth_data_lowerbound), np.nanmax(fifth_data_lowerbound), np.nanmax(fifth_data_upperbound), np.nanmin(fifth_data_upperbound)],
             c=colors[4], alpha=0.5, label='KLU')
-    #ax.fill(np.append(exp_first_x_lowerbound, exp_first_x_upperbound[::-1]), np.append(first_data_lowerbound, first_data_upperbound[::-1]), c='#66c2a5', alpha=0.5)
-    #ax.fill(np.append(exp_second_x_lowerbound, exp_second_x_upperbound[::-1]), np.append(second_data_lowerbound, second_data_upperbound[::-1]), c='#fc8d62', alpha=0.5)
-    #ax.fill(np.append(exp_third_x_lowerbound, exp_third_x_upperbound[::-1]), np.append(third_data_lowerbound, third_data_upperbound[::-1]), c='#8da0cb', alpha=0.5)
-    #ax.fill(np.append(exp_fourth_x_lowerbound, exp_fourth_x_upperbound[::-1]), np.append(fourth_data_lowerbound, fourth_data_upperbound[::-1]), c='#e78ac3', alpha=0.5)
-    #ax.fill(np.append(exp_fifth_x_lowerbound, exp_fifth_x_upperbound[::-1]), np.append(fifth_data_lowerbound, fifth_data_upperbound[::-1]), c='#a6d854', alpha=0.5)
-
 
     # make top and right boxlines invisible
     ax.spines['top'].set_visible(False)
@@ -317,12 +282,9 @@ def Scatter(solAlg, nonLinSol, variation):
     fig = plt.gcf()
     fig.set_size_inches(18.5, 10.5)
 
-    # save figure
-    # plt.savefig('../paper_SolverSettings/Figures/Study_3/13012020/LinSol_' + solAlg + '_' + nonLinSol + '_Scatter.pdf')
-
     # show figure
     plt.show()
 
 
-# call function
+### call function
 Scatter('2', '2', 4)

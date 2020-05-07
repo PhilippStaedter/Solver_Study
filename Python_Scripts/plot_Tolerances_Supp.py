@@ -1,7 +1,6 @@
-# script to plot a histogram for stuy 2 ---- for intern and extern
+# Supplementary Plot --- Figure S6
+# script to plot a histogram for all tolerance settings with success rates
 
-import pandas as pd
-import os
 import matplotlib.pyplot as plt
 import numpy as np
 from averageTime import *
@@ -41,7 +40,6 @@ for iTolerance in range(0, len(tolerance_files)):
             quotient = next_intern/main_intern
 
         # leave out value if zero but only count for the success rate if next_intern = 0
-        #if quotient == 0:
         if next_intern == 0:
             zero_values_counter += 1
             'No 0 values allowed!'
@@ -67,7 +65,6 @@ for iTolerance in range(0, len(tolerance_files)):
     fontsize = 17
     labelsize = 11
     titlesize = 30
-
     left = 0.065
     bottom = 0.8
     width = 0.135
@@ -76,7 +73,6 @@ for iTolerance in range(0, len(tolerance_files)):
     column_factor = 0.142
     rotation_factor = 90
     ylim = [0.7, 200]
-    #xlim = [0.1, 100]
     xlim = [-1, 2]
     bins = 40
 
@@ -137,14 +133,11 @@ for iTolerance in range(0, len(tolerance_files)):
         if iTolerance in range(31,36):
             ax1.tick_params(labelleft=False)
 
-    #ax1.set_xscale('log')
     ax1.set_yscale('log')
     ax1.set_xticklabels([r'$10^{-1}$', r'$10^{0}$', r'$10^{1}$', r'$10^{2}$'])
     ax1.tick_params(labelsize=labelsize)
     if iTolerance == 0:
         plot_histogram = ax1.hist(x=normed_list, range=None, bins=bins, log=False)
-        #normed_list_perturb = [2*x for x in normed_list]
-        #plot_histogram = ax1.hist(x=normed_list_perturb, range=None, bins=200, log=False)
     else:
         plot_histogram = ax1.hist(x=normed_list, range=None, bins=bins, log=False)
     plt.text(x=1, y=90, s=str(round((len(normed_list) + main_intern_is_0_counter) / (len(normed_list) + zero_values_counter + main_intern_is_0_counter) * 100, 2)) + ' %', fontsize=fontsize)
@@ -152,7 +145,6 @@ for iTolerance in range(0, len(tolerance_files)):
     # make top and right boxlines invisible
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
-    #plt.legend('Hi')#'success rate: ' + str(zero_values_counter / (len(normed_list) + zero_values_counter)) + ' %')
 
 
 # set global labels
@@ -160,7 +152,6 @@ plt.text(-5.7, 6.8, 'Rel.tol.:', fontsize=fontsize, transform=ax1.transAxes)
 plt.text(-6.18, 6.7, 'Abs.tol.:', fontsize=fontsize, transform=ax1.transAxes)
 plt.text(-3.2, -0.55, 'Relative simulation time', fontsize=fontsize + 10, transform=ax1.transAxes)
 plt.text(-6.18, 2.1, 'Number of models', fontsize=fontsize + 10, transform=ax1.transAxes, rotation=90)
-#plt.text(-5.75, 7.2, 'Simulation time distribution of models for different tolerance combinations - BDF', fontsize=titlesize - 5, fontweight='bold', transform=ax1.transAxes)  # -60 , 350
 
 # better layout
 plt.tight_layout()
@@ -168,9 +159,6 @@ plt.tight_layout()
 # change plotting size
 fig = plt.gcf()
 fig.set_size_inches(18.5, 10.5)
-
-# save figure
-#plt.savefig('../paper_SolverSettings/Figures/Study_2/13012020/Tolerances_Histogram_BDF.pdf')
 
 # show figure
 plt.show()

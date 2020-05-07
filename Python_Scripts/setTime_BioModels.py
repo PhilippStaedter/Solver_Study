@@ -1,4 +1,5 @@
-# set time data for special models from BioModels-Database
+# set time data for all successfully imported models from BioModels-Database
+
 import numpy as np
 
 def timePointsBioModels(iModel):
@@ -74,7 +75,6 @@ def timePointsBioModels(iModel):
         sim_end_time = 5500
         sim_num_time_points = 1000
         y_bound = np.inf
-        # can not be simulated !!!
 
     elif iModel == 'ODea2007':
         sim_start_time = 0
@@ -165,6 +165,5 @@ def timePointsBioModels(iModel):
         sim_end_time = 300000
         sim_num_time_points = 50
         y_bound = 3500
-
 
     return sim_start_time, sim_end_time, sim_num_time_points, y_bound
