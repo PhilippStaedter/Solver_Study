@@ -51,7 +51,7 @@ for iModel in list_directory_sedml:
             else:
                 # check for BioModels
                 try:
-                    sim_start_time, sim_end_time, sim_num_time_points = timePointsBioModels(iModel)
+                    sim_start_time, sim_end_time, sim_num_time_points, ybound = timePointsBioModels(iModel)
                     counter_true = counter_true + 1
                 except:
                     print('BioModels model could not be imported!')
