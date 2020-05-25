@@ -30,11 +30,15 @@ By reproducing this study, all results are stored in a therefore created folder 
 	sbml2amici.py
 	sbml2amici_BioModelsDatabase.py
 
-### 1.4 Compare the state trajectories of the local simulation to the in-built simulation routine of JWS
-	compareStateTrajectories_1.py
-	compareStateTrajectories_2.py
+### 1.4 Compare the state trajectories of the local simulation of all JWS models to the in-built simulation routine of JWS
+	compareStateTrajectories_JWS_1.py
+	compareStateTrajectories_JWS_2.py
 
-### 1.5 Derive the whole model collection
+### 1.5 Compare the state trajectories of the local simulation of all selected BioModels models to the in-built simulation routine of COPASI
+	compareStateTrajectories_BioModels_1.py
+	compareStateTrajectories_BioModels_2.py
+
+### 1.6 Derive the whole model collection
 	correctStateTrajectories.py
 
 To skip step 1, the whole benchmark collection is available in 'Solver_Study/Models'.
