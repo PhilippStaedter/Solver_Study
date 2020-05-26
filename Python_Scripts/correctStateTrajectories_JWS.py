@@ -1,4 +1,4 @@
-# check for correctness of state trajectories
+# check for correctness of JWS state trajectories and do a pre-selection of biomodels based on their ability to be simulated
 
 import os
 import shutil

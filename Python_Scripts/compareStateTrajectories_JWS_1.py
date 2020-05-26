@@ -28,8 +28,8 @@ def compStaTraj(delete_counter):
         elif solAlg == 2:
             MultistepMethod = 'BDF'
             Tolerance_combination = [[1e-3,1e-3], [1e-6,1e-3], [1e-6,1e-6], [1e-12,1e-12], [1e-16,1e-8], [1e-14,1e-14], [1e-16,1e-16]]
-        for iTolerance in Tolerance_combination:
 
+        for iTolerance in Tolerance_combination:
             # split atol and rtol for naming purposes
             _,atol_exp = str(iTolerance[0]).split('-')
             _,rtol_exp = str(iTolerance[1]).split('-')

@@ -1,4 +1,5 @@
-# script 1 to compare state trajectories from BioModels with trajectories of the simulation created by COPASI
+# script 2 to compare state trajectories from BioModels with trajectories of the simulation created by COPASI
+# all data from COPASI is stored in the 'Data' folder of the repository
 # => creates two important .tsv files
 
 # Attention:    boundary conditions are not being simulated by COPASI!
@@ -7,7 +8,7 @@
 
 from execute_loadModels import *
 from JWS_changeValues import *
-from colourDataFrame import *
+#from colourDataFrame import *
 import amici.plotting
 import numpy as np
 import matplotlib.pyplot as plt
@@ -23,78 +24,79 @@ import itertools
 import time
 
 
-def compStaTraj_BioModels_2(atol,rtol):
+def compStaTraj_BioModels_2(MultistepMethod, atol, rtol):
     # upper and lower boundaries for the absolute and relative errors
     AbsError_1 = range(-20, 10)
     RelError_2 = range(-20, 10)
 
+    # important paths
+    base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes'
+    trajectory_path = base_path + '/biomodels_files/StateTrajectories_BioModels_COPASI_Data'
+    comparison_files_path = base_path + '/biomodels_files/' + MultistepMethod + '_' + atol + '_' + rtol
+    all_biomodels_path = base_path + '/BioModelsDatabase_models'
+
     # create folder for all results
-    base_path = './COPASI_all_results_BDF_' + atol + '_' + rtol             # BDF
-    if not os.path.exists(base_path):
-        os.makedirs(base_path)
+    if not os.path.exists(comparison_files_path):
+        os.makedirs(comparison_files_path)
 
     # iterate over all error combinations
     for iAbsError in range(0, len(AbsError_1)):
         for iRelError in range(0, len(RelError_2)):
 
+            # stop if somehow the error thresholds do not match
             if iAbsError != iRelError:
-                continue
+                print('The error threshold values somehow do not match!')
+                sys.exit(0)
 
-            # set errors
-            abs_error = float('1e' + str(AbsError_1[iAbsError]))  # tighter conditions give back 'False' most of the time
+            # set threshold errors
+            abs_error = float('1e' + str(AbsError_1[iAbsError]))
             rel_error = float('1e' + str(RelError_2[iRelError]))
 
             # int2str
             abs_str = '{:.0e}'.format(float(abs_error))
             rel_str = '{:.0e}'.format(float(rel_error))
 
+            # to see where the script is at the moment
             print(f"TOLERANCES: abs={abs_str} rel={rel_str}")
 
             # create folder for all .csv files of the results
-            if not os.path.exists(base_path + '/COPASI_' + abs_str + '_' + rel_str):
-                os.makedirs(base_path + '/COPASI_' + abs_str + '_' + rel_str)
+            if not os.path.exists(comparison_files_path + '/COPASI_' + abs_str + '_' + rel_str):
+                os.makedirs(comparison_files_path + '/COPASI_' + abs_str + '_' + rel_str)
 
             # set counter
             counter = 0
 
-            # get all models
-            # list_directory_amici = sorted(os.listdir('../sbml2amici/amici_models_newest_version_0.10.19'))
-            list_directory_bio = sorted(os.listdir('./StateTrajectories_BioModels_COPASI_Data'))
-            if 'README.md' in list_directory_bio:
-                list_directory_bio.remove('README.md')
-
-            # measure time needed for all models
-            start_time = time.time()
+            # get all biomodels from the latter created folder in 'biomodels_files'
+            list_directory_bio = sorted(os.listdir(trajectory_path))
 
             # iterate over all models again
             for iMod in range(0, len(list_directory_bio)):
                 iModel = list_directory_bio[iMod]
-                # iModel = 'Bungay2003'
-                list_files = sorted(os.listdir('./sedml_models/' + iModel + '/sbml_models'))
+                list_files = sorted(os.listdir(all_biomodels_path + '/' + iModel + '/sbml_models'))
 
                 for iFile in list_files:
                     print(f"    {iModel} :: {iFile}")
 
-                    # iFile without .sbml extension
+                    # iFile without .xml extension
                     iFile, extension = iFile.split('.', 1)
 
-                    # important paths
-                    old_bio_save_path = './StateTrajectories_BioModels_COPASI_Data/' + iModel
-                    new_bio_save_path = base_path + '/COPASI_' + abs_str + '_' + rel_str + '/' + iModel         # BDF
+                    # more important paths
+                    old_bio_save_path = trajectory_path + '/' + iModel
+                    new_bio_save_path = comparison_files_path + '/COPASI_' + abs_str + '_' + rel_str + '/' + iModel
 
                     if not os.path.exists(old_bio_save_path):
-                        print('Model ' + iModel + '_' + iFile + ' crashed some other way!')  # error 1
+                        print('Model ' + iModel + '_' + iFile + ' crashed some other way!')
                     else:
 
-                        # create folder
-                        if not os.path.exists(base_path + '/COPASI_' + abs_str + '_' + rel_str + '/' + iModel):
-                            os.makedirs(base_path + '/COPASI_' + abs_str + '_' + rel_str + '/' + iModel)
+                        # create folder for all .csv files with the final trajectory comparison results
+                        if not os.path.exists(new_bio_save_path):
+                            os.makedirs(new_bio_save_path)
 
                         # open COPASI_simulation .tsv file
-                        tsv_file = pd.read_csv(f"{old_bio_save_path}/COPASI_{iModel}_{atol}_{rtol}.tsv", sep='\t')
+                        tsv_file = pd.read_csv(f"{old_bio_save_path}/COPASI_{iModel}_{MultistepMethod}_{atol}_{rtol}.tsv", sep='\t')
 
-                        # open model_simulation .tsv file
-                        df_state_trajectory = pd.read_csv(f"{old_bio_save_path}/AMICI_{iModel}_{atol}_{rtol}.tsv", sep='\t')
+                        # open AMICI model_simulation .tsv file
+                        df_state_trajectory = pd.read_csv(f"{old_bio_save_path}/AMICI_{iModel}_{MultistepMethod}_{atol}_{rtol}.tsv", sep='\t')
 
                         # columns names of COPASI file
                         column_names = list(tsv_file.columns)
@@ -146,8 +148,22 @@ def compStaTraj_BioModels_2(atol,rtol):
 
             # print number of all models with correct state trajectories
             print('Amount of models with correct state trajectories: ' + str(counter))
-            print('time needed: ' + str(time.time() - start_time))
 
 
-# call function
-compStaTraj_BioModels_2('03','03')
+###### set all necessary settings from the later script
+for solAlg in [1, 2]:
+    linSol = 9
+    if solAlg == 1:
+        MultistepMethod = 'Adams'
+        Tolerance_combination = [[1e-3,1e-3], [1e-6,1e-6], [1e-16,1e-8], [1e-12,1e-12], [1e-14,1e-14]]
+    elif solAlg == 2:
+        MultistepMethod = 'BDF'
+        Tolerance_combination = [[1e-3,1e-3], [1e-6,1e-6], [1e-16,1e-8], [1e-12,1e-12], [1e-14,1e-14]]
+
+    for iTolerance in Tolerance_combination:
+        # split atol and rtol for naming purposes
+        atol = str(iTolerance[0])
+        rtol = str(iTolerance[1])
+
+        # call function
+        compStaTraj_BioModels_2(MultistepMethod, atol, rtol)
