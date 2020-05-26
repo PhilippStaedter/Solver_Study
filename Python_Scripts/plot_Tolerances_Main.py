@@ -115,13 +115,13 @@ def Tolerances(Multistep_Method, prefix):
     for patch, color in zip(bp['boxes'], colors):
         patch.set_facecolor(color)
     for whisker in bp['whiskers']:
-        whisker.set(color='#7570b3', linewidth=2)
+        whisker.set(color='#7570b3', linewidth=1)
     for cap in bp['caps']:
-        cap.set(color='#7570b3', linewidth=2)
+        cap.set(color='#7570b3', linewidth=1)
     for median in bp['medians']:
         median.set(color='black', linewidth=2)
     for flier in bp['fliers']:
-        flier.set(marker='+', color='#e7298a', alpha=0.5)
+        flier.set(marker='+', color='#e7298a', alpha=0.5, markersize=3)
 
     # more settings
     ax1.set_ylabel('Relative simulation time', fontsize=fontsize)

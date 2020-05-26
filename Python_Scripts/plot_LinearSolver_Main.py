@@ -113,6 +113,10 @@ def LinearSolver(solAlg, nonLinSol):
         ax1.scatter(exp_num_x, exp_simulation_time, s=marker_size, alpha=alpha, c=colors[iLinearSolverDataPoints])
         ax1.plot(exp_num_x, data_regression, c=colors[iLinearSolverDataPoints], label=linSol_for_Legend[iLinearSolverDataPoints] + ': slope = ' + str(np.round(slope[0], 4)))
 
+    # plot a black dashed bisection line
+    ax1.plot(list(range(1, int(sorted(exp_num_x, reverse=True)[0]))), list(range(1, int(sorted(exp_num_x, reverse=True)[0]))),
+             'k--', label='Bisection line: slope = 1')
+
     # plot legend
     ax1.legend(loc=1, fontsize=labelsize - 2, frameon=False)
 
