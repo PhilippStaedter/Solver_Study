@@ -17,8 +17,9 @@ python configurations must be switched on.
 ### 0.3 doing step 1 only partially
 
 in step 1, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' with its subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will be created. 
+If some steps in 1 are skipped, other scripts from step 1 will fail!
 If some but not all steps in 1 are executed, the following scripts in step 2 might not work as intended. 
-To some extend, all scripts cover many possibilities, but maybe not all.
+To some extend, all scripts from step 2 onwards cover many possibilities, but maybe not all.
 Hence, to guarantee a successful reproduction of the study, please either execute step 1 with all substeps,
 or not at all.
 
@@ -48,14 +49,18 @@ the downloaded repository.
 	compareStateTrajectories_JWS_1.py
 	compareStateTrajectories_JWS_2.py
 
-### 1.5 Compare the state trajectories of the local simulation of all selected BioModels models to the in-built simulation routine of COPASI
+### 1.5 Derive the whole model collection for JWS and make a pre-selection of the biomodels based on their ability to be simulated 
+
+	correctStateTrajectories_JWS.py
+
+### 1.6 Compare the state trajectories of the local simulation of all selected BioModels models who can be simulated to the in-built simulation routine of COPASI
 
 	compareStateTrajectories_BioModels_1.py
 	compareStateTrajectories_BioModels_2.py
 
-### 1.6 Derive the whole model collection
+### 1.7 Finalize the model collection by excluding all biomodels which have wrong state trajectories
 
-	correctStateTrajectories.py
+	correctStateTrajectories_BioModels.py
 
 To skip step 1, the whole benchmark collection is available in 'Solver_Study/Models'.
 If step 1 was skipped, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' or the subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will not exist. 
