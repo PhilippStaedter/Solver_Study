@@ -10,7 +10,6 @@ id	t_intern_ms	t_extern_ms	state_variables	parameters	status	error_message
 {Leber2015}_{Leber2015}	0.0	30.08508682250977	23	51	-1.0	
 {Levchenko2000a}_{Levchenko2000a}	453.2725	456.9101333618164	86	300	0.0	
 {Liu2011}_{Liu2011}	0.0	50.88961124420166	42	89	-1.0	
-{Nakakuki2010}_{Nakakuki2010}	0.0	2.48408317565918	49	141	-4.0	
 {ODea2007}_{ODea2007}	49.51350000000025	49.84736442565918	24	70	0.0	
 {Ouzounoglou2014}_{Ouzounoglou2014}	1091.1699999999923	1091.6330814361572	90	20	0.0	
 {Pathak2013}_{Pathak2013}	4.958999999999988	5.524396896362305	57	172	0.0	
@@ -37,7 +36,7 @@ id	t_intern_ms	t_extern_ms	state_variables	parameters	status	error_message
 {bachar2004_fig1-user}_{model0_bachar1}	1.8669999999994824	2.93576717376709	4	8	0.0	
 {bachmann2011}_{bachmann}	0.0	30.13169765472412	26	32	-1.0	
 {bachmann2011_figs9-user}_{model0_bachmann2}	0.0	30.33733367919922	26	32	-1.0	
-{balagadde2008_fig2-user}_{model2_balagadde1}	3.756499999999452	5.049705505371094	7	10	0.0	
+{balagadde2008_fig2-user}_{model2_balagadde1}	3.7564999999994515	5.049705505371094	7	10	0.0	
 {band2012_figs19-user}_{model2_band2}	1.4704999999999857	2.483487129211426	1	4	0.0	
 {becker2010_fig2b-user}_{model0_becker1}	1.874500000000144	2.95710563659668	6	8	0.0	
 {becker2010_figs4-user}_{model0_becker2}	1.5680000000001098	2.629637718200684	6	7	0.0	
@@ -56,14 +55,14 @@ id	t_intern_ms	t_extern_ms	state_variables	parameters	status	error_message
 {chance1943_fig12-user}_{model3_chance3}	1.5284999999999975	2.542734146118164	4	2	0.0	
 {chassagnole2002_fig4-user}_{model0_chassagnole2}	2176.4610000000266	2182.931542396545	18	135	0.0	
 {chassagnole2002_fig5-user}_{model0_chassagnole2}	2180.517500000078	2186.1804723739624	18	135	0.0	
-{delcontezerail2008_fig4-user}_{delcontezerail1_Fig4D}	2.1195000000002358	3.401637077331543	4	18	0.0	
+{delcontezerail2008_fig4-user}_{delcontezerail1_Fig4D}	2.119500000000236	3.401637077331543	4	18	0.0	
 {dupont1992_fig4-user}_{dupont2_Fig4B}	3.277999999998613	4.647016525268555	4	18	0.0	
 {essunger1994_fig2-2}_{model0_essunger1}	0.0	511.75379753112793	7	14	-1.0	
 {essunger1994_fig4}_{model0_essunger2}	0.0	3189.7703409194946	7	16	-1.0	
 {essunger1994_fig5}_{model0_essunger3}	0.0	24.724721908569336	7	17	-1.0	
 {essunger1994_fig6-user}_{model2_essunger3}	0.0	3486.059069633484	7	17	-1.0	
 {essunger1994_fig8}_{model0_essunger6}	0.0	51.932454109191895	7	17	-1.0	
-{ferreira2003_fig2f-user}_{ferreira1_Fig2F}	2.355499999998944	4.492402076721191	6	29	0.0	
+{ferreira2003_fig2f-user}_{ferreira1_Fig2F}	2.3554999999989437	4.492402076721191	6	29	0.0	
 {fisher2006_fig3a}_{fisher1}	6.458500000000753	7.859468460083008	14	22	0.0	
 {fraser2002_fig1a_1b_2a_2b}_{model0_fraser1}	0.0	62.23928928375244	6	8	-1.0	
 {fraser2002_fig1a_1b_2a_2b}_{model1_fraser2}	0.0	49.22103881835938	6	8	-1.0	
@@ -71,7 +70,7 @@ id	t_intern_ms	t_extern_ms	state_variables	parameters	status	error_message
 {fung2005_fig3a}_{fung1_Fig3A_Vgly_0_5}	166.58200000000556	167.93239116668698	8	21	0.0	
 {gardner1998_fig4b-user}_{gardner1_Fig4B}	1.8555000000000668	2.9592514038085938	5	21	0.0	
 {goldbeter1991_fig3-user}_{model0_goldbeter2}	2.605499999999795	3.7031173706054688	3	14	0.0	
-{goldbeter2006_fig3a-user}_{model0_goldbeter6}	2.69850000000034	3.795742988586426	3	11	0.0	
+{goldbeter2006_fig3a-user}_{model0_goldbeter6}	2.69850000000034	3.7957429885864262	3	11	0.0	
 {gorlich2003_fig4-user}_{model0_gorlich1}	20.734000000000623	22.008657455444336	13	16	0.0	
 {hald2012_fig5-user}_{model0_hald}	0.0	39.36624526977539	31	89	-1.0	
 {hald2012_fig5-user}_{model1_hald}	0.0	39.96872901916504	31	89	-1.0	
@@ -110,7 +109,7 @@ id	t_intern_ms	t_extern_ms	state_variables	parameters	status	error_message
 {kowald2006_fig2-user}_{model0_kowald1}	0.0	14.10818099975586	9	16	-1.0	
 {laub1998_fig3top-user}_{model0_laub1}	4.518999999997121	5.859017372131348	7	14	0.0	
 {lebeda2008_fig1-user-2}_{model0_lebeda2}	1.4969999999999235	2.5310516357421875	4	3	0.0	
-{lee2010_fig3-user}_{model0_lee4}	402.0680000000066	403.5220146179199	14	22	0.0	
+{lee2010_fig3-user}_{model0_lee4}	402.06800000000663	403.52201461791987	14	22	0.0	
 {lee2010_figs6-user}_{model0_lee2}	299.38900000000206	300.7738590240478	9	12	0.0	
 {lee2010_figs9-user}_{model0_lee3}	1.5450000000000736	2.581119537353516	4	4	0.0	
 {leloup1999_fig2a}_{leloup1_Fig2A}	4.551500000000711	6.087779998779298	10	46	0.0	
@@ -128,9 +127,9 @@ id	t_intern_ms	t_extern_ms	state_variables	parameters	status	error_message
 {liu2011_fig5a-user}_{model1_liu2}	0.0	47.34039306640625	42	89	-1.0	
 {liu2011_fig5a-user}_{model2_liu2}	0.0	46.93078994750977	42	89	-1.0	
 {lou2009_fig2-user}_{lou1}	1.788999999999806	3.0771493911743164	6	12	0.0	
-{ma2002_fig2-user}_{model0_ma}	3.0754999999999413	4.161477088928224	7	14	0.0	
+{ma2002_fig2-user}_{model0_ma}	3.0754999999999413	4.1614770889282235	7	14	0.0	
 {marhl2000_fig2-user}_{model0_marhl}	6.318999999996848	7.677793502807617	5	11	0.0	
-{martins2003_fig6-user}_{model0_martins1}	3.779000000000188	4.937648773193359	14	16	0.0	
+{martins2003_fig6-user}_{model0_martins1}	3.7790000000001878	4.9376487731933585	14	16	0.0	
 {marwan2003_fig5b-user}_{model0_BIOMD0000000037}	4.301999999999815	5.663871765136719	12	12	0.0	
 {mcauley2012_fig1b-user}_{model0_mcauley1}	0.0	42.348980903625495	34	44	-1.0	
 {mcauley2012_fig1b-user}_{model1_mcauley1}	0.0	43.45059394836426	34	44	-1.0	
@@ -146,7 +145,7 @@ id	t_intern_ms	t_extern_ms	state_variables	parameters	status	error_message
 {miao2008_fig1}_{model0_miao2008}	1.832500000000211	2.8941631317138667	4	9	0.0	
 {montanez2008_fig3a-user}_{model0_montanez1}	1.7490000000001271	2.8346776962280287	3	18	0.0	
 {moriya2011_fig7c-user}_{model0_moriya1}	474.1004999999918	476.6411781311035	49	108	0.0	
-{morris2002_fig1b-user}_{model0_Morris2002_CellCycle_CDK2Cyclin}	1.199000000000229	2.2372007369995117	4	5	0.0	
+{morris2002_fig1b-user}_{model0_Morris2002_CellCycle_CDK2Cyclin}	1.199000000000229	2.237200736999512	4	5	0.0	
 {naresh2011_fig11to13-user}_{model3_naresh2}	1.7715000000001009	2.8439760208129883	5	10	0.0	
 {naresh2011_fig6to7-user}_{model0_naresh2}	1.7460000000000786	2.821803092956543	5	10	0.0	
 {naresh2011_fig6to7-user}_{model1_naresh2}	1.7720000000000231	2.8508901596069336	5	10	0.0	
