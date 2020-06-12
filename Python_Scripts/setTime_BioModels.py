@@ -70,12 +70,6 @@ def timePointsBioModels(iModel):
         sim_num_time_points = 1000
         y_bound = 5000
 
-    elif iModel == 'Nakakuki2010':
-        sim_start_time = 0
-        sim_end_time = 5500
-        sim_num_time_points = 1000
-        y_bound = np.inf
-
     elif iModel == 'ODea2007':
         sim_start_time = 0
         sim_end_time = 4000

@@ -64,12 +64,15 @@ for iTolerance in range(0, len(all_log_abs_tol)):
             total_counter = 0
             tol_str = f"{float(tol):.0e}"
             if skip_indicator in [0, 0.67]:
-                base_dir = f"../Data/JWS_AMICI_state_trajectory_comparison/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+                base_dir_JWS = f"../Data/JWS_AMICI_state_trajectory_comparison/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+                base_dir_COPASI = f"../Data/BioModels_AMICI_state_trajectory_comparison/COPASI_all_results_{Multistep}_{abs_tol}_{rel_tol}/COPASI_{tol_str}_{tol_str}"
             elif skip_indicator in [0.33, 1]:
-                base_dir = f"../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
-            sedml_models = os.listdir(base_dir)
-            for sedml_model in sedml_models:
-                sedml_dir = base_dir + "/" + sedml_model
+                base_dir_JWS = f"../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+                base_dir_COPASI = f"../Data/JWS_AMICI_state_trajectory_comparison/COPASI_all_results_{Multistep}_{abs_tol}_{rel_tol}/COPASI_{tol_str}_{tol_str}"
+            sedml_models_JWS = sorted(os.listdir(base_dir_JWS))
+            sedml_models_COPASI = sorted(os.listdir(base_dir_COPASI))
+            for sedml_model in sedml_models_JWS:
+                sedml_dir = base_dir_JWS + "/" + sedml_model
                 sbml_models = os.listdir(sedml_dir)
                 for sbml_model in sbml_models:
                     sbml_dir = sedml_dir + "/" + sbml_model
@@ -79,6 +82,13 @@ for iTolerance in range(0, len(all_log_abs_tol)):
                         counter += 1
                         bdf_models.append(sedml_model + '_' + sbml_model)
                     total_counter += 1
+            for sbml_model in sedml_models_COPASI:
+                filename = base_dir_COPASI + '/' + sbml_model + "/" + "whole_error.csv"
+                df = pd.read_csv(filename, sep='\t')
+                if df['trajectories_match'][0] == True:
+                    counter += 1
+                    bdf_models.append(sbml_model)
+                total_counter += 1
             print(tol_exp, counter, total_counter)
             tol_exps.append(tol_exp)
             counters_BDF.append(counter)
