@@ -114,7 +114,7 @@ grid_orange_edge = np.vstack([np.log(adams_zero_x), np.log(adams_zero_y)])
 kde_orange_edge = gaussian_kde(grid_orange_edge)(grid_orange_edge)
 # blue edge
 grid_blue_edge = np.vstack([np.log(bdf_zero_x), np.log(bdf_zero_y)])
-kde_blue_edge = gaussian_kde(grid_blue_edge)(grid_blue_edge)
+
 
 # Sort the points by density, so that the densest points are plotted last
 # orange
@@ -126,9 +126,6 @@ bdf_adams_x, bdf_adams_y, kde_blue = np.array(bdf_adams_x)[ids_blue], np.array(b
 # orange
 ids_orange_edge = kde_orange_edge.argsort()
 adams_zero_x, adams_zero_y, kde_orange_edge = np.array(adams_zero_x)[ids_orange_edge], np.array(adams_zero_y)[ids_orange_edge], np.array(kde_orange_edge)[ids_orange_edge]
-# blue
-ids_blue_edge = kde_blue_edge.argsort()
-bdf_zero_x, bdf_zero_y, kde_blue_edge = np.array(bdf_zero_x)[ids_blue_edge], np.array(bdf_zero_y)[ids_blue_edge], np.array(kde_blue_edge)[ids_blue_edge]
 
 
 # plot scatter plot
@@ -139,7 +136,7 @@ plt1 = ax.scatter(adams_bdf_x, adams_bdf_y, s=marker_size, c=kde_orange, cmap=cm
 plt2 = ax.scatter(bdf_adams_x, bdf_adams_y, s=marker_size, c=kde_blue, cmap=cm_2, label='BDF faster: ' + str(round(len(bdf_adams_x)/len(adams_tsv_file['t_intern_ms'])*10/7, 2)) + ' %', zorder=10, clip_on=False, alpha=alpha)
 plt3 = ax.scatter(equal_x, equal_y, s=marker_size, c='grey', zorder=10, clip_on=False, alpha=alpha)
 plt4 = ax.scatter(adams_zero_x, adams_zero_y, c=kde_orange_edge, cmap=cm_2, marker='D', s=marker_size, facecolors='none', edgecolors='blue', zorder=10, clip_on=False)
-plt5 = ax.scatter(bdf_zero_x, bdf_zero_y, c=kde_blue_edge, cmap=cm_1, s=marker_size, facecolors='none', edgecolors='orange', marker='D', zorder=10, clip_on=False)
+plt5 = ax.scatter(bdf_zero_x, bdf_zero_y, c='blue', cmap=cm_1, s=marker_size, facecolors='none', edgecolors='orange', marker='D', zorder=10, clip_on=False)
 plt6 = ax.scatter(equal_zero_x, equal_zero_y, s=marker_size, facecolors='none', edgecolors='grey', marker='D', zorder=10, clip_on=False)
 ax.plot(z, c='black', zorder=20)
 ax.set_xlim([0.2, 45000])
