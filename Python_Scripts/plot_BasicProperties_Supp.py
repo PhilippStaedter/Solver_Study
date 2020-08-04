@@ -103,15 +103,78 @@ fontsize = 13
 ax.set_ylim([-20,400])
 ax.set_xticklabels(np.array(['', r'$10^{-20}$', r'$10^{-15}$', r'$10^{-10}$', r'$10^{-5}$', r'$10^{0}$', r'$10^{5}$', r'$10^{10}$']))
 
+# dashed black line
+ax.axvline(-4, -20, 400, c='black', linestyle='--')
+
 # make top and right boxlines invisible
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
+# create custom legend
+ax1 = plt.axes([0.15, 0.5, 0.3, 0.4])
+
+# first column
+ax1.text(0.06, 0.8, 'AM', fontsize=10)
+ax1.axhline(0.72, 0.11, 0.12, c='#fdae61', marker=0)
+ax1.axhline(0.72, 0.12, 0.12, c='#fdae61', marker='*')
+ax1.axhline(0.72, 0.12, 0.13, c='#fdae61', marker=1)
+ax1.axhline(0.62, 0.11, 0.12, c='#f46d43', marker=0)
+ax1.axhline(0.62, 0.12, 0.12, c='#f46d43', marker='*')
+ax1.axhline(0.62, 0.12, 0.13, c='#f46d43', marker=1)
+ax1.axhline(0.52, 0.11, 0.12, c='#d73027', marker=0)
+ax1.axhline(0.52, 0.12, 0.12, c='#d73027', marker='*')
+ax1.axhline(0.52, 0.12, 0.13, c='#d73027', marker=1)
+ax1.axhline(0.42, 0.11, 0.12, c='#a50026', marker=0)
+ax1.axhline(0.42, 0.12, 0.12, c='#a50026', marker='*')
+ax1.axhline(0.42, 0.12, 0.13, c='#a50026', marker=1)
+ax1.axhline(0.32, 0.11, 0.12, c='#800000', marker=0)
+ax1.axhline(0.32, 0.12, 0.12, c='#800000', marker='*')
+ax1.axhline(0.32, 0.12, 0.13, c='#800000', marker=1)
+# second column
+ax1.text(0.26, 0.8, 'BDF', fontsize=10)
+ax1.axhline(0.72, 0.31, 0.32, c='#abd9e9', marker=0)
+ax1.axhline(0.72, 0.32, 0.32, c='#abd9e9', marker='*')
+ax1.axhline(0.72, 0.32, 0.33, c='#abd9e9', marker=1)
+ax1.axhline(0.62, 0.31, 0.32, c='#74add1', marker=0)
+ax1.axhline(0.62, 0.32, 0.32, c='#74add1', marker='*')
+ax1.axhline(0.62, 0.32, 0.33, c='#74add1', marker=1)
+ax1.axhline(0.52, 0.31, 0.32, c='#4575b4', marker=0)
+ax1.axhline(0.52, 0.32, 0.32, c='#4575b4', marker='*')
+ax1.axhline(0.52, 0.32, 0.33, c='#4575b4', marker=1)
+ax1.axhline(0.42, 0.31, 0.32, c='#313695', marker=0)
+ax1.axhline(0.42, 0.32, 0.32, c='#313695', marker='*')
+ax1.axhline(0.42, 0.32, 0.33, c='#313695', marker=1)
+ax1.axhline(0.32, 0.31, 0.32, c='#2E2D66', marker=0)
+ax1.axhline(0.32, 0.32, 0.32, c='#2E2D66', marker='*')
+ax1.axhline(0.32, 0.32, 0.33, c='#2E2D66', marker=1)
+# third column
+ax1.text(0.46, 0.8, 'abs.tol.', fontsize=10)
+ax1.text(0.5, 0.7, r'$10^{-3}$', fontsize=10)
+ax1.text(0.5, 0.6, r'$10^{-6}$', fontsize=10)
+ax1.text(0.5, 0.5, r'$10^{-6}$', fontsize=10)
+ax1.text(0.5, 0.4, r'$10^{-16}$', fontsize=10)
+ax1.text(0.5, 0.3, r'$10^{-12}$', fontsize=10)
+# fourth column
+ax1.text(0.76, 0.8, 'rel.tol.', fontsize=10)
+ax1.text(0.8, 0.7, r'$10^{-3}$', fontsize=10)
+ax1.text(0.8, 0.6, r'$10^{-3}$', fontsize=10)
+ax1.text(0.8, 0.5, r'$10^{-6}$', fontsize=10)
+ax1.text(0.8, 0.4, r'$10^{-8}$', fontsize=10)
+ax1.text(0.8, 0.3, r'$10^{-12}$', fontsize=10)
+
+ax1.spines['left'].set_visible(False)
+ax1.spines['bottom'].set_visible(False)
+ax1.spines['top'].set_visible(False)
+ax1.spines['right'].set_visible(False)
+ax1.set_xticks([])
+ax1.set_yticks([])
+
+
 # tight layout
-plt.legend(loc=2)
-plt.gca().set_xlabel('Acceptance Threshold for matching State Trajectories', fontsize=fontsize)
-plt.gca().set_ylabel('Matching models', fontsize=fontsize)
-plt.gcf().tight_layout()
+#plt.legend(loc=2)
+ax.set_xlabel('Acceptance Threshold for matching State Trajectories', fontsize=fontsize)
+ax.set_ylabel('Matching models', fontsize=fontsize)
+#ax.tight_layout()
 
 # show plot
 plt.show()

@@ -140,7 +140,7 @@ for iTolerance in range(0, len(tolerance_files)):
         plot_histogram = ax1.hist(x=normed_list, range=None, bins=bins, log=False)
     else:
         plot_histogram = ax1.hist(x=normed_list, range=None, bins=bins, log=False)
-    plt.text(x=1, y=90, s=str(round((len(normed_list) + main_intern_is_0_counter) / (len(normed_list) + zero_values_counter + main_intern_is_0_counter) * 100, 2)) + ' %', fontsize=fontsize)
+    plt.text(x=1, y=90, s=str(round(100 - (len(normed_list) + main_intern_is_0_counter) / (len(normed_list) + zero_values_counter + main_intern_is_0_counter) * 100, 2)) + ' %', fontsize=fontsize)
 
     # make top and right boxlines invisible
     ax1.spines['top'].set_visible(False)

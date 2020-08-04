@@ -134,7 +134,7 @@ plt.gcf().tight_layout()
 ################ plot bar plot #################
 # open one .tsv file from 'WholeStudy'
 if skip_indicator in [0,0.33]:
-    path = '../Data/WholeStudy/1_1_1_06_08.tsv'
+    path = '../Data/Stat_Reac_Par/NEW_stat_reac_par_paper.tsv'
 elif skip_indicator in [0.67,1]:
     path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy/1_1_1_06_08.tsv'
 tsv_file = pd.read_csv(path, sep='\t')
