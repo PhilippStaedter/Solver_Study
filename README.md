@@ -98,17 +98,16 @@ Remark: All figures created by the following scripts are not stored automaticall
 	plot_LinearSolver_Main.py (Main Manuscript, Figure 3)
 	plot_LinearSolver_Supp1.py (Supplementary, Figure S3)
 	plot_LinearSolver_Supp2.py (Supplementary, Figure S4)
-	plot_LinearSolver_Supp3.py (Supplementary, Figure S5)
 
 ##### 2.2.4 Tolerances study
 	
 	plot_Tolerances_Main.py (Main Manuscript, Figure 4)
-	plot_Tolerances_Supp.py (Supplementary, Figure S6)
+	plot_Tolerances_Supp.py (Supplementary, Figure S5)
 
 ##### 2.2.5 Solver algorithm study
 
 	plot_SolAlg_Main.py (Main Manuscript, Figure 5)
-	plot_SolAlg_Supp1.py (Supplementary, Figure S7)
-	plot_SolAlg_Supp2.py (Supplementary, Figure S8)
+	plot_SolAlg_Supp1.py (Supplementary, Figure S6)
+	plot_SolAlg_Supp2.py (Supplementary, Figure S7)
 
 To skip step 2.2, all figures can be found in 'Solver_Study/Figures'.
