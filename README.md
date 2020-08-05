@@ -89,7 +89,8 @@ Remark: All figures created by the following scripts are not stored automaticall
  	plot_BasicProperties_Supp.py (Supplementary, Figure S1)
 
 ##### 2.2.2 Non-linear solver study
-# Remark: plot_NonLinSol_Main.py displays only the bottom part of Figure 2 while the upper part was created via InkScape
+
+Remark: plot_NonLinSol_Main.py displays only the bottom part of Figure 2 while the upper part was created via InkScape
 
 	plot_NonLinSol_Main.py (Main Manuscript, Figure 2)
 	plot_NonLinSol_Supp.py (Supplementary, Figure S2)
