@@ -1,4 +1,4 @@
-# Supplement Plot --- Figure S8
+# Supplement Plot --- Figure S7
 # scatter plot of AM vs BDF
 
 import numpy as np

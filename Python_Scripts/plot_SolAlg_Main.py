@@ -66,7 +66,7 @@ for iTsvFile in range(0, len(list_directory_adams)):
     adams_tsv_file = pd.read_csv(Adams_base_path + '/' + list_directory_adams[iTsvFile], sep='\t')
     bdf_tsv_file = pd.read_csv(BDF_base_path + '/' + list_directory_bdf[iTsvFile], sep='\t')
 
-    # average from 210 to 166 models
+    # average from 211 to 167 models
     adams_tsv_file = averaging(adams_tsv_file)
     bdf_tsv_file = averaging(bdf_tsv_file)
 
@@ -93,20 +93,20 @@ for iTsvFile in range(0, len(list_directory_adams)):
                 num_states_equal.append(states_data)
 
         elif x_adams_data == 0 and y_bdf_data != 0:
-            adams_zero_x.append(45000)
+            adams_zero_x.append(3000)
             adams_zero_y.append(y_bdf_data)
             ratio_adams_zero.append(np.log10(400.))
             num_states_adams_zero.append(states_data)
 
         elif x_adams_data != 0 and y_bdf_data == 0:
             bdf_zero_x.append(x_adams_data)
-            bdf_zero_y.append(45000)
+            bdf_zero_y.append(3000)
             ratio_bdf_zero.append(-np.log10(400.))
             num_states_bdf_zero.append(states_data)
 
         elif x_adams_data == 0 and y_bdf_data == 0:
-            equal_zero_x.append(45000)
-            equal_zero_y.append(45000)
+            equal_zero_x.append(3000)
+            equal_zero_y.append(3000)
             ratio_equal_zero.append(np.log10(float('nan')))
             num_states_equal_zero.append(states_data)
 
@@ -114,14 +114,22 @@ for iTsvFile in range(0, len(list_directory_adams)):
     print(iTsvFile)
 
 # print some interesting properties --- look for the biggest/smallest values
-print('adams_bdf_x: ' + str(sorted(adams_bdf_x)[0]))
-print('adams_bdf_y: ' + str(sorted(adams_bdf_y)[0]))
-print('bdf_adams_x: ' + str(sorted(bdf_adams_x)[0]))
-print('bdf_adams_y: ' + str(sorted(bdf_adams_y)[0]))
-print('adams_zero_x: ' + str(sorted(adams_zero_x)[0]))
-print('adams_zero_y: ' + str(sorted(adams_zero_y)[0]))
-print('equal_zero_x: ' + str(sorted(equal_zero_x)[0]))
-print('equal_zero_y: ' + str(sorted(equal_zero_y)[0]))
+print('adams_bdf_x_smallest: ' + str(sorted(adams_bdf_x)[0]))
+print('adams_bdf_y_smallest: ' + str(sorted(adams_bdf_y)[0]))
+print('bdf_adams_x_smallest: ' + str(sorted(bdf_adams_x)[0]))
+print('bdf_adams_y_smallest: ' + str(sorted(bdf_adams_y)[0]))
+print('adams_zero_x_smallest: ' + str(sorted(adams_zero_x)[0]))
+print('adams_zero_y_smallest: ' + str(sorted(adams_zero_y)[0]))
+print('equal_zero_x_smallest: ' + str(sorted(equal_zero_x)[0]))
+print('equal_zero_y_smallest: ' + str(sorted(equal_zero_y)[0]))
+print('adams_bdf_x_largest: ' + str(sorted(adams_bdf_x, reverse=True)[0]))
+print('adams_bdf_y_largest: ' + str(sorted(adams_bdf_y, reverse=True)[0]))
+print('bdf_adams_x_largest: ' + str(sorted(bdf_adams_x, reverse=True)[0]))
+print('bdf_adams_y_largest: ' + str(sorted(bdf_adams_y, reverse=True)[0]))
+print('adams_zero_x_largest: ' + str(sorted(adams_zero_x, reverse=True)[0]))
+print('adams_zero_y_largest: ' + str(sorted(adams_zero_y, reverse=True)[0]))
+print('equal_zero_x_largest: ' + str(sorted(equal_zero_x, reverse=True)[0]))
+print('equal_zero_y_largest: ' + str(sorted(equal_zero_y, reverse=True)[0]))
 print('len(equal_zero_x): ' + str(len(equal_zero_x)))
 print('len(equal_zero_y): ' + str(len(equal_zero_y)))
 
@@ -160,7 +168,7 @@ bdf_adams_x, bdf_adams_y, kde_blue = np.array(bdf_adams_x)[ids_blue], np.array(b
 # plot scatter plot
 ax = plt.axes([0.08, 0.11, 0.37, 0.84])
 ax2 = plt.axes([0.57, 0.11, 0.40, 0.84])
-z = range(0,45000)
+z = range(0,3000)
 plt1 = ax.scatter(adams_bdf_x, adams_bdf_y, s=marker_size, c=kde_orange, cmap=cm_1, label='AM faster: ' + str(round(len(adams_bdf_x) / len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', zorder=10, clip_on=False, alpha=alpha)
 plt2 = ax.scatter(bdf_adams_x, bdf_adams_y, s=marker_size, c=kde_blue, cmap=cm_2, label='BDF faster: ' + str(round(len(bdf_adams_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', zorder=10, clip_on=False, alpha=alpha)
 plt3 = ax.scatter(equal_x, equal_y, s=marker_size, c='grey', zorder=10, clip_on=False, alpha=alpha)
@@ -168,18 +176,18 @@ plt4 = ax.scatter(adams_zero_x, adams_zero_y, c='orange', cmap=cm_2, marker='D',
 plt5 = ax.scatter(bdf_zero_x, bdf_zero_y, c='blue', cmap=cm_1, s=marker_size, facecolors='none', edgecolors='orange', marker='D', zorder=10, clip_on=False)
 plt6 = ax.scatter(equal_zero_x, equal_zero_y, s=marker_size, facecolors='none', edgecolors='grey', marker='D', zorder=10, clip_on=False)
 ax.plot(z, c='black', zorder=20)
-ax.set_xlim([0.2, 45000])
-ax.set_ylim([0.2, 45000])
+ax.set_xlim([0.2, 3000])
+ax.set_ylim([0.2, 3000])
 ax.set_xscale('log')
 ax.set_yscale('log')
 ax.set_xlabel('AM simulation time [ms]', fontsize=fontsize)
 ax.set_ylabel('BDF simulation time [ms]', fontsize=fontsize)
 
 # plot legend manually
-ax.plot(0.4, 25000, 'o', fillstyle='full', c='orange', markersize=marker_size)
-ax.plot(0.4, 12500, 'o', fillstyle='full', c='blue', markersize=marker_size)
-ax.text(0.6, 20000, 'AM faster: ' + str(round(len(adams_bdf_x) / len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize)
-ax.text(0.6, 10000, 'BDF faster: ' + str(round(len(bdf_adams_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize)
+ax.plot(0.4, 1750, 'o', fillstyle='full', c='orange', markersize=marker_size)
+ax.plot(0.4, 950, 'o', fillstyle='full', c='blue', markersize=marker_size)
+ax.text(0.6, 1500, 'AM faster: ' + str(round(len(adams_bdf_x) / len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize)
+ax.text(0.6, 800, 'BDF faster: ' + str(round(len(bdf_adams_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize)
 
 plt.tick_params(labelsize=labelsize)
 ax.spines['top'].set_linestyle(linestyle)
@@ -190,15 +198,15 @@ ax.spines['top'].set_color('grey')
 ax.spines['right'].set_color('grey')
 
 # write text over axis
-ax.text(55000, 100,'only AM failed: ' + str(round(len(adams_zero_x) / len(
+ax.text(3500, 25,'only AM failed: ' + str(round(len(adams_zero_x) / len(
     adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %',
         fontsize=fontsize, rotation=-90, va='center')
-ax.text(100, 55000, 'only BDF failed: ' + str(round(len(bdf_zero_x) / len(
+ax.text(25, 3500, 'only BDF failed: ' + str(round(len(bdf_zero_x) / len(
     adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %',
         fontsize=fontsize, ha='center')
-ax.text(70000, 55000, 'Both failed:', fontsize=fontsize,
+ax.text(5000, 3500, 'Both failed:', fontsize=fontsize,
         ha='center')
-ax.text(150000, 30000, str(round(len(equal_zero_x) / len(adams_tsv_file[
+ax.text(8000, 2400, str(round(len(equal_zero_x) / len(adams_tsv_file[
     't_intern_ms'])*100/len(list_directory_adams), 2)) + ' %',
         fontsize=fontsize, ha='center', va='center')
 

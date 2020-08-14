@@ -1,4 +1,4 @@
-# Supplementary Plot --- Figure S6
+# Supplementary Plot --- Figure S5
 # script to plot a histogram for all tolerance settings with success rates
 
 import matplotlib.pyplot as plt

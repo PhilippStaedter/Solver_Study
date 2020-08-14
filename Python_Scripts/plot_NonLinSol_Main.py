@@ -100,8 +100,8 @@ def Multistep():
 
     # get correct data for the bar plot
     # plot a customized bar plot
-    labelsize = 8
     fontsize = 12
+    labelsize = 8
     rotation = 45
     linewidth = 1
 

@@ -81,8 +81,8 @@ def Scatter(solAlg, nonLinSol):
 
     # get correct data for all five linear solvers in one of the seven figures
     # plot a customized scatter plot
-    fontsize = 22 - 12 + 2
-    labelsize = 10 + 2
+    fontsize = 12
+    labelsize = 12
     left = 0.07
     bottom = 0.75
     width = 0.4
