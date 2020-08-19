@@ -39,7 +39,7 @@ for iModel in range(0, len(tsv_file['model_id'])):
 
 
 # save new .tsv file if the new folder exists
-if os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data')
+if os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data'):
     tsv_file.to_csv('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/Supplementary_ListOfAllModels.tsv', index=False, sep='\t')
 else:
     print('Since the directory ../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data does not exist, '

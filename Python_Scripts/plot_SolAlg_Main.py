@@ -264,12 +264,11 @@ ax2.set_ylim((0.8, 1900))
 ax2.set_xlim((-np.log10(450), np.log10(450)))
 ax2.set_yticks([])
 plt.minorticks_off()
-ax2.text(0, 2000, 'Number of state variables',
-        fontsize=fontsize, ha='center')
-ax2.text(.1, 1, '$10^0$', fontsize=fontsize, va='center', ha='left')
-ax2.text(.1, 10, '$10^1$', fontsize=fontsize, va='center', ha='left')
-ax2.text(.1, 100, '$10^2$', fontsize=fontsize, va='center', ha='left')
-ax2.text(.1, 1000, '$10^3$', fontsize=fontsize, va='center', ha='left')
+ax2.text(0, 2000, 'Number of state variables', fontsize=fontsize, ha='center')
+ax2.text(-0.1, 1, '$10^0$', fontsize=fontsize, va='center', ha='right')
+ax2.text(-0.1, 10, '$10^1$', fontsize=fontsize, va='center', ha='right')
+ax2.text(-0.1, 100, '$10^2$', fontsize=fontsize, va='center', ha='right')
+ax2.text(-0.1, 1000, '$10^3$', fontsize=fontsize, va='center', ha='right')
 ax2.set_xlabel('Computation time ratio AM / BDF', fontsize=fontsize)
 plt.xticks([-np.log10(400), -2, -1, 0, 1, 2, np.log10(400)],
            ['', '$10^{-2}$', '$10^{-1}$', '1', '$10^1$', '$10^2$',

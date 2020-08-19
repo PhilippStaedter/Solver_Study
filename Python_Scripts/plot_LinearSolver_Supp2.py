@@ -81,8 +81,8 @@ def Scatter(solAlg, nonLinSol):
 
     # get correct data for all five linear solvers in one of the seven figures
     # plot a customized scatter plot
-    fontsize = 12
-    labelsize = 12
+    fontsize = 14
+    labelsize = 14
     left = 0.07
     bottom = 0.75
     width = 0.4
@@ -246,9 +246,11 @@ def Scatter(solAlg, nonLinSol):
     # better layout
     plt.tight_layout()
 
-    # change plotting size
-    fig = plt.gcf()
-    fig.set_size_inches(18.5, 10.5)
+    # general plotting settings
+    plt.rcParams['figure.figsize'] = [15.0, 7.]
+    plt.rcParams['figure.dpi'] = 80
+    plt.rcParams['savefig.dpi'] = 200
+    plt.rcParams['font.size'] = 20
 
     # show figure
     plt.show()
