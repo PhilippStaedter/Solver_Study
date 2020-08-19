@@ -79,7 +79,7 @@ If step 2.1 was skipped, the subfolder 'Data' will not exist.
 If step 1 was skipped, the subfolder 'json_files' will not exist.
 In this case, the next functions will automatically take the results from 'Solver_Study/Data' of the repository. 
 
-### 2.2 Visualize all results according to the ordner seen in the paper
+### 2.2 Visualize all results according to the order seen in the paper
 
 Remark: All figures created by the following scripts are not stored automatically! Thus, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will not be created if it does not already exists.
 
@@ -113,3 +113,9 @@ Remark: plot_NonLinSol_Main.py displays only the bottom part of Figure 2 while t
 	plot_SolAlg_Supp2.py (Supplementary, Figure S7)
 
 To skip step 2.2, all figures can be found in 'Solver_Study/Figures'.
+
+### 2.3 Get the complete benchmark collection list containing all 167 models
+
+	TableOfAllBenchmarkModels.py
+
+If the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' does not exist, to display the table, please save it manually on some directory of your choice
