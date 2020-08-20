@@ -1,6 +1,6 @@
 # Solver Study
 
-This repository contains all python files and (supplementary) figures for the manuscript 'Assessment and Prediction of ODE Solver Performance for Biological Processes'.
+This repository contains all python files and (supplementary) figures for the manuscript 'Benchmarking of numerical integration methods for ODE models of biological systems'.
 
 ## 0 Problems that can occur
 

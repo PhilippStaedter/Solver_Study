@@ -4,10 +4,17 @@ from sbml_bio_import import *
 from logging_util import *
 import logging
 import pandas as pd
+import os
 
 
 log_to_console(level=logging.INFO)
-log_to_file(level=logging.WARN, filename="../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/biomodels_import_warnings.log")
+try:
+    os.mkdir("../../downloads/")
+except OSError:
+    print ("Creation of the directory ../../downloads/ failed")
+else:
+    print ("Successfully created the directory ../../downloads/")
+log_to_file(level=logging.WARN, filename="../../downloads/biomodels_import_warnings.log")
 logger = logging.getLogger(LOGGER_NAME)
 logger.setLevel(logging.INFO)
 

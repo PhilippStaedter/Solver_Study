@@ -7,7 +7,7 @@ from logging_util import LOGGER_NAME
 logger = logging.getLogger(LOGGER_NAME)
 
 BASE_URL = "https://www.ebi.ac.uk"
-BASE_FOLDER = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models"
+BASE_FOLDER = "../../downloads/sedml_models"
 
 
 def download_specific_sbml_biomodels_from_jws(model_ids, model_names, base_folder=BASE_FOLDER):
@@ -15,15 +15,15 @@ def download_specific_sbml_biomodels_from_jws(model_ids, model_names, base_folde
     Download all sbml models to xml files.
     """
     # download every single sbml model
-    for model_id in range(0, len(model_ids)):
+    for model_id in model_ids:
         # create an own folder for the model
-        if not os.path.exists(base_folder + "/" + model_ids[model_id]):
-            os.makedirs(base_folder + "/" + model_names[model_id])
-        if not os.path.exists(base_folder + "/" + model_names[model_id] + "/sbml_models"):
-            os.makedirs(base_folder + "/" + model_names[model_id] + "/sbml_models")
-        sbml_file = base_folder + "/" + model_names[model_id] + "/sbml_models/" + model_names[model_id] + ".xml"
+        if not os.path.exists(base_folder + "/" + model_id):
+            os.makedirs(base_folder + "/" + model_id)
+        if not os.path.exists(base_folder + "/" + model_id + "/sbml_models"):
+            os.makedirs(base_folder + "/" + model_id + "/sbml_models")
+        sbml_file = base_folder + "/" + model_id + "/sbml_models/" + model_id + ".xml"
         # url to download sbml
-        sbml_url = BASE_URL + "/biomodels-main/download?mid=" + model_ids[model_id]
+        sbml_url = BASE_URL + "/biomodels/model/download/" + model_id + "?filename=" + model_id + "_url.xml"
         # download sbml model
         download_sbml_model(sbml_url, sbml_file)
 
@@ -58,9 +58,9 @@ def add_Froehlich2018():
 
 def add_BioModels_Folder(model_names):
     # create a folder for all biomodels
-    if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models'):
-        os.makedirs('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models')
+    if not os.path.exists('../../downloads/BioModelsDatabase_models'):
+        os.makedirs('../../downloads/BioModelsDatabase_models')
     all_models = sorted(os.listdir(BASE_FOLDER))
     for model in all_models:
         if model in model_names or model == 'Froehlich2018':
-            shutil.copytree(BASE_FOLDER + '/' + model, '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models/' + model)
+            shutil.copytree(BASE_FOLDER + '/' + model, '../../downloads/BioModelsDatabase_models/' + model)
