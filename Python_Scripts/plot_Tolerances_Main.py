@@ -208,6 +208,7 @@ def Tolerances(Multistep_Method, prefix):
     ax2.set_xlim([-1, 41])
     ax3.set_xlim([-1, 41])
     ax3.set_yticklabels(['0', ''])
+    ax3.set_yticks([0,''])
     ax2.tick_params(labelsize=labelsize)
     ax3.tick_params(labelsize=labelsize)
     plt.text(-0.07, -0.12, 'Failure rate [%]', fontsize=fontsize, rotation=90, transform=ax2.transAxes)

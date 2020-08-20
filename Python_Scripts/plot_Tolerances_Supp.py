@@ -63,7 +63,7 @@ for iTolerance in range(0, len(tolerance_files)):
 
     # plot as histogram
     fontsize = 17
-    labelsize = 11
+    labelsize = 14
     titlesize = 30
     left = 0.065
     bottom = 0.8
@@ -150,15 +150,17 @@ for iTolerance in range(0, len(tolerance_files)):
 # set global labels
 plt.text(-5.7, 6.8, 'Rel.tol.:', fontsize=fontsize, transform=ax1.transAxes)
 plt.text(-6.18, 6.7, 'Abs.tol.:', fontsize=fontsize, transform=ax1.transAxes)
-plt.text(-3.2, -0.55, 'Relative simulation time', fontsize=fontsize + 10, transform=ax1.transAxes)
-plt.text(-6.18, 2.1, 'Number of models', fontsize=fontsize + 10, transform=ax1.transAxes, rotation=90)
+plt.text(-3.2, -0.55, 'Relative simulation time', fontsize=fontsize + 5, transform=ax1.transAxes)
+plt.text(-6.18, 2.1, 'Number of models', fontsize=fontsize + 5, transform=ax1.transAxes, rotation=90)
 
 # better layout
 plt.tight_layout()
 
 # change plotting size
-fig = plt.gcf()
-fig.set_size_inches(18.5, 10.5)
+plt.rcParams['figure.figsize'] = [15.0, 7.]
+plt.rcParams['figure.dpi'] = 80
+plt.rcParams['savefig.dpi'] = 200
+plt.rcParams['font.size'] = 17
 
 # show figure
 plt.show()

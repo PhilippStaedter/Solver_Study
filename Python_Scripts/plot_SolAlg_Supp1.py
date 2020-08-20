@@ -92,7 +92,7 @@ print('len(equal_zero_y): ' + str(len(equal_zero_y)))
 # plot a scatter plot + diagonal line
 linestyle = (0, (2, 5, 2, 5))
 linewidth = 1
-fontsize = 17
+fontsize = 12
 labelsize = 10
 titlesize = 30
 alpha = 1
@@ -155,12 +155,10 @@ ax.spines['right'].set_linewidth(linewidth)
 ax.spines['top'].set_color('red')
 ax.spines['right'].set_color('red')
 
-# write text over axis
-ax.text(55000, 1,'only AM failed: ' + str(round(len(adams_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize, rotation=-90)
-ax.text(1, 55000, 'only BDF failed: ' + str(round(len(bdf_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize)
-ax.text(70000, 4000, 'Both failed:', fontsize=fontsize, rotation=-45)
-ax.text(50000, 6000, str(round(len(equal_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize, rotation=-45)
-
+ax.text(55000, 2.5,'only AM failed: ' + str(round(len(adams_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize, rotation=-90)
+ax.text(3, 55000, 'only BDF failed: ' + str(round(len(bdf_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize)
+ax.text(70000, 8000, 'Both failed:', fontsize=fontsize, rotation=-45)
+ax.text(50000, 10000, str(round(len(equal_zero_x)/len(adams_tsv_file['t_intern_ms'])*100/len(list_directory_adams), 2)) + ' %', fontsize=fontsize, rotation=-45)
 
 # change plotting size
 plt.gcf().subplots_adjust(bottom=0.2)
