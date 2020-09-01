@@ -10,7 +10,7 @@ from logging_util import LOGGER_NAME
 logger = logging.getLogger(LOGGER_NAME)
 
 BASE_URL = "https://jjj.bio.vu.nl"
-BASE_FOLDER = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models"
+BASE_FOLDER = "../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models"
 
 
 def get_sedml_infos_from_rest_api():

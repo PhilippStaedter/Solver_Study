@@ -3,10 +3,17 @@
 from sedml_import import *
 from logging_util import *
 import logging
+import os
 
 
 log_to_console(level=logging.INFO)
-log_to_file(level=logging.WARN, filename="../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/import_warnings.log")
+try:
+    os.mkdir("../../Benchmarking_of_numerical_ODE_integration_methods/")
+except OSError:
+    print ("Creation of the directory ../../Benchmarking_of_numerical_ODE_integration_methods/ failed")
+else:
+    print ("Successfully created the directory ../../Benchmarking_of_numerical_ODE_integration_methods/")
+log_to_file(level=logging.WARN, filename="../../Benchmarking_of_numerical_ODE_integration_methods/import_warnings.log")
 logger = logging.getLogger(LOGGER_NAME)
 logger.setLevel(logging.INFO)
 

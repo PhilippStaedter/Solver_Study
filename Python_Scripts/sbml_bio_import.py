@@ -7,7 +7,7 @@ from logging_util import LOGGER_NAME
 logger = logging.getLogger(LOGGER_NAME)
 
 BASE_URL = "https://www.ebi.ac.uk"
-BASE_FOLDER = "../../downloads/sedml_models"
+BASE_FOLDER = "../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models"
 
 
 def download_specific_sbml_biomodels_from_jws(model_ids, model_names, base_folder=BASE_FOLDER):
@@ -58,9 +58,9 @@ def add_Froehlich2018():
 
 def add_BioModels_Folder(model_names):
     # create a folder for all biomodels
-    if not os.path.exists('../../downloads/BioModelsDatabase_models'):
-        os.makedirs('../../downloads/BioModelsDatabase_models')
+    if not os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/BioModelsDatabase_models'):
+        os.makedirs('../../Benchmarking_of_numerical_ODE_integration_methods/BioModelsDatabase_models')
     all_models = sorted(os.listdir(BASE_FOLDER))
     for model in all_models:
         if model in model_names or model == 'Froehlich2018':
-            shutil.copytree(BASE_FOLDER + '/' + model, '../../downloads/BioModelsDatabase_models/' + model)
+            shutil.copytree(BASE_FOLDER + '/' + model, '../../Benchmarking_of_numerical_ODE_integration_methods/BioModelsDatabase_models/' + model)

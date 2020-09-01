@@ -9,12 +9,12 @@ import os
 
 log_to_console(level=logging.INFO)
 try:
-    os.mkdir("../../downloads/")
+    os.mkdir("../../Benchmarking_of_numerical_ODE_integration_methods/")
 except OSError:
-    print ("Creation of the directory ../../downloads/ failed")
+    print ("Creation of the directory ../../Benchmarking_of_numerical_ODE_integration_methods/ failed")
 else:
-    print ("Successfully created the directory ../../downloads/")
-log_to_file(level=logging.WARN, filename="../../downloads/biomodels_import_warnings.log")
+    print ("Successfully created the directory ../../Benchmarking_of_numerical_ODE_integration_methods/")
+log_to_file(level=logging.WARN, filename="../../Benchmarking_of_numerical_ODE_integration_methods/biomodels_import_warnings.log")
 logger = logging.getLogger(LOGGER_NAME)
 logger.setLevel(logging.INFO)
 
