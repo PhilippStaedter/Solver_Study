@@ -9,12 +9,17 @@ This repository contains all python files and (supplementary) figures for the ma
 names for specific models can be too long to save (error could occur e.g. for the model 'Morris2002')
 Work-around: Omit or rename such models
 
-### 0.2 working with python packages
+### 0.2 using a different python interpreter than Anaconda
+
+if a different python interpreter than Anaconda is used, the python package urlib or urlib3 might not work. 
+Thus, the download of all sedml models from the JWS database might fail (cf. step 1.1). 
+
+### 0.3 working with python packages
 
 if the package tqdm does not show a progress bar, the button "Emulate terminal in output console" in the
 python configurations must be switched on.
 
-### 0.3 doing step 1 only partially
+### 0.4 doing step 1 only partially
 
 in step 1, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' with its subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will be created. 
 If some steps in 1 are skipped, other scripts from step 1 will fail!
