@@ -21,7 +21,7 @@ python configurations must be switched on.
 
 ### 0.4 doing step 1 only partially
 
-in step 1, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' with its subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will be created. 
+in step 1, the main folder 'Benchmarking_of_numerical_ODE_integration_methods' with its subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will be created. 
 If some steps in 1 are skipped, other scripts from step 1 will fail!
 If some but not all steps in 1 are executed, the following scripts in step 2 might not work as intended. 
 To some extend, all scripts from step 2 onwards cover many possibilities, but maybe not all.
@@ -31,7 +31,7 @@ or not at all.
 The study can be reproduced by following the order in which all scripts have to be executed.
 All python scripts can be found in 'Solver_Study/Python_Scripts'.
 The study was done by using the software versions listed in `Solver_Study/Software/requirements.txt`.
-When reproducing this study, all results are stored in a therefore created folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' on the same level as 
+When reproducing this study, all results are stored in a therefore created folder 'Benchmarking_of_numerical_ODE_integration_methods' on the same level as 
 the downloaded repository.
 
 ### 0.5 different AMICI version used
@@ -72,9 +72,9 @@ The AMICI version used for this project was 0.10.19. However, it was a commit fr
 	correctStateTrajectories_BioModels.py
 
 To skip step 1, the whole benchmark collection is available in 'Solver_Study/Models'.
-If step 1 was skipped, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' or the subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will not exist. 
+If step 1 was skipped, the main folder 'Benchmarking_of_numerical_ODE_integration_methods' or the subfolders 'BioModelsDatabase_models', 'json_files', 'sbml2amici' and 'sedml_models' will not exist. 
 In this case, the next functions will automatically take the results from 'Solver_Study/Models' of the repository.
-Additionally, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will be created. 
+Additionally, the main folder 'Benchmarking_of_numerical_ODE_integration_methods' will be created. 
 
 ## 2 Solver settings study
 
@@ -90,7 +90,7 @@ In this case, the next functions will automatically take the results from 'Solve
 
 ### 2.2 Visualize all results according to the order seen in the paper
 
-Remark: All figures created by the following scripts are not stored automatically! Thus, the main folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' will not be created if it does not already exists.
+Remark: All figures created by the following scripts are not stored automatically! Thus, the main folder 'Benchmarking_of_numerical_ODE_integration_methods' will not be created if it does not already exists.
 
 ##### 2.2.1 Basic Properties
 
@@ -127,4 +127,4 @@ To skip step 2.2, all figures can be found in 'Solver_Study/Figures'.
 
 	TableOfAllBenchmarkModels.py
 
-If the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' does not exist, to display the table, please save it manually on some directory of your choice
+If the folder 'Benchmarking_of_numerical_ODE_integration_methods/Data' does not exist, to display the table, please save it manually on some directory of your choice

@@ -41,6 +41,8 @@ for models in list_directory:
         model_name, other_stuff = files.split(".",1)
         model_output_dir = models_path + '/' + models + '/' + model_name
 
+        print('Current Model: ' + models + '_' + model_name)
+
         try:
             # Append additional row in .tsv file
             tsv_table = tsv_table.append({}, ignore_index=True)
