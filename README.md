@@ -34,6 +34,10 @@ The study was done by using the software versions listed in `Solver_Study/Softwa
 When reproducing this study, all results are stored in a therefore created folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes' on the same level as 
 the downloaded repository.
 
+### 0.5 different AMICI version used
+
+The AMICI veriosn used for this project was 0.10.19. However, it was a commit from a feature branch and had different functionality than AMICI 0.10.19 from the master branch. In order to reproduce result easily, it may be useful to use 0.10.20 from the master branch, which has these features included, if finding the commit from the feature branch is too complicated.
+
 ## 1 Create model collection 
 
 ### 1.1 Download all sedml and sbml models from the JWS Online Database
