@@ -6,7 +6,7 @@ import pandas as pd
 from setTime_BioModels import *
 
 # important paths --- for abs_error = rel_error = 1e-4, abs_tolerance = rel_tolerance = 1e-12 and BDF
-base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes'
+base_path = '../../Benchmarking_of_numerical_ODE_integration_methods'
 json_path = base_path + '/json_files/json_files_all_results_BDF_12_12/json_files_1e-04_1e-04'
 sedml_path = base_path + '/sedml_models'
 old_path = base_path + '/sbml2amici/amici_models_newest_version_0.10.19'

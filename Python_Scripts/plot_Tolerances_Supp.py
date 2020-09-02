@@ -6,11 +6,11 @@ import numpy as np
 from averageTime import *
 
 
-# check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
-if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/TolerancesStudy'):
+# check whether the folder 'Benchmarking_of_numerical_ODE_integration_methods/Data' exists
+if not os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/TolerancesStudy'):
     tolerance_path = '../Data/TolerancesStudy/BDF'
-elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/TolerancesStudy'):
-    tolerance_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/TolerancesStudy/BDF'
+elif os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/TolerancesStudy'):
+    tolerance_path = '../../Benchmarking_of_numerical_ODE_integration_methods/Data/TolerancesStudy/BDF'
 
 # main .tsv file to norm all other files
 main_tsv = pd.read_csv(tolerance_path + '/2_06_06.tsv', sep='\t')

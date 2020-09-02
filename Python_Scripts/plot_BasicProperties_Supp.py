@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files' exists
+# check whether the folder 'Benchmarking_of_numerical_ODE_integration_methods/json_files' exists
 skip_indicator = 0
-if os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
+if os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/json_files'):
     skip_indicator = 1
 
 all_log_abs_tol = ['03', '06', '06', '16', '12']
@@ -41,8 +41,8 @@ for iTolerance in range(0, len(all_log_abs_tol)):
                 base_dir_JWS = f"../Data/JWS_AMICI_state_trajectory_comparison/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
                 base_dir_COPASI = f"../Data/BioModels_AMICI_state_trajectory_comparison/COPASI_all_results_{Multistep}_{abs_tol}_{rel_tol}/COPASI_{tol_str}_{tol_str}"
             elif skip_indicator == 1:
-                base_dir_JWS = f"../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
-                base_dir_COPASI = f"../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/COPASI_all_results_{Multistep}_{abs_tol}_{rel_tol}/COPASI_{tol_str}_{tol_str}"
+                base_dir_JWS = f"../../Benchmarking_of_numerical_ODE_integration_methods/json_files_all_results_{Multistep}_{abs_tol}_{rel_tol}/json_files_{tol_str}_{tol_str}"
+                base_dir_COPASI = f"../../Benchmarking_of_numerical_ODE_integration_methods/COPASI_all_results_{Multistep}_{abs_tol}_{rel_tol}/COPASI_{tol_str}_{tol_str}"
             sedml_models_JWS = os.listdir(base_dir_JWS)
             sedml_models_COPASI = sorted(os.listdir(base_dir_COPASI))
             for sedml_model in sedml_models_JWS:

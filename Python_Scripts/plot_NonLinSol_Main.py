@@ -8,11 +8,11 @@ import math
 
 
 def Multistep():
-    # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
-    if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+    # check whether the folder 'Benchmarking_of_numerical_ODE_integration_methods/Data' exists
+    if not os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'):
         base_path = '../Data/WholeStudy'
-    elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
-        base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'
+    elif os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'):
+        base_path = '../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'
 
     # list of all data frames for nonLinSol == 1 for better indexing in the future
     all_intern_columns_1 = [pd.DataFrame(columns=[]), pd.DataFrame(columns=[]), pd.DataFrame(columns=[]), pd.DataFrame(columns=[]),

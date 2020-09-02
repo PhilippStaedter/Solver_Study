@@ -6,7 +6,7 @@ import pandas as pd
 import sys
 
 # important paths --- for abs_error = rel_error = 1e-4, abs_tolerance = rel_tolerance = 1e-12 and BDF
-base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes'
+base_path = '../../Benchmarking_of_numerical_ODE_integration_methods'
 old_sbml2amici_path = base_path + '/sbml2amici/correct_amici_models_paper'
 biomodels_trajectories_path = base_path + '/biomodels_files/COPASI_all_results_BDF_12_12/COPASI_1e-04_1e-04'
 

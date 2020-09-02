@@ -12,9 +12,9 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
 
     # Create new folder structure for study
     if study_indicator == 1:
-        tolerance_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'
+        tolerance_path = '../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'
     elif study_indicator == 2:
-        tolerance_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/TolerancesStudy'
+        tolerance_path = '../../Benchmarking_of_numerical_ODE_integration_methods/Data/TolerancesStudy'
     if not os.path.exists(tolerance_path):
         os.makedirs(tolerance_path)
 
@@ -40,13 +40,13 @@ def simulate(atol, rtol, linSol, iter, solAlg, maxStep, study_indicator, skip_in
         base_path_sedml = '../Models/all_models'
     elif skip_indicator == 0.33:
         base_path_sbml2amici = '../../Models/amici_import'
-        base_path_sedml = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'
+        base_path_sedml = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models'
     elif skip_indicator == 0.67:
-        base_path_sbml2amici = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/correct_amici_models_paper'
+        base_path_sbml2amici = '../../Benchmarking_of_numerical_ODE_integration_methods/sbml2amici/correct_amici_models_paper'
         base_path_sedml = '../Models/all_models'
     elif skip_indicator == 1:
-        base_path_sbml2amici = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/correct_amici_models_paper'
-        base_path_sedml = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models'
+        base_path_sbml2amici = '../../Benchmarking_of_numerical_ODE_integration_methods/sbml2amici/correct_amici_models_paper'
+        base_path_sedml = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models'
 
     # list of all directories + SBML files
     list_directory_sedml = os.listdir(base_path_sbml2amici)

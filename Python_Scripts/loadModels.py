@@ -11,7 +11,7 @@ def load_specific_model(model_name, explicit_model, skip_indicator):
     if skip_indicator == 0:
         path = '../Models/amici_import'
     elif skip_indicator == 1:
-        path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/correct_amici_models_paper'
+        path = '../../Benchmarking_of_numerical_ODE_integration_methods/sbml2amici/correct_amici_models_paper'
         model_output_dir = path + '/' + model_name + '/' + explicit_model
 
     # load specific model

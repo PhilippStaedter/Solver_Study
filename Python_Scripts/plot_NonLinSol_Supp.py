@@ -33,11 +33,11 @@ def NonLinearSolver(solAlg, LinSol):
                           pd.DataFrame(columns=[]), pd.DataFrame(columns=[])]
     column_names = []
 
-    # check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' exists
-    if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+    # check whether the folder 'Benchmarking_of_numerical_ODE_integration_methods/Data' exists
+    if not os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'):
         base_path = '../Data/WholeStudy'
-    elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
-        base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'
+    elif os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'):
+        base_path = '../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'
 
     # choose only the correct files
     all_files = sorted(os.listdir(base_path))

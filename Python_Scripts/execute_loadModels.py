@@ -14,8 +14,8 @@ def all_settings(iModel, iFile, skip_indicator):
         BioModels_path = '../Models/BioModelsDatabase_models'
         sedml_path = '../Models/all_models/' + iModel + '/' + iModel + '.sedml'
     elif skip_indicator == 1:
-        BioModels_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models'
-        sedml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/' + iModel + '.sedml'
+        BioModels_path = '../../Benchmarking_of_numerical_ODE_integration_methods/BioModelsDatabase_models'
+        sedml_path = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models/' + iModel + '/' + iModel + '.sedml'
 
     # iFile without extension
     try:

@@ -7,16 +7,16 @@ from averageTime import *
 import numpy as np
 
 
-# check whether the folder 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data' and
-# 'Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files' exists
-if not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy') and \
-        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
+# check whether the folder 'Benchmarking_of_numerical_ODE_integration_methods/Data' and
+# 'Benchmarking_of_numerical_ODE_integration_methods/json_files' exists
+if not os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy') and \
+        os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/json_files'):
     skip_indicator = 0.33
-elif not os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files') and \
-        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy'):
+elif not os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/json_files') and \
+        os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy'):
     skip_indicator = 0.67
-elif os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy') and \
-        os.path.exists('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files'):
+elif os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy') and \
+        os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/json_files'):
     skip_indicator = 1
 
 
@@ -43,7 +43,7 @@ ax2 = plt.axes([left + row_factor, bottom, width, height])
 if skip_indicator in [0,0.33]:
     path = '../Data/Stat_Reac_Par/NEW_stat_reac_par_paper.tsv'
 elif skip_indicator in [0.67,1]:
-    path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/Data/WholeStudy/1_1_1_06_08.tsv'
+    path = '../../Benchmarking_of_numerical_ODE_integration_methods/Data/WholeStudy/1_1_1_06_08.tsv'
 tsv_file = pd.read_csv(path, sep='\t')
 tsv_file = averaging(tsv_file)
 

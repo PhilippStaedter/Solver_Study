@@ -13,8 +13,8 @@ def changeValues(model, model_name, explicit_model, skip_indicator):
         sedml_path = '../Models/all_models/' + model_name + '/' + model_name + '.sedml'
         sbml_path = '../Models/all_models/' + model_name + '/sbml_models/' + explicit_model + '.sbml'
     elif skip_indicator == 1:
-        sedml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + model_name + '/' + model_name + '.sedml'
-        sbml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + model_name + '/sbml_models/' + explicit_model + '.sbml'
+        sedml_path = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models/' + model_name + '/' + model_name + '.sedml'
+        sbml_path = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models/' + model_name + '/sbml_models/' + explicit_model + '.sbml'
 
     # do a case study if the sedml file exists or not (it doesn't exist for models of the BioModelsDatabase)
     if os.path.exists(sedml_path):
