@@ -40,7 +40,7 @@ models.model_id = model_id
 models.model_name = model_name
 
 # download all specified models
-download_specific_sbml_biomodels_from_jws(list(model_id), list(model_name))
+download_specific_sbml_biomodels_from_biomodelsDatabase(list(model_id), list(model_name))
 
 # model Froehlich2018 is not available on neither BioModels nor JWS but on a github repository ---
 # the github repository is accessible via https://github.com/ICB-DCM/CS_Signalling_ERBB_RAS_AKT/tree/master/FroehlichKes2018

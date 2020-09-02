@@ -10,20 +10,20 @@ BASE_URL = "https://www.ebi.ac.uk"
 BASE_FOLDER = "../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models"
 
 
-def download_specific_sbml_biomodels_from_jws(model_ids, model_names, base_folder=BASE_FOLDER):
+def download_specific_sbml_biomodels_from_biomodelsDatabase(model_ids, model_names, base_folder=BASE_FOLDER):
     """
     Download all sbml models to xml files.
     """
     # download every single sbml model
-    for model_id in model_ids:
+    for iSBML in range(0, len(model_names)):
         # create an own folder for the model
-        if not os.path.exists(base_folder + "/" + model_id):
-            os.makedirs(base_folder + "/" + model_id)
-        if not os.path.exists(base_folder + "/" + model_id + "/sbml_models"):
-            os.makedirs(base_folder + "/" + model_id + "/sbml_models")
-        sbml_file = base_folder + "/" + model_id + "/sbml_models/" + model_id + ".xml"
+        if not os.path.exists(base_folder + "/" + model_names[iSBML]):
+            os.makedirs(base_folder + "/" + model_names[iSBML])
+        if not os.path.exists(base_folder + "/" + model_names[iSBML] + "/sbml_models"):
+            os.makedirs(base_folder + "/" + model_names[iSBML] + "/sbml_models")
+        sbml_file = base_folder + "/" + model_names[iSBML] + "/sbml_models/" + model_names[iSBML] + ".xml"
         # url to download sbml
-        sbml_url = BASE_URL + "/biomodels/model/download/" + model_id + "?filename=" + model_id + "_url.xml"
+        sbml_url = BASE_URL + "/biomodels/model/download/" + model_ids[iSBML] + "?filename=" + model_ids[iSBML] + "_url.xml"
         # download sbml model
         download_sbml_model(sbml_url, sbml_file)
 
