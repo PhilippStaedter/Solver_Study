@@ -31,8 +31,8 @@ def compStaTraj(delete_counter):
 
         for iTolerance in Tolerance_combination:
             # split atol and rtol for naming purposes
-            _,atol_exp = str(iTolerance[0]).split('-')
-            _,rtol_exp = str(iTolerance[1]).split('-')
+            atol_exp = str(iTolerance[0])
+            rtol_exp = str(iTolerance[1])
             if len(atol_exp) != 2:
                 atol_exp = '0' + atol_exp
             if len(rtol_exp) != 2:
@@ -45,24 +45,29 @@ def compStaTraj(delete_counter):
             json_dictionary = json.loads(json_string)
 
             # get all models
-            list_directory_amici = sorted(os.listdir('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici/amici_models_newest_version_0.10.19'))
+            list_directory_amici = sorted(os.listdir('../../Benchmarking_of_numerical_ODE_integration_methods/'
+                                                     'sbml2amici/amici_models_newest_version_0.10.19'))
             if delete_counter != 0:
                 del list_directory_amici[0:delete_counter]
 
             for iMod in range(0, len(list_directory_amici)):
 
                 iModel = list_directory_amici[iMod]
-                list_files = sorted(os.listdir('../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/sbml_models'))
+                list_files = sorted(os.listdir('../../Benchmarking_of_numerical_ODE_integration_methods/'
+                                               'sedml_models/' + iModel + '/sbml_models'))
 
                 for iFile in list_files:
                     # iFile without .sbml extension
                     iFile, extension = iFile.split('.', 1)
 
                     # important paths
-                    json_save_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/json_files/' + f'json_files_{MultistepMethod}_{atol_exp}_{rtol_exp}' + '/' + iModel + '/' + iFile
-                    sedml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/' + iModel +'.sedml'
-                    sbml_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sedml_models/' + iModel + '/sbml_models/' + iFile + '.sbml'
-                    BioModels_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models'
+                    json_save_path = '../../Benchmarking_of_numerical_ODE_integration_methods/json_files/' + \
+                                     f'json_files_{MultistepMethod}_{atol_exp}_{rtol_exp}' + '/' + iModel + '/' + iFile
+                    sedml_path = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models/' + \
+                                 iModel + '/' + iModel +'.sedml'
+                    sbml_path = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models/' + \
+                                iModel + '/sbml_models/' + iFile + '.sbml'
+                    BioModels_path = '../../Benchmarking_of_numerical_ODE_integration_methods/BioModelsDatabase_models'
 
 
                     if os.path.exists(BioModels_path + '/' + iModel):
@@ -82,7 +87,8 @@ def compStaTraj(delete_counter):
                         try:
                             model_reference
                         except:
-                            wrong_model_name = ["".join(x) for _, x in itertools.groupby(parse_name_model, key=str.isdigit)]
+                            wrong_model_name = ["".join(x) for _, x in itertools.groupby(parse_name_model,
+                                                                                         key=str.isdigit)]
                             if wrong_model_name[0].islower() == False:
                                 correct_model_letters = wrong_model_name[0].lower()
                                 correct_model_name = correct_model_letters + wrong_model_name[1]
@@ -121,7 +127,8 @@ def compStaTraj(delete_counter):
                         # Get Url with all changes
                         # <species 1>=<amount>
                         # <parameter 1>=<value>, compartment == parameter (in this case)
-                        url = 'https://jjj.bio.vu.nl/rest/models/' + model_reference + '/time_evolution?time_end=' + str(sim_end_time) + ';species=all;'
+                        url = 'https://jjj.bio.vu.nl/rest/models/' + model_reference + '/time_evolution?time_end=' + \
+                              str(sim_end_time) + ';species=all;'
 
                         for iStr in list_of_strings:
                             url = url + iStr

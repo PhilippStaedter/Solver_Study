@@ -30,7 +30,7 @@ def compStaTraj_BioModels_2(MultistepMethod, atol, rtol):
     RelError_2 = range(-20, 10)
 
     # important paths
-    base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes'
+    base_path = '../../Benchmarking_of_numerical_ODE_integration_methods'
     trajectory_path = base_path + '/biomodels_files/StateTrajectories_BioModels_COPASI_Data'
     comparison_files_path = base_path + '/biomodels_files/' + MultistepMethod + '_' + atol + '_' + rtol
     all_biomodels_path = base_path + '/BioModelsDatabase_models'
@@ -93,10 +93,12 @@ def compStaTraj_BioModels_2(MultistepMethod, atol, rtol):
                             os.makedirs(new_bio_save_path)
 
                         # open COPASI_simulation .tsv file
-                        tsv_file = pd.read_csv(f"{old_bio_save_path}/COPASI_{iModel}_{MultistepMethod}_{atol}_{rtol}.tsv", sep='\t')
+                        tsv_file = pd.read_csv(
+                            f"{old_bio_save_path}/COPASI_{iModel}_{MultistepMethod}_{atol}_{rtol}.tsv", sep='\t')
 
                         # open AMICI model_simulation .tsv file
-                        df_state_trajectory = pd.read_csv(f"{old_bio_save_path}/AMICI_{iModel}_{MultistepMethod}_{atol}_{rtol}.tsv", sep='\t')
+                        df_state_trajectory = pd.read_csv(
+                            f"{old_bio_save_path}/AMICI_{iModel}_{MultistepMethod}_{atol}_{rtol}.tsv", sep='\t')
 
                         # columns names of COPASI file
                         column_names = list(tsv_file.columns)
@@ -142,9 +144,12 @@ def compStaTraj_BioModels_2(MultistepMethod, atol, rtol):
                             counter = counter + 1
 
                         # save outcome
-                        df_single_error.to_csv(path_or_buf=new_bio_save_path + '/single_error.csv', sep='\t', index=False)
-                        df_trajectory_error.to_csv(path_or_buf=new_bio_save_path + '/trajectory_error.csv', sep='\t', index=False)
-                        df_whole_error.to_csv(path_or_buf=new_bio_save_path + '/whole_error.csv', sep='\t', index=False)
+                        df_single_error.to_csv(path_or_buf=new_bio_save_path + '/single_error.csv',
+                                               sep='\t', index=False)
+                        df_trajectory_error.to_csv(path_or_buf=new_bio_save_path + '/trajectory_error.csv',
+                                                   sep='\t', index=False)
+                        df_whole_error.to_csv(path_or_buf=new_bio_save_path + '/whole_error.csv',
+                                              sep='\t', index=False)
 
             # print number of all models with correct state trajectories
             print('Amount of models with correct state trajectories: ' + str(counter))

@@ -12,13 +12,14 @@ import numpy as np
 import libsbml
 import pandas as pd
 import os
+import sys
 
 
 def compStaTraj_BioModels():
 
     # important paths
     COPASI_data = '../Data/BioModels_AMICI_state_trajectory_comparison/StateTrajectories_BioModels_COPASI_Data'
-    base_path = '../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes'
+    base_path = '../../Benchmarking_of_numerical_ODE_integration_methods'
     all_biomodels_path = base_path + '/BioModelsDatabase_models'
     simulable_biomodels_path = base_path + '/sbml2amici/correct_amici_models_paper'
 
@@ -29,12 +30,11 @@ def compStaTraj_BioModels():
     # set settings for simulation
     for solAlg in [1, 2]:
         linSol = 9
+        Tolerance_combination = [[1e-3, 1e-3], [1e-6, 1e-6], [1e-16, 1e-8],
+                                 [1e-12, 1e-12], [1e-14, 1e-14]]
+        MultistepMethod = 'BDF'
         if solAlg == 1:
             MultistepMethod = 'Adams'
-            Tolerance_combination = [[1e-3,1e-3], [1e-6,1e-6], [1e-16,1e-8], [1e-12,1e-12], [1e-14,1e-14]]
-        elif solAlg == 2:
-            MultistepMethod = 'BDF'
-            Tolerance_combination = [[1e-3,1e-3], [1e-6,1e-6], [1e-16,1e-8], [1e-12,1e-12], [1e-14,1e-14]]
 
         for iTolerance in Tolerance_combination:
             # split atol and rtol for naming purposes
@@ -49,9 +49,10 @@ def compStaTraj_BioModels():
 
             # check if correct amici version with correct amount of simulable biomodels was used
             if not list_directory_simulable_bio == list_directory_COPASI_bio:
-                print('The number of biomodels which were generated with the earlier python scripts does not match with '
-                      'the number of biomodels that have COPASI state trajectories!'
-                      'The problem could be that a newer AMICI version was used!')
+                print('The number of biomodels which were generated with the earlier '
+                      'python scripts does not match with the number of biomodels that '
+                      'have COPASI state trajectories! The problem could be '
+                      'that a newer AMICI version was used!')
                 sys.exit(0)
 
             for iMod in range(0, len(list_directory_COPASI_bio)):
@@ -142,8 +143,12 @@ def compStaTraj_BioModels():
 
                     # Convert ndarray 'state-trajectory' to data frame + save it and modified COPASI file
                     df_state_trajectory = pd.DataFrame(columns=column_names, data=state_trajectory)
-                    df_state_trajectory.to_csv(f"{save_path}/AMICI_{iModel}_{MultistepMethod}_{save_atol}_{save_rtol}.tsv", sep='\t', index=False)
-                    tsv_file.to_csv(f"{save_path}/COPASI_{iModel}_{MultistepMethod}_{save_atol}_{save_rtol}.tsv", sep='\t', index=False)
+                    df_state_trajectory.to_csv(
+                        f"{save_path}/AMICI_{iModel}_{MultistepMethod}_{save_atol}_{save_rtol}.tsv",
+                        sep='\t', index=False)
+                    tsv_file.to_csv(
+                        f"{save_path}/COPASI_{iModel}_{MultistepMethod}_{save_atol}_{save_rtol}.tsv",
+                        sep='\t', index=False)
 
                     # to know where one is
                     print('Model ' + iModel + ' successfully completed!')

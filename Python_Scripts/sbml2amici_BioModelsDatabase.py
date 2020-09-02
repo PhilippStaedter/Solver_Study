@@ -11,9 +11,9 @@ import pandas as pd
 tsv_table = pd.DataFrame(columns=['id', 'states', 'reactions', 'error_message'])
 
 # important paths
-models_base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/sbml2amici"
+models_base_path = "../../Benchmarking_of_numerical_ODE_integration_methods/sbml2amici"
 models_path = models_base_path + "/amici_models_newest_version_0.10.19"
-base_path = "../../Assessment_of_ODE_Solver_Performance_for_Biological_Processes/BioModelsDatabase_models"
+base_path = "../../Benchmarking_of_numerical_ODE_integration_methods/BioModelsDatabase_models"
 
 # create directory for all future amici models
 if not os.path.exists(models_path):
