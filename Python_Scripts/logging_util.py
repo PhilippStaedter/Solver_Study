@@ -32,7 +32,7 @@ def log_to_file(level=None, filename=None):
         The output level to use. Default: logging.DEBUG.
     filename: str
         The name of the path the file is appended to.
-        Default: .pypesto_logging.log.
+        Default: .logging.log.
     """
 
     if level is None:
