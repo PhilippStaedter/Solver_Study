@@ -7,12 +7,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from averageTime import averaging
-from C import DIR_DATA_TOLERANCES
+from C import dir_data_tolerances
 
 Multistep_Method = 'BDF'
 prefix = '2_'
 
-tolerance_path = DIR_DATA_TOLERANCES + Multistep_Method
+tolerance_path = dir_data_tolerances() + Multistep_Method
 
 # main .tsv file to norm all other files
 main_tsv = pd.read_csv(tolerance_path + '/' + prefix + '06_06.tsv', sep='\t')

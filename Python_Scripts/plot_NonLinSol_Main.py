@@ -9,9 +9,9 @@ import math
 import matplotlib.pyplot as plt
 
 from averageTime import averaging
-from C import DIR_DATA_WHOLESTUDY
+from C import dir_data_wholestudy
 
-base_path = DIR_DATA_WHOLESTUDY
+base_path = dir_data_wholestudy()
 
 # list of all data frames for nonLinSol == 1 for better indexing in the future
 all_intern_columns_1 = [pd.DataFrame(columns=[]) for _ in range(72)]

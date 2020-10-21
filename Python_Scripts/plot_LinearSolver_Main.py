@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from averageTime import averaging
 from LinearRegression import linearRegression
-from C import DIR_DATA_WHOLESTUDY
+from C import dir_data_wholestudy
 
 left = 0.07
 bottom = 0.1
@@ -30,7 +30,7 @@ nonLinSol = '2'
 all_intern_columns = [pd.DataFrame(columns=[]) for _ in range(35)]
 column_names = []
 
-base_path = DIR_DATA_WHOLESTUDY
+base_path = dir_data_wholestudy()
 
 # choose only the correct files
 all_files = sorted(os.listdir(base_path))

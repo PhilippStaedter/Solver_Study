@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 
 from averageTime import averaging
 from LinearRegression import linearRegression
-from C import DIR_DATA_WHOLESTUDY
+from C import dir_data_wholestudy
 
 solAlg = '2'
 nonLinSol = '2'
 
-base_path = DIR_DATA_WHOLESTUDY
+base_path = dir_data_wholestudy()
 
 # list of all 35 data frames for better indexing in the future
 all_intern_columns = [pd.DataFrame(columns=[]) for _ in range(35)]

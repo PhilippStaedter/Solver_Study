@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from averageTime import averaging
 from LinearRegression import linearRegression
-from C import *
+from C import dir_data_wholestudy
 
 left = 0.07
 bottom = 0.1
@@ -31,7 +31,7 @@ LinSol = '9'
 all_intern_columns = [pd.DataFrame(columns=[]) for _ in range(14)]
 column_names = []
 
-base_path = DIR_DATA_WHOLESTUDY
+base_path = dir_data_wholestudy()
 
 # choose only the correct files
 all_files = sorted(os.listdir(base_path))
@@ -120,8 +120,9 @@ ax1.spines['right'].set_visible(False)
 # plot text 'A'
 ax1.text(-0.13, 1, 'A', fontsize=labelsize + 5, transform=ax1.transAxes)
 
+###############################################################################
+# subplot 2: box plot over computation times
 
-######## subplot 2: box plot over computation times
 first_set = []
 second_set = []
 third_set = []

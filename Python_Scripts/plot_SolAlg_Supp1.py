@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
 from averageTime import averaging
-from C import DIR_DATA_WHOLESTUDY
+from C import dir_data_wholestudy
 
-base_path = DIR_DATA_WHOLESTUDY
+base_path = dir_data_wholestudy()
 Adams_base_path = base_path
 BDF_base_path = base_path
 
