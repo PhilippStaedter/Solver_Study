@@ -13,7 +13,10 @@ DIR_CACHE_BASE = '../SolverStudyCache'
 DIR_TEST_BASE = '../Test/SolverStudyTest'
 
 # All scripts expect their in/output relative to `DIR_BASE`.
-DIR_BASE = os.getenv('SOLVERSTUDY_DIR_BASE', DIR_WORK_BASE)
+DIR_BASE = os.getenv('SOLVERSTUDY_DIR_BASE', None)
+if DIR_BASE is None:
+    raise ValueError(
+        "The environment variable SOLVERSTUDY_DIR_BASE must be set.")
 
 # Some convenience default short-forms
 if DIR_BASE == 'WORK':
@@ -37,3 +40,6 @@ DIR_DATA_TOLERANCES = os.path.join(DIR_DATA, 'TolerancesStudy')
 # Model directory
 
 DIR_MODELS = os.path.join(DIR_BASE, 'Models')
+DIR_MODELS_SEDML = os.path.join(DIR_MODELS, 'sedml')
+DIR_MODELS_BIOMODELS = os.path.join(DIR_MODELS, 'biomodels')
+DIR_MODELS_AMICI =  os.path.join(DIR_MODELS, 'amici')
