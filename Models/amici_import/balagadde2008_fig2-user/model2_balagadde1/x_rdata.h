@@ -1,7 +1,0 @@
-#define A1 x_rdata[0]
-#define A2 x_rdata[1]
-#define C1 x_rdata[2]
-#define C2 x_rdata[3]
-#define IPTG x_rdata[4]
-#define sink x_rdata[5]
-#define source x_rdata[6]

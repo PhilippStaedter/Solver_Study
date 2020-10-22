@@ -1,1 +1,0 @@
-#define dwdp0 dwdp[0]

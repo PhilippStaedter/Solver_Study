@@ -1,5 +1,0 @@
-#define V_in p[0]
-#define epsilon p[1]
-#define k1 p[2]
-#define km p[3]
-#define kp p[4]

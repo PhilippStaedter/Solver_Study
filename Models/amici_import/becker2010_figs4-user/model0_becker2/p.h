@@ -1,7 +1,0 @@
-#define Bmax_SAv p[0]
-#define kde p[1]
-#define kdi p[2]
-#define kex_SAv p[3]
-#define koff_SAv p[4]
-#define kon_SAv p[5]
-#define kt p[6]

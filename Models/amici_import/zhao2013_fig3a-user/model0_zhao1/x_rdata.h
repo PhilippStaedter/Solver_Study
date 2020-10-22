@@ -1,5 +1,0 @@
-#define EXT x_rdata[0]
-#define I x_rdata[1]
-#define Ip x_rdata[2]
-#define S x_rdata[3]
-#define Sp x_rdata[4]

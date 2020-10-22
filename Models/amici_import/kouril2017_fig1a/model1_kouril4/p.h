@@ -1,7 +1,0 @@
-#define KeqPGK p[0]
-#define KmPGKADP p[1]
-#define KmPGKATP p[2]
-#define KmPGKBPG p[3]
-#define KmPGKP3G p[4]
-#define VmPGK p[5]
-#define kPK p[6]

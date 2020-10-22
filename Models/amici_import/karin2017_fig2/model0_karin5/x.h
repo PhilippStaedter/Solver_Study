@@ -1,5 +1,0 @@
-#define beta x[0]
-#define g x[1]
-#define ins x[2]
-#define mbeta x[3]
-#define tamox x[4]

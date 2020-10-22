@@ -1,7 +1,0 @@
-#define species_0 x_rdata[0]
-#define species_1 x_rdata[1]
-#define species_2 x_rdata[2]
-#define species_3 x_rdata[3]
-#define species_4 x_rdata[4]
-#define species_5 x_rdata[5]
-#define species_6 x_rdata[6]

@@ -1,6 +1,0 @@
-#define Amadori x_rdata[0]
-#define CML x_rdata[1]
-#define Glucose x_rdata[2]
-#define Glyoxal x_rdata[3]
-#define Lysine x_rdata[4]
-#define Schiff x_rdata[5]

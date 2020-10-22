@@ -1,6 +1,0 @@
-#define Epo x_rdata[0]
-#define EpoR x_rdata[1]
-#define Epo_EpoR x_rdata[2]
-#define Epo_EpoRi x_rdata[3]
-#define dEpoe x_rdata[4]
-#define dEpoi x_rdata[5]

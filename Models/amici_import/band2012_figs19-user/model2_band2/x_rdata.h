@@ -1,1 +1,0 @@
-#define VENUS x_rdata[0]

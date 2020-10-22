@@ -1,5 +1,0 @@
-#define EC x_rdata[0]
-#define Fraction_Inactive_Channels x_rdata[1]
-#define Rho x_rdata[2]
-#define Y x_rdata[3]
-#define Z x_rdata[4]

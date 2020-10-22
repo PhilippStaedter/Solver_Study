@@ -1,6 +1,0 @@
-#define EpoR x_rdata[0]
-#define SAv x_rdata[1]
-#define SAv_EpoR x_rdata[2]
-#define SAv_EpoRi x_rdata[3]
-#define dSAve x_rdata[4]
-#define dSAvi x_rdata[5]

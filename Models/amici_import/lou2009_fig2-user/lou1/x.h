@@ -1,6 +1,0 @@
-#define Ib x[0]
-#define It x[1]
-#define Iv x[2]
-#define Sb x[3]
-#define St x[4]
-#define Sv x[5]

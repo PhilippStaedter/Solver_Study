@@ -1,7 +1,0 @@
-#define EtOH x_rdata[0]
-#define Glycerol x_rdata[1]
-#define PiVac x_rdata[2]
-#define atp x_rdata[3]
-#define fbp x_rdata[4]
-#define g6p x_rdata[5]
-#define phos x_rdata[6]

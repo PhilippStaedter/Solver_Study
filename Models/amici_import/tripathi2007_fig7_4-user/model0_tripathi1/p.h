@@ -1,7 +1,0 @@
-#define Alpha p[0]
-#define Beta_1 p[1]
-#define Beta_2 p[2]
-#define Delta p[3]
-#define Q_0 p[4]
-#define Theta p[5]
-#define d p[6]

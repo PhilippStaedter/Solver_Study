@@ -1,7 +1,0 @@
-#define Ta x[0]
-#define Tastarstar x[1]
-#define Tm x[2]
-#define Tmstarstar x[3]
-#define Ttot x[4]
-#define Tv x[5]
-#define V x[6]

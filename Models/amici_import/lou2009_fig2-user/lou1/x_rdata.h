@@ -1,6 +1,0 @@
-#define Ib x_rdata[0]
-#define It x_rdata[1]
-#define Iv x_rdata[2]
-#define Sb x_rdata[3]
-#define St x_rdata[4]
-#define Sv x_rdata[5]

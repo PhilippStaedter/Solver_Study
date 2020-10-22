@@ -1,5 +1,0 @@
-#define CaER x_rdata[0]
-#define CaM x_rdata[1]
-#define CaPr x_rdata[2]
-#define Ca_cyt x_rdata[3]
-#define Pr x_rdata[4]

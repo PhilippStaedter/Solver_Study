@@ -1,8 +1,0 @@
-#define MAPK x_rdata[0]
-#define MAPK_P x_rdata[1]
-#define MAPK_PP x_rdata[2]
-#define MKK x_rdata[3]
-#define MKKK x_rdata[4]
-#define MKKK_P x_rdata[5]
-#define MKK_P x_rdata[6]
-#define MKK_PP x_rdata[7]

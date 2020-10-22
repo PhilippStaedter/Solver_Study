@@ -1,6 +1,0 @@
-#define beta p[0]
-#define c p[1]
-#define delta p[2]
-#define amici_k p[3]
-#define mu p[4]
-#define s p[5]

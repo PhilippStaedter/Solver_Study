@@ -1,8 +1,0 @@
-#define Lc x_rdata[0]
-#define Ln_ x_rdata[1]
-#define NR x_rdata[2]
-#define NRLc x_rdata[3]
-#define NRLn x_rdata[4]
-#define NRc x_rdata[5]
-#define RE x_rdata[6]
-#define REL x_rdata[7]

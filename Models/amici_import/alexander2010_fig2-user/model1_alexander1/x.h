@@ -1,5 +1,0 @@
-#define A x[0]
-#define A_im x[1]
-#define E x[2]
-#define G x[3]
-#define R x[4]

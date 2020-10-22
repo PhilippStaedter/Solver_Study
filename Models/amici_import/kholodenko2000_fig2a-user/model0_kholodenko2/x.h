@@ -1,8 +1,0 @@
-#define MAPK x[0]
-#define MAPK_P x[1]
-#define MAPK_PP x[2]
-#define MKK x[3]
-#define MKKK x[4]
-#define MKKK_P x[5]
-#define MKK_P x[6]
-#define MKK_PP x[7]

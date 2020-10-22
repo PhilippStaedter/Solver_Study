@@ -1,5 +1,0 @@
-#define C x[0]
-#define M x[1]
-#define X x[2]
-#define Y x[3]
-#define Z x[4]

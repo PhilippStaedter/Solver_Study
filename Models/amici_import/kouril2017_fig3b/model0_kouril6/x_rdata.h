@@ -1,7 +1,0 @@
-#define ADP x_rdata[0]
-#define ATP x_rdata[1]
-#define BPG x_rdata[2]
-#define P3G x_rdata[3]
-#define pep x_rdata[4]
-#define phos x_rdata[5]
-#define pyr x_rdata[6]

@@ -1,8 +1,0 @@
-#define EXTERNAL p[0]
-#define Kapb p[1]
-#define Kapf p[2]
-#define Lc p[3]
-#define Vcytosol p[4]
-#define Vnucleus p[5]
-#define k1 p[6]
-#define k2 p[7]

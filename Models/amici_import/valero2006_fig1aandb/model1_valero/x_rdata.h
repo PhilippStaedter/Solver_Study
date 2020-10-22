@@ -1,6 +1,0 @@
-#define ADP x_rdata[0]
-#define AMP x_rdata[1]
-#define ATP x_rdata[2]
-#define Lac x_rdata[3]
-#define NADH x_rdata[4]
-#define Pyr x_rdata[5]

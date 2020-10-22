@@ -1,5 +1,0 @@
-#define M x[0]
-#define MStar x[1]
-#define T x[2]
-#define TStar x[3]
-#define V x[4]

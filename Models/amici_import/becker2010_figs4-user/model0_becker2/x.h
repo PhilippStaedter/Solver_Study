@@ -1,6 +1,0 @@
-#define EpoR x[0]
-#define SAv x[1]
-#define SAv_EpoR x[2]
-#define SAv_EpoRi x[3]
-#define dSAve x[4]
-#define dSAvi x[5]

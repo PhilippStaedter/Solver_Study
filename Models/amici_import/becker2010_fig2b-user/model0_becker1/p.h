@@ -1,8 +1,0 @@
-#define Bmax p[0]
-#define kde p[1]
-#define kdi p[2]
-#define ke p[3]
-#define kex p[4]
-#define koff p[5]
-#define kon p[6]
-#define kt p[7]

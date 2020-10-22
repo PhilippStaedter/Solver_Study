@@ -1,7 +1,0 @@
-#define Ta x_rdata[0]
-#define Tastarstar x_rdata[1]
-#define Tm x_rdata[2]
-#define Tmstarstar x_rdata[3]
-#define Ttot x_rdata[4]
-#define Tv x_rdata[5]
-#define V x_rdata[6]

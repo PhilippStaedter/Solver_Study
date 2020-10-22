@@ -1,7 +1,0 @@
-#define ADP x[0]
-#define ATP x[1]
-#define BPG x[2]
-#define P3G x[3]
-#define pep x[4]
-#define phos x[5]
-#define pyr x[6]

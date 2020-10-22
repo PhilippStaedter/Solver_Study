@@ -1,8 +1,0 @@
-#define AcCoA x[0]
-#define AcP x[1]
-#define Acs x[2]
-#define HOAc x[3]
-#define HOAc_E x[4]
-#define LacI x[5]
-#define OAc x[6]
-#define Pta x[7]

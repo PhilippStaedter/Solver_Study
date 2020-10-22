@@ -1,1 +1,0 @@
-#define JSparseB0 JSparseB[0]

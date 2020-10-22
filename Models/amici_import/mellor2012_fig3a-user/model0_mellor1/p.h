@@ -1,8 +1,0 @@
-#define parameter_1 p[0]
-#define parameter_2 p[1]
-#define parameter_3 p[2]
-#define parameter_4 p[3]
-#define parameter_5 p[4]
-#define parameter_6 p[5]
-#define parameter_7 p[6]
-#define parameter_8 p[7]
