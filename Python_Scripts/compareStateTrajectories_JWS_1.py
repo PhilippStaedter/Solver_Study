@@ -19,8 +19,13 @@ import itertools
 
 
 def compStaTraj(delete_counter):
+    # create new folder for all json files
+    if not os.path.exists('../../Benchmarking_of_numerical_ODE_integration_methods/json_files'):
+        os.makedirs('../../Benchmarking_of_numerical_ODE_integration_methods/json_files')
+
     # set settings for simulation
     for solAlg in [1, 2]:
+        nonlinSol = 2
         linSol = 9
         if solAlg == 1:
             MultistepMethod = 'Adams'
@@ -156,6 +161,7 @@ def compStaTraj(delete_counter):
                         solver.setAbsoluteTolerance(iTolerance[0])
                         solver.setRelativeTolerance(iTolerance[1])
                         solver.setLinearSolver(linSol)
+                        solver.setNonLinearSolver(nonlinSol)
                         solver.setLinearMultistepMethod(solAlg)
 
                         # set stability flag for Adams-Moulton
