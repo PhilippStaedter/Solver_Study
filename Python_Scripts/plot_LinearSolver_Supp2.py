@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 
 from averageTime import averaging
 from LinearRegression import linearRegression
-from C import dir_data_wholestudy
+from C import DIR_DATA_WHOLESTUDY
 
 solAlg = '2'
 nonLinSol = '2'
 
-base_path = dir_data_wholestudy()
+base_path = DIR_DATA_WHOLESTUDY
 
 # list of all 35 data frames for better indexing in the future
 all_intern_columns = [pd.DataFrame(columns=[]) for _ in range(35)]
@@ -31,8 +31,8 @@ for iFile in range(0, len(all_files)):
 y_axis_interceptions = []
 slopes = []
 for iCorrectFile in range(0, len(correct_files)):
-    next_tsv = pd.read_csv(base_path + '/' + correct_files[iCorrectFile],
-                           sep='\t')
+    next_tsv = pd.read_csv(os.path.join(
+        base_path, correct_files[iCorrectFile]), sep='\t')
 
     # change .tsv-id form e.g. 1_06_10.tsv to 06_10
     new_name = correct_files[iCorrectFile].split('.')[0].split('_')[3] + '_' +\

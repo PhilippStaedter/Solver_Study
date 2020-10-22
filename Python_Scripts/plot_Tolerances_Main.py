@@ -7,15 +7,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from averageTime import averaging
-from C import dir_data_tolerances
+from C import DIR_DATA_TOLERANCES
 
 Multistep_Method = 'BDF'
 prefix = '2_'
 
-tolerance_path = dir_data_tolerances() + Multistep_Method
+tolerance_path = os.path.join(DIR_DATA_TOLERANCES, Multistep_Method)
 
 # main .tsv file to norm all other files
-main_tsv = pd.read_csv(tolerance_path + '/' + prefix + '06_06.tsv', sep='\t')
+main_tsv = pd.read_csv(os.path.join(
+    tolerance_path, prefix + '06_06.tsv'), sep='\t')
 
 # get new .tsv file
 main_tsv = averaging(main_tsv)
@@ -60,8 +61,8 @@ for iTolerance in range(0, len(tolerance_files)):
 
     else:
         # open next .tsv file
-        next_tsv = pd.read_csv(tolerance_path + '/' + prefix +
-                               tolerance_files[iTolerance], sep='\t')
+        next_tsv = pd.read_csv(os.path.join(
+            tolerance_path, prefix + tolerance_files[iTolerance]), sep='\t')
 
         # get new .tsv file
         next_tsv = averaging(next_tsv)
@@ -215,8 +216,8 @@ ax2.set_yscale('log')
 ax3.set_yscale('linear')
 ax2.set_xlim([-1, 41])
 ax3.set_xlim([-1, 41])
-ax3.set_yticklabels(['0', ''])
-ax3.set_yticks([0,''])
+ax3.set_yticklabels(['0'])
+ax3.set_yticks([0])
 ax2.tick_params(labelsize=labelsize)
 ax3.tick_params(labelsize=labelsize)
 plt.text(-0.07, -0.12, 'Failure rate [%]', fontsize=fontsize, rotation=90,

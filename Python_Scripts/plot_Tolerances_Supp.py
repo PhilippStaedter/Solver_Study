@@ -7,12 +7,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from averageTime import averaging
-from C import dir_data_tolerances
+from C import DIR_DATA_TOLERANCES
 
-tolerance_path = dir_data_tolerances() + 'BDF'
+tolerance_path = os.path.join(DIR_DATA_TOLERANCES, 'BDF')
 
 # main .tsv file to norm all other files
-main_tsv = pd.read_csv(tolerance_path + '/2_06_06.tsv', sep='\t')
+main_tsv = pd.read_csv(os.path.join(
+    tolerance_path, '2_06_06.tsv'), sep='\t')
 
 # plot as histogram
 fontsize = 17
@@ -35,8 +36,8 @@ main_tsv = averaging(main_tsv)
 # open all .tsv tolerance files
 tolerance_files = sorted(os.listdir(tolerance_path))
 for iTolerance in range(0, len(tolerance_files)):
-    next_tsv = pd.read_csv(
-        tolerance_path + '/' + tolerance_files[iTolerance], sep='\t')
+    next_tsv = pd.read_csv(os.path.join(
+        tolerance_path, tolerance_files[iTolerance]), sep='\t')
 
     # get new .tsv file
     next_tsv = averaging(next_tsv)
@@ -52,7 +53,7 @@ for iTolerance in range(0, len(tolerance_files)):
         if main_intern == 0:
             quotient = 0
         else:
-            quotient = next_intern/main_intern
+            quotient = next_intern / main_intern
 
         # leave out value if zero but only count for the success rate if next_intern = 0
         if next_intern == 0:

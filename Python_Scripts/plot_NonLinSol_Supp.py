@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from averageTime import averaging
 from LinearRegression import linearRegression
-from C import dir_data_wholestudy
+from C import DIR_DATA_WHOLESTUDY
 
 left = 0.07
 bottom = 0.1
@@ -31,7 +31,7 @@ LinSol = '9'
 all_intern_columns = [pd.DataFrame(columns=[]) for _ in range(14)]
 column_names = []
 
-base_path = dir_data_wholestudy()
+base_path = DIR_DATA_WHOLESTUDY
 
 # choose only the correct files
 all_files = sorted(os.listdir(base_path))
@@ -42,7 +42,8 @@ for iFile in range(0, len(all_files)):
 
 # open all .tsv linear solver files + save right column in data frame
 for iCorrectFile in range(0, len(correct_files)):  # each .tsv file
-    next_tsv = pd.read_csv(base_path + '/' + correct_files[iCorrectFile], sep='\t')
+    next_tsv = pd.read_csv(os.path.join(
+        base_path, correct_files[iCorrectFile]), sep='\t')
 
     # reset after each iteration
     next_time_value = []

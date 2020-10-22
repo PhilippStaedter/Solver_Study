@@ -9,9 +9,9 @@ import math
 import matplotlib.pyplot as plt
 
 from averageTime import averaging
-from C import dir_data_wholestudy
+from C import DIR_DATA_WHOLESTUDY
 
-base_path = dir_data_wholestudy()
+base_path = DIR_DATA_WHOLESTUDY
 
 # list of all data frames for nonLinSol == 1 for better indexing in the future
 all_intern_columns_1 = [pd.DataFrame(columns=[]) for _ in range(72)]
@@ -36,9 +36,8 @@ correct_files = [correct_files_1, correct_files_2]
 # open all .tsv linear solver files + save right column in data frame
 for iNonLinSol in range(0, len(correct_files)):
     for iCorrectFile in range(0, len(correct_files_1)):
-        next_tsv = pd.read_csv(
-            base_path + '/' + correct_files[iNonLinSol][iCorrectFile],
-            sep='\t')
+        next_tsv = pd.read_csv(os.path.join(
+            base_path, correct_files[iNonLinSol][iCorrectFile]), sep='\t')
 
         # change .tsv-id form e.g. 1_06_10.tsv to 06_10
         new_name = correct_files[iNonLinSol][iCorrectFile].split('.')[0].split('_')[3] + '_' + \

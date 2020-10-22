@@ -1,47 +1,39 @@
 """Constant definitions."""
 
+import os
+
 ###############################################################################
 # Base folder
 
-# The output of the study has been conserved in `DIR_BASE`.
-DIR_BASE = '../'
-# The simulation scripts write their output to `DIR_OUT_BASE` instead.
-DIR_OUT_BASE = '../../Benchmarking_of_numerical_ODE_integration_methods/'
-# To directly use that output, (un-)comment the below line.
-# DIR_BASE = DIR_OUT_BASE
+# The simulation scripts write their output to `DIR_WORK_BASE` by default.
+DIR_WORK_BASE = '../SolverStudyWork'
+# The output of the study has been conserved in `DIR_CACHE_BASE`.
+DIR_CACHE_BASE = '../SolverStudyCache'
+# The `DIR_TEST_BASE` folder contains a smaller test model set
+DIR_TEST_BASE = '../Test/SolverStudyTest'
 
+# All scripts expect their in/output relative to `DIR_BASE`.
+DIR_BASE = os.getenv('SOLVERSTUDY_DIR_BASE', DIR_WORK_BASE)
+
+# Some convenience default short-forms
+if DIR_BASE == 'WORK':
+    DIR_BASE = DIR_WORK_BASE
+elif DIR_BASE == 'CACHE':
+    DIR_BASE = DIR_CACHE_BASE
+elif DIR_BASE == 'TEST':
+    DIR_BASE = DIR_TEST_BASE
 
 ###############################################################################
 # Data directories
 
-
-def dir_data(base=DIR_BASE):
-    return base + 'Data/'
-
-
-def dir_data_wholestudy(base=DIR_BASE):
-    return dir_data(base) + 'WholeStudy/'
-
-
-def dir_data_tolerances(base=DIR_BASE):
-    return dir_data(base) + 'TolerancesStudy/'
-
+# Simulation data base folder
+DIR_DATA = os.path.join(DIR_BASE, 'Data')
+# Folder for most of the sub-studies
+DIR_DATA_WHOLESTUDY = os.path.join(DIR_DATA, 'WholeStudy')
+# Folder for the tolerances sub-study
+DIR_DATA_TOLERANCES = os.path.join(DIR_DATA, 'TolerancesStudy')
 
 ###############################################################################
 # Model directory
 
-
-def dir_models(base=DIR_BASE):
-    return base + 'Models/'
-
-
-def dir_models_all(base=DIR_BASE):
-    return dir_models(base) + 'all_models/'
-
-
-###############################################################################
-# JSON files
-
-
-def dir_jsonfiles(base=DIR_BASE):
-    return base + 'json_files/'
+DIR_MODELS = os.path.join(DIR_BASE, 'Models')

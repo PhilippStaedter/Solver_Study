@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
 from averageTime import averaging
-from C import dir_data_wholestudy
+from C import DIR_DATA_WHOLESTUDY
 
-base_path = dir_data_wholestudy()
+base_path = DIR_DATA_WHOLESTUDY
 Adams_base_path = base_path
 BDF_base_path = base_path
 
@@ -42,10 +42,10 @@ equal_zero_x = []
 equal_zero_y = []
 
 for iTsvFile in range(0, len(list_directory_adams)):
-    adams_tsv_file = pd.read_csv(
-        Adams_base_path + '/' + list_directory_adams[iTsvFile], sep='\t')
-    bdf_tsv_file = pd.read_csv(
-        BDF_base_path + '/' + list_directory_bdf[iTsvFile], sep='\t')
+    adams_tsv_file = pd.read_csv(os.path.join(
+        Adams_base_path, list_directory_adams[iTsvFile]), sep='\t')
+    bdf_tsv_file = pd.read_csv(os.path.join(
+        BDF_base_path, list_directory_bdf[iTsvFile]), sep='\t')
 
     # average from 210 to 166 models
     adams_tsv_file = averaging(adams_tsv_file)
