@@ -5,19 +5,19 @@
 
 # Note: libsedml must be imported before libsbml for whatever reason
 
-from execute_loadModels import all_settings
-from JWS_changeValues import JWS_changeValues
-
+import libsedml
+import libsbml
 import amici.plotting
 import numpy as np
-import libsbml
-import libsedml
 import pandas as pd
 import os
 import urllib.request
 import requests
 import json
 import itertools
+
+from execute_loadModels import all_settings
+from JWS_changeValues import JWS_changeValues
 
 from C import (
     DIR_MODELS_SEDML, DIR_MODELS_BIOMODELS, DIR_MODELS_AMICI, DIR_MODELS_JSON)
@@ -146,7 +146,14 @@ def compStaTraj(delete_counter):
                         #### Save .json file
                         json_file = os.path.join(
                             json_save_path, iFile + '_JWS_simulation.json')
-                        urllib.request.urlretrieve(url, json_file)
+                        # JWS sometimes just returns an error output, then
+                        #  just retry
+                        while True:
+                            print("Downloading simulation ...")
+                            urllib.request.urlretrieve(url, json_file)
+                            with open(json_file, 'r') as f:
+                                if f.read() != '{"error_msg": "No result was returned."}':
+                                    break
 
                         #### write as .csv file
                         json_2_csv = pd.read_json(json_file)
