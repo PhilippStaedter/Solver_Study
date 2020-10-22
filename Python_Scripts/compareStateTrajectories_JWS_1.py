@@ -3,8 +3,11 @@
 
 # Attention:    boundary conditions are not being simulated by JWS!
 
-from execute_loadModels import *
-from JWS_changeValues import *
+# Note: libsedml must be imported before libsbml for whatever reason
+
+from execute_loadModels import all_settings
+from JWS_changeValues import JWS_changeValues
+
 import amici.plotting
 import numpy as np
 import libsbml
@@ -16,6 +19,8 @@ import requests
 import json
 import itertools
 
+from C import (
+    DIR_MODELS_SEDML, DIR_MODELS_BIOMODELS, DIR_MODELS_AMICI, DIR_MODELS_JSON)
 
 
 def compStaTraj(delete_counter):
@@ -24,10 +29,14 @@ def compStaTraj(delete_counter):
         linSol = 9
         if solAlg == 1:
             MultistepMethod = 'Adams'
-            Tolerance_combination = [[1e-3,1e-3], [1e-6,1e-3], [1e-6,1e-6], [1e-12,1e-12], [1e-16,1e-8]]
+            Tolerance_combination = [
+                [1e-3,1e-3], [1e-6,1e-3], [1e-6,1e-6], [1e-12,1e-12],
+                [1e-16,1e-8]]
         elif solAlg == 2:
             MultistepMethod = 'BDF'
-            Tolerance_combination = [[1e-3,1e-3], [1e-6,1e-3], [1e-6,1e-6], [1e-12,1e-12], [1e-16,1e-8], [1e-14,1e-14], [1e-16,1e-16]]
+            Tolerance_combination = [
+                [1e-3,1e-3], [1e-6,1e-3], [1e-6,1e-6], [1e-12,1e-12],
+                [1e-16,1e-8], [1e-14,1e-14], [1e-16,1e-16]]
 
         for iTolerance in Tolerance_combination:
             # split atol and rtol for naming purposes
@@ -45,32 +54,33 @@ def compStaTraj(delete_counter):
             json_dictionary = json.loads(json_string)
 
             # get all models
-            list_directory_amici = sorted(os.listdir('../../Benchmarking_of_numerical_ODE_integration_methods/'
-                                                     'sbml2amici/amici_models_newest_version_0.10.19'))
+            list_directory_amici = sorted(os.listdir(DIR_MODELS_AMICI))
             if delete_counter != 0:
                 del list_directory_amici[0:delete_counter]
 
             for iMod in range(0, len(list_directory_amici)):
-
                 iModel = list_directory_amici[iMod]
-                list_files = sorted(os.listdir('../../Benchmarking_of_numerical_ODE_integration_methods/'
-                                               'sedml_models/' + iModel + '/sbml_models'))
+                list_files = sorted(os.listdir(os.path.join(
+                    DIR_MODELS_SEDML, iModel, 'sbml_models')))
 
                 for iFile in list_files:
+                    print(iModel, iFile, MultistepMethod, linSol, iTolerance)
                     # iFile without .sbml extension
                     iFile, extension = iFile.split('.', 1)
 
                     # important paths
-                    json_save_path = '../../Benchmarking_of_numerical_ODE_integration_methods/json_files/' + \
-                                     f'json_files_{MultistepMethod}_{atol_exp}_{rtol_exp}' + '/' + iModel + '/' + iFile
-                    sedml_path = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models/' + \
-                                 iModel + '/' + iModel +'.sedml'
-                    sbml_path = '../../Benchmarking_of_numerical_ODE_integration_methods/sedml_models/' + \
-                                iModel + '/sbml_models/' + iFile + '.sbml'
-                    BioModels_path = '../../Benchmarking_of_numerical_ODE_integration_methods/BioModelsDatabase_models'
+                    json_save_path = os.path.join(
+                        DIR_MODELS_JSON,
+                        f'json_files_{MultistepMethod}_{atol_exp}_{rtol_exp}',
+                        iModel, iFile)
+                    sedml_path = os.path.join(
+                        DIR_MODELS_SEDML, iModel, iModel +'.sedml')
+                    sbml_path = os.path.join(
+                        DIR_MODELS_SEDML, iModel, 'sbml_models',
+                        iFile + '.sbml')
+                    BioModels_path = DIR_MODELS_BIOMODELS
 
-
-                    if os.path.exists(BioModels_path + '/' + iModel):
+                    if os.path.exists(os.path.join(BioModels_path, iModel)):
                         print('Model is not part of JWS-database!')
                     else:
                         # Open SBML file
@@ -100,7 +110,7 @@ def compStaTraj(delete_counter):
                         # check if 'all_settings' works
                         try:
                             # Get whole model
-                            model = all_settings(iModel,iFile,1)
+                            model = all_settings(iModel, iFile)
 
                             # create folder
                             if not os.path.exists(json_save_path):
@@ -108,7 +118,6 @@ def compStaTraj(delete_counter):
                         except:
                             print('Model ' + iModel + ' extension is missing!')
                             continue
-
 
                         ######### jws simulation
                         # Get time data with num_time_points == 100
@@ -127,26 +136,31 @@ def compStaTraj(delete_counter):
                         # Get Url with all changes
                         # <species 1>=<amount>
                         # <parameter 1>=<value>, compartment == parameter (in this case)
-                        url = 'https://jjj.bio.vu.nl/rest/models/' + model_reference + '/time_evolution?time_end=' + \
+                        url = 'https://jjj.bio.vu.nl/rest/models/' + \
+                              model_reference + '/time_evolution?time_end=' + \
                               str(sim_end_time) + ';species=all;'
 
                         for iStr in list_of_strings:
                             url = url + iStr
 
                         #### Save .json file
-                        urllib.request.urlretrieve(url, json_save_path + '/' + iFile + '_JWS_simulation.json')
+                        json_file = os.path.join(
+                            json_save_path, iFile + '_JWS_simulation.json')
+                        urllib.request.urlretrieve(url, json_file)
 
                         #### write as .csv file
-                        json_2_csv = pd.read_json(json_save_path + '/' + iFile + '_JWS_simulation.json')
-                        json_2_csv.to_csv(json_save_path + '/' + iFile + '_JWS_simulation.csv', sep='\t', index=False)
+                        json_2_csv = pd.read_json(json_file)
+                        tsv_file = os.path.join(
+                            json_save_path, iFile + '_JWS_simulation.csv')
+                        json_2_csv.to_csv(tsv_file, sep='\t', index=False)
 
                         # open new .csv file
-                        tsv_file = pd.read_csv(json_save_path + '/' + iFile + '_JWS_simulation.csv', sep='\t')
+                        df = pd.read_csv(tsv_file, sep='\t')
 
                         # columns names of .tsv file
-                        column_names = list(tsv_file.columns)
+                        column_names = list(df.columns)
                         column_names.remove('time')
-                        del tsv_file['time']
+                        del df['time']
 
                         ########## model simulation
                         # Create solver instance
@@ -166,8 +180,8 @@ def compStaTraj(delete_counter):
                         sim_data = amici.runAmiciSimulation(model, solver)
 
                         # print some values
-                        for key, value in sim_data.items():
-                            print('%12s: ' % key, value)
+                        #for key, value in sim_data.items():
+                        #       print('%12s: ' % key, value)
 
                         # Get state trajectory
                         state_trajectory = sim_data['x']
@@ -192,7 +206,9 @@ def compStaTraj(delete_counter):
                         except:
                             print('Try again for model ' + list_directory_amici[iMod] + '_' + iFile)
                             compStaTraj(iMod)
-                        df_state_trajectory.to_csv(json_save_path + '/' + iFile + '_model_simulation.csv', sep='\t')
+                        df_state_trajectory.to_csv(os.path.join(
+                            json_save_path, iFile + '_model_simulation.csv'),
+                            sep='\t')
 
 # call function, starting with no models to delete
 compStaTraj(0)
