@@ -1,0 +1,5 @@
+#define A x[0]
+#define EXT x[1]
+#define I1 x[2]
+#define I2 x[3]
+#define S x[4]

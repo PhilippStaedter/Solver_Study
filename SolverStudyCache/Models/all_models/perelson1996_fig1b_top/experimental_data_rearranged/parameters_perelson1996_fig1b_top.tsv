@@ -1,0 +1,6 @@
+parameterId	parameterName 	parameterScale 	lowerBound      	upperBound      	nominalValue    	estimate 	priorType	priorParameters	hierarchicalOptimization (optional)
+NN	NN	log10	-5	5	480.0	0			
+T0	T0	log10	-5	5	11000.0	0			
+c	c	log10	-5	5	2.06	1			
+delta	delta	log10	-5	5	0.53	1			
+k	k	log10	-5	5	3.9e-07	0			

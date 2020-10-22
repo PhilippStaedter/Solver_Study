@@ -1,0 +1,6 @@
+#define ['dJydy0'] dJydy[0]
+#define ['dJydy1'] dJydy[1]
+#define ['dJydy2'] dJydy[2]
+#define ['dJydy3'] dJydy[3]
+#define ['dJydy4'] dJydy[4]
+#define ['dJydy5'] dJydy[5]

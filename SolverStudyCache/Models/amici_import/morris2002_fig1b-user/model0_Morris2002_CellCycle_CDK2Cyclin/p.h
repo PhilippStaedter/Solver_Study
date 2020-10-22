@@ -1,0 +1,5 @@
+#define basal_fluorescence p[0]
+#define Activation_kb p[1]
+#define Activation_kf p[2]
+#define Binding_kb p[3]
+#define Binding_kf p[4]

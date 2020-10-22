@@ -1,0 +1,7 @@
+parameterId	parameterName	parameterScale	lowerBound	upperBound	nominalValue	estimate	priorType	priorParameters	HierarchicalOptimization (optional)
+NN	NN	log10	-5	5	2.6812412374	0			
+T0	T0	log10	-5	5	4.0413926852	0			
+c	c	log10	-5	5	0.3138672204	1			
+delta	delta	log10	-5	5	-0.2757241304	1			
+K0	K0	log10	-5	5	-6.408935393	0			
+sigma_task0_model0_perelson1_V	sigma_task0_model0_perelson1_V	log10	-10	10	5	1			

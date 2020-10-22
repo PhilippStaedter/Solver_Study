@@ -1,0 +1,29 @@
+observableId	preequilibrationConditionId	simulationConditionId	measurement	time	observableParameters	noiseParameters	observableTransformation	noiseDistribution
+mM_BPG		condition1	1.275877193	0		sigma_mM_BPG	log10	normal
+mM_BPG		condition1	1.104385965	0.5		sigma_mM_BPG	log10	normal
+mM_BPG		condition1	0.612719298	1		sigma_mM_BPG	log10	normal
+mM_BPG		condition1	0.435087719	1.5		sigma_mM_BPG	log10	normal
+mM_BPG		condition1	0.264912281	2		sigma_mM_BPG	log10	normal
+mM_BPG		condition1	0.319736842	2.5		sigma_mM_BPG	log10	normal
+mM_BPG		condition1	0.031578947	5		sigma_mM_BPG	log10	normal
+stdev		condition1	0.031633724	0		sigma_stdev	log10	normal
+stdev		condition1	0.050862067	0.5		sigma_stdev	log10	normal
+stdev		condition1	0.030393186	1		sigma_stdev	log10	normal
+stdev		condition1	0.141421356	1.5		sigma_stdev	log10	normal
+stdev		condition1	0.071951216	2		sigma_stdev	log10	normal
+stdev		condition1	0.18049831	2.5		sigma_stdev	log10	normal
+stdev		condition1		5		sigma_stdev	log10	normal
+mM_3PG		condition1	1.854385965	0		sigma_mM_3PG	log10	normal
+mM_3PG		condition1	2.129824561	0.5		sigma_mM_3PG	log10	normal
+mM_3PG		condition1	2.470175439	1		sigma_mM_3PG	log10	normal
+mM_3PG		condition1	2.931578947	1.5		sigma_mM_3PG	log10	normal
+mM_3PG		condition1	3.103508772	2		sigma_mM_3PG	log10	normal
+mM_3PG		condition1	3.229824561	2.5		sigma_mM_3PG	log10	normal
+mM_3PG		condition1	3.621052632	5		sigma_mM_3PG	log10	normal
+stdev_1		condition1	0.434188374	0		sigma_stdev_1	log10	normal
+stdev_1		condition1	0.521026049	0.5		sigma_stdev_1	log10	normal
+stdev_1		condition1	0.446593757	1		sigma_stdev_1	log10	normal
+stdev_1		condition1	0.126534898	1.5		sigma_stdev_1	log10	normal
+stdev_1		condition1	0.116610592	2		sigma_stdev_1	log10	normal
+stdev_1		condition1	0.210891496	2.5		sigma_stdev_1	log10	normal
+stdev_1		condition1		5		sigma_stdev_1	log10	normal

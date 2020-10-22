@@ -1,0 +1,1 @@
+#define my0 my[0]

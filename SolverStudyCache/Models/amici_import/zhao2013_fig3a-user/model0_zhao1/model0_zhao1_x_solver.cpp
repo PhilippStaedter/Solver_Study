@@ -1,0 +1,15 @@
+#include "amici/symbolic_functions.h"
+#include "amici/defines.h"
+#include "sundials/sundials_types.h"
+#include <cmath>
+
+
+#include "x_rdata.h"
+
+void x_solver_model0_zhao1(realtype *x_solver, const realtype *x_rdata){
+    x_solver[0] = EXT;
+    x_solver[1] = I;
+    x_solver[2] = Ip;
+    x_solver[3] = S;
+    x_solver[4] = Sp;
+}

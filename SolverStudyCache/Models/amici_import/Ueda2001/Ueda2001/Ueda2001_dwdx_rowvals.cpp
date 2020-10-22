@@ -1,0 +1,44 @@
+#include "sundials/sundials_types.h"
+
+void dwdx_rowvals_Ueda2001(sunindextype *rowvals){
+    rowvals[0] = 6;
+    rowvals[1] = 10;
+    rowvals[2] = 18;
+    rowvals[3] = 30;
+    rowvals[4] = 0;
+    rowvals[5] = 2;
+    rowvals[6] = 4;
+    rowvals[7] = 7;
+    rowvals[8] = 20;
+    rowvals[9] = 31;
+    rowvals[10] = 10;
+    rowvals[11] = 19;
+    rowvals[12] = 29;
+    rowvals[13] = 5;
+    rowvals[14] = 13;
+    rowvals[15] = 28;
+    rowvals[16] = 11;
+    rowvals[17] = 15;
+    rowvals[18] = 23;
+    rowvals[19] = 1;
+    rowvals[20] = 14;
+    rowvals[21] = 22;
+    rowvals[22] = 9;
+    rowvals[23] = 11;
+    rowvals[24] = 16;
+    rowvals[25] = 26;
+    rowvals[26] = 0;
+    rowvals[27] = 2;
+    rowvals[28] = 4;
+    rowvals[29] = 8;
+    rowvals[30] = 17;
+    rowvals[31] = 27;
+    rowvals[32] = 11;
+    rowvals[33] = 21;
+    rowvals[34] = 25;
+    rowvals[35] = 3;
+    rowvals[36] = 12;
+    rowvals[37] = 24;
+    rowvals[38] = 10;
+    rowvals[39] = 23;
+}

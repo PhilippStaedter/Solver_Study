@@ -1,0 +1,5 @@
+#define EXT x[0]
+#define I x[1]
+#define Ip x[2]
+#define S x[3]
+#define Sp x[4]

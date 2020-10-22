@@ -1,0 +1,5 @@
+#define T x[0]
+#define Tstar x[1]
+#define Tstarstar x[2]
+#define Ttot x[3]
+#define V x[4]

@@ -1,0 +1,46 @@
+#include "sundials/sundials_types.h"
+
+void dxdotdw_colptrs_model0_xie1(sunindextype *colptrs){
+    colptrs[0] = 0;
+    colptrs[1] = 3;
+    colptrs[2] = 4;
+    colptrs[3] = 5;
+    colptrs[4] = 6;
+    colptrs[5] = 7;
+    colptrs[6] = 8;
+    colptrs[7] = 9;
+    colptrs[8] = 10;
+    colptrs[9] = 11;
+    colptrs[10] = 12;
+    colptrs[11] = 13;
+    colptrs[12] = 14;
+    colptrs[13] = 15;
+    colptrs[14] = 16;
+    colptrs[15] = 17;
+    colptrs[16] = 18;
+    colptrs[17] = 19;
+    colptrs[18] = 21;
+    colptrs[19] = 22;
+    colptrs[20] = 24;
+    colptrs[21] = 27;
+    colptrs[22] = 30;
+    colptrs[23] = 31;
+    colptrs[24] = 32;
+    colptrs[25] = 33;
+    colptrs[26] = 34;
+    colptrs[27] = 35;
+    colptrs[28] = 38;
+    colptrs[29] = 39;
+    colptrs[30] = 40;
+    colptrs[31] = 41;
+    colptrs[32] = 42;
+    colptrs[33] = 43;
+    colptrs[34] = 44;
+    colptrs[35] = 45;
+    colptrs[36] = 46;
+    colptrs[37] = 47;
+    colptrs[38] = 48;
+    colptrs[39] = 49;
+    colptrs[40] = 50;
+    colptrs[41] = 51;
+}

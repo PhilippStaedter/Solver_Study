@@ -1,0 +1,42 @@
+#include "sundials/sundials_types.h"
+
+void JSparseB_colptrs_model0_neves1(sunindextype *colptrs){
+    colptrs[0] = 0;
+    colptrs[1] = 0;
+    colptrs[2] = 3;
+    colptrs[3] = 6;
+    colptrs[4] = 10;
+    colptrs[5] = 13;
+    colptrs[6] = 18;
+    colptrs[7] = 23;
+    colptrs[8] = 27;
+    colptrs[9] = 31;
+    colptrs[10] = 34;
+    colptrs[11] = 37;
+    colptrs[12] = 41;
+    colptrs[13] = 48;
+    colptrs[14] = 55;
+    colptrs[15] = 61;
+    colptrs[16] = 67;
+    colptrs[17] = 71;
+    colptrs[18] = 75;
+    colptrs[19] = 79;
+    colptrs[20] = 83;
+    colptrs[21] = 83;
+    colptrs[22] = 86;
+    colptrs[23] = 86;
+    colptrs[24] = 86;
+    colptrs[25] = 90;
+    colptrs[26] = 90;
+    colptrs[27] = 94;
+    colptrs[28] = 97;
+    colptrs[29] = 105;
+    colptrs[30] = 109;
+    colptrs[31] = 113;
+    colptrs[32] = 125;
+    colptrs[33] = 129;
+    colptrs[34] = 136;
+    colptrs[35] = 145;
+    colptrs[36] = 148;
+    colptrs[37] = 153;
+}

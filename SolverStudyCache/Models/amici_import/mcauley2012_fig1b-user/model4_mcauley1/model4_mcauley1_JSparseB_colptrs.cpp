@@ -1,0 +1,39 @@
+#include "sundials/sundials_types.h"
+
+void JSparseB_colptrs_model4_mcauley1(sunindextype *colptrs){
+    colptrs[0] = 0;
+    colptrs[1] = 0;
+    colptrs[2] = 3;
+    colptrs[3] = 11;
+    colptrs[4] = 11;
+    colptrs[5] = 15;
+    colptrs[6] = 15;
+    colptrs[7] = 15;
+    colptrs[8] = 15;
+    colptrs[9] = 20;
+    colptrs[10] = 23;
+    colptrs[11] = 23;
+    colptrs[12] = 27;
+    colptrs[13] = 28;
+    colptrs[14] = 32;
+    colptrs[15] = 32;
+    colptrs[16] = 39;
+    colptrs[17] = 39;
+    colptrs[18] = 42;
+    colptrs[19] = 42;
+    colptrs[20] = 43;
+    colptrs[21] = 47;
+    colptrs[22] = 48;
+    colptrs[23] = 48;
+    colptrs[24] = 54;
+    colptrs[25] = 54;
+    colptrs[26] = 54;
+    colptrs[27] = 54;
+    colptrs[28] = 54;
+    colptrs[29] = 57;
+    colptrs[30] = 59;
+    colptrs[31] = 60;
+    colptrs[32] = 73;
+    colptrs[33] = 75;
+    colptrs[34] = 75;
+}

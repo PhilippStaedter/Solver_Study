@@ -1,0 +1,6 @@
+#define a1 x_rdata[0]
+#define a2 x_rdata[1]
+#define a3 x_rdata[2]
+#define x1 x_rdata[3]
+#define x2 x_rdata[4]
+#define x3 x_rdata[5]

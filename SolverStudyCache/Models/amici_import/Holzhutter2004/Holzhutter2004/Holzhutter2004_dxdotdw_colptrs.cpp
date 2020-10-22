@@ -1,0 +1,43 @@
+#include "sundials/sundials_types.h"
+
+void dxdotdw_colptrs_Holzhutter2004(sunindextype *colptrs){
+    colptrs[0] = 0;
+    colptrs[1] = 1;
+    colptrs[2] = 5;
+    colptrs[3] = 7;
+    colptrs[4] = 11;
+    colptrs[5] = 14;
+    colptrs[6] = 16;
+    colptrs[7] = 21;
+    colptrs[8] = 25;
+    colptrs[9] = 27;
+    colptrs[10] = 30;
+    colptrs[11] = 32;
+    colptrs[12] = 34;
+    colptrs[13] = 38;
+    colptrs[14] = 42;
+    colptrs[15] = 46;
+    colptrs[16] = 49;
+    colptrs[17] = 53;
+    colptrs[18] = 57;
+    colptrs[19] = 61;
+    colptrs[20] = 65;
+    colptrs[21] = 67;
+    colptrs[22] = 69;
+    colptrs[23] = 71;
+    colptrs[24] = 75;
+    colptrs[25] = 79;
+    colptrs[26] = 82;
+    colptrs[27] = 86;
+    colptrs[28] = 87;
+    colptrs[29] = 88;
+    colptrs[30] = 89;
+    colptrs[31] = 92;
+    colptrs[32] = 95;
+    colptrs[33] = 98;
+    colptrs[34] = 101;
+    colptrs[35] = 104;
+    colptrs[36] = 107;
+    colptrs[37] = 110;
+    colptrs[38] = 113;
+}

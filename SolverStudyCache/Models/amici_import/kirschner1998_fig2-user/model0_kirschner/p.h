@@ -1,0 +1,8 @@
+#define b1 p[0]
+#define b2 p[1]
+#define c p[2]
+#define g p[3]
+#define amici_k p[4]
+#define mu p[5]
+#define s1 p[6]
+#define s2 p[7]

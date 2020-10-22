@@ -1,0 +1,85 @@
+observableId	preequilibrationConditionId	simulationConditionId	measurment	time	observableParameters	noiseParameters	observableTransformation	noiseDistribution
+pJAK2			0.011066	0	offset_pJAK2;scale_pJAK2			
+pJAK2			1	5	offset_pJAK2;scale_pJAK2			
+pJAK2			0.745856	10	offset_pJAK2;scale_pJAK2			
+pJAK2			0.745856	20	offset_pJAK2;scale_pJAK2			
+pJAK2			0.262055	40	offset_pJAK2;scale_pJAK2			
+pJAK2			0.043105	60	offset_pJAK2;scale_pJAK2			
+pJAK2			0.163199	80	offset_pJAK2;scale_pJAK2			
+pJAK2			0.092608	100	offset_pJAK2;scale_pJAK2			
+pJAK2			0.025276	120	offset_pJAK2;scale_pJAK2			
+pJAK2			0.134138	140	offset_pJAK2;scale_pJAK2			
+pJAK2			0.135856	160	offset_pJAK2;scale_pJAK2			
+pJAK2			0.056232	180	offset_pJAK2;scale_pJAK2			
+pJAK2			0.059243	220	offset_pJAK2;scale_pJAK2			
+pJAK2			0.102116	240	offset_pJAK2;scale_pJAK2			
+pEpoR			0.004412	0	offset_pEpoR;scale_pEpoR			
+pEpoR			0.700809	5	offset_pEpoR;scale_pEpoR			
+pEpoR			1	10	offset_pEpoR;scale_pEpoR			
+pEpoR			0.606469	20	offset_pEpoR;scale_pEpoR			
+pEpoR			0.190846	40	offset_pEpoR;scale_pEpoR			
+pEpoR			0.100787	60	offset_pEpoR;scale_pEpoR			
+pEpoR			0.110949	80	offset_pEpoR;scale_pEpoR			
+pEpoR			0.069846	100	offset_pEpoR;scale_pEpoR			
+pEpoR			0.283019	120	offset_pEpoR;scale_pEpoR			
+pEpoR			0.134038	140	offset_pEpoR;scale_pEpoR			
+pEpoR			0.239555	160	offset_pEpoR;scale_pEpoR			
+pEpoR			0.050682	180	offset_pEpoR;scale_pEpoR			
+pEpoR			0.040019	220	offset_pEpoR;scale_pEpoR			
+pEpoR			0.085332	240	offset_pEpoR;scale_pEpoR			
+CIS			0.017007	0	offset_CIS;scale_CIS			
+CIS			0.038819	5	offset_CIS;scale_CIS			
+CIS			0.021344	10	offset_CIS;scale_CIS			
+CIS			0.037086	20	offset_CIS;scale_CIS			
+CIS			0.12873	40	offset_CIS;scale_CIS			
+CIS			0.282493	60	offset_CIS;scale_CIS			
+CIS			0.820831	80	offset_CIS;scale_CIS			
+CIS			0.922259	100	offset_CIS;scale_CIS			
+CIS				120	offset_CIS;scale_CIS			
+CIS			0.773095	140	offset_CIS;scale_CIS			
+CIS			0.751558	160	offset_CIS;scale_CIS			
+CIS			0.951127	180	offset_CIS;scale_CIS			
+CIS			0.911415	220	offset_CIS;scale_CIS			
+CIS			1	240	offset_CIS;scale_CIS			
+SOCS3				0	offset_SOCS3;scale_SOCS3			
+SOCS3				5	offset_SOCS3;scale_SOCS3			
+SOCS3			0.109721	10	offset_SOCS3;scale_SOCS3			
+SOCS3			0.281462	20	offset_SOCS3;scale_SOCS3			
+SOCS3				40	offset_SOCS3;scale_SOCS3			
+SOCS3			0.568877	60	offset_SOCS3;scale_SOCS3			
+SOCS3				80	offset_SOCS3;scale_SOCS3			
+SOCS3				100	offset_SOCS3;scale_SOCS3			
+SOCS3			1	120	offset_SOCS3;scale_SOCS3			
+SOCS3				140	offset_SOCS3;scale_SOCS3			
+SOCS3				160	offset_SOCS3;scale_SOCS3			
+SOCS3			1	180	offset_SOCS3;scale_SOCS3			
+SOCS3				220	offset_SOCS3;scale_SOCS3			
+SOCS3			0.969746	240	offset_SOCS3;scale_SOCS3			
+tSTAT5			0.580253	0	scale_tSTAT5			
+tSTAT5			1	5	scale_tSTAT5			
+tSTAT5			0.685016	10	scale_tSTAT5			
+tSTAT5			0.564744	20	scale_tSTAT5			
+tSTAT5				40	scale_tSTAT5			
+tSTAT5			0.859841	60	scale_tSTAT5			
+tSTAT5			0.680306	80	scale_tSTAT5			
+tSTAT5			0.747586	100	scale_tSTAT5			
+tSTAT5			0.874022	120	scale_tSTAT5			
+tSTAT5			0.640665	140	scale_tSTAT5			
+tSTAT5			0.702241	160	scale_tSTAT5			
+tSTAT5			0.84118	180	scale_tSTAT5			
+tSTAT5			0.574873	220	scale_tSTAT5			
+tSTAT5			0.722746	240	scale_tSTAT5			
+pSTAT5			0.00109	0	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			1	5	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.907589	10	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.560146	20	offset_pSTAT5;scale_pSTAT5			
+pSTAT5				40	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.390882	60	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.168972	80	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.163322	100	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.193886	120	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.121703	140	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.126579	160	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.291617	180	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.085725	220	offset_pSTAT5;scale_pSTAT5			
+pSTAT5			0.275913	240	offset_pSTAT5;scale_pSTAT5			

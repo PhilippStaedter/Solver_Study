@@ -1,0 +1,149 @@
+#include "amici/symbolic_functions.h"
+#include "amici/defines.h"
+#include "sundials/sundials_types.h"
+#include <cmath>
+
+
+#include "w.h"
+#include "p.h"
+#include "k.h"
+#include "x.h"
+#include "dwdx.h"
+
+void J_model0_sarma2(realtype *J, const realtype t, const realtype *x, const realtype *p, const realtype *k, const realtype *h, const realtype *w, const realtype *dwdx){
+    J[0] = -1.0*dwdx0 + 1.0*dwdx1;
+    J[4] = 1.0*dwdx14;
+    J[11] = -1.0*dwdx25;
+    J[15] = 1.0*dwdx38;
+    J[20] = -1.0*dwdx45;
+    J[28] = -1.0*dwdx2 - 1.0*dwdx3 - 1.0*dwdx4;
+    J[29] = -1.0*dwdx5;
+    J[30] = 1.0*dwdx8;
+    J[31] = -1.0*dwdx10;
+    J[32] = -1.0*dwdx15;
+    J[39] = -1.0*dwdx32;
+    J[43] = 1.0*dwdx40;
+    J[44] = -1.0*dwdx41;
+    J[52] = -1.0*dwdx56;
+    J[53] = 1.0*dwdx59;
+    J[55] = 1.0*dwdx2;
+    J[56] = 1.0*dwdx5 - 1.0*dwdx6;
+    J[79] = 1.0*dwdx56;
+    J[84] = 1.0*dwdx7 - 1.0*dwdx8;
+    J[85] = 1.0*dwdx9;
+    J[92] = 1.0*dwdx26;
+    J[108] = 1.0*dwdx1;
+    J[109] = -1.0*dwdx3;
+    J[111] = -1.0*dwdx7 + 1.0*dwdx8;
+    J[112] = -1.0*dwdx10 + 1.0*dwdx11 - 1.0*dwdx12 - 1.0*dwdx13 + 1.0*dwdx14 - 1.0*dwdx9;
+    J[113] = -1.0*dwdx15;
+    J[114] = 1.0*dwdx17;
+    J[119] = -1.0*dwdx26;
+    J[121] = -1.0*dwdx34 + 1.0*dwdx35;
+    J[122] = -1.0*dwdx36;
+    J[123] = 1.0*dwdx38;
+    J[129] = -1.0*dwdx48;
+    J[131] = -1.0*dwdx51;
+    J[132] = 1.0*dwdx53;
+    J[136] = 1.0*dwdx3;
+    J[139] = 1.0*dwdx10;
+    J[140] = 1.0*dwdx15 - 1.0*dwdx16;
+    J[166] = -1.0*dwdx11;
+    J[167] = 1.0*dwdx16;
+    J[168] = -1.0*dwdx17;
+    J[186] = -1.0*dwdx53;
+    J[196] = -1.0*dwdx18 + 1.0*dwdx19;
+    J[197] = -1.0*dwdx20;
+    J[198] = -1.0*dwdx22;
+    J[201] = 1.0*dwdx31;
+    J[208] = 1.0*dwdx44;
+    J[223] = 1.0*dwdx18;
+    J[224] = 1.0*dwdx20 - 1.0*dwdx21;
+    J[225] = 1.0*dwdx22;
+    J[250] = -1.0*dwdx18;
+    J[251] = -1.0*dwdx20 + 1.0*dwdx21;
+    J[252] = -1.0*dwdx22;
+    J[280] = 1.0*dwdx23 - 1.0*dwdx24;
+    J[282] = 1.0*dwdx29;
+    J[295] = 1.0*dwdx57;
+    J[297] = -1.0*dwdx0;
+    J[299] = 1.0*dwdx6;
+    J[300] = -1.0*dwdx7;
+    J[301] = -1.0*dwdx9;
+    J[308] = -1.0*dwdx25 - 1.0*dwdx26 - 1.0*dwdx27 - 1.0*dwdx28;
+    J[309] = -1.0*dwdx30;
+    J[313] = -1.0*dwdx39;
+    J[317] = -1.0*dwdx45 + 1.0*dwdx46;
+    J[318] = -1.0*dwdx47;
+    J[319] = -1.0*dwdx49 + 1.0*dwdx50;
+    J[325] = -1.0*dwdx4;
+    J[331] = 1.0*dwdx19;
+    J[334] = -1.0*dwdx23;
+    J[335] = -1.0*dwdx27;
+    J[336] = -1.0*dwdx29 - 1.0*dwdx30 + 1.0*dwdx31 - 1.0*dwdx32 + 1.0*dwdx33;
+    J[340] = -1.0*dwdx39 + 1.0*dwdx40;
+    J[341] = -1.0*dwdx41;
+    J[342] = 1.0*dwdx43;
+    J[343] = 1.0*dwdx44;
+    J[348] = 1.0*dwdx54;
+    J[349] = -1.0*dwdx57;
+    J[355] = 1.0*dwdx12;
+    J[364] = 1.0*dwdx34 - 1.0*dwdx35;
+    J[374] = 1.0*dwdx51;
+    J[382] = 1.0*dwdx13;
+    J[392] = 1.0*dwdx36 - 1.0*dwdx37;
+    J[399] = 1.0*dwdx48;
+    J[405] = -1.0*dwdx1;
+    J[409] = -1.0*dwdx14;
+    J[419] = 1.0*dwdx37;
+    J[420] = -1.0*dwdx38;
+    J[443] = 1.0*dwdx27;
+    J[444] = 1.0*dwdx30;
+    J[448] = 1.0*dwdx39 - 1.0*dwdx40;
+    J[460] = 1.0*dwdx4;
+    J[471] = 1.0*dwdx32;
+    J[476] = 1.0*dwdx41 - 1.0*dwdx42;
+    J[498] = -1.0*dwdx33;
+    J[503] = 1.0*dwdx42;
+    J[504] = -1.0*dwdx43;
+    J[510] = -1.0*dwdx54;
+    J[520] = -1.0*dwdx19;
+    J[523] = 1.0*dwdx24;
+    J[525] = -1.0*dwdx31;
+    J[532] = -1.0*dwdx44;
+    J[540] = 1.0*dwdx0;
+    J[551] = 1.0*dwdx25;
+    J[560] = 1.0*dwdx45 - 1.0*dwdx46;
+    J[571] = -1.0*dwdx13;
+    J[578] = -1.0*dwdx28;
+    J[580] = 1.0*dwdx35;
+    J[581] = -1.0*dwdx36;
+    J[587] = 1.0*dwdx46;
+    J[588] = -1.0*dwdx47 - 1.0*dwdx48;
+    J[589] = -1.0*dwdx49;
+    J[605] = 1.0*dwdx28;
+    J[615] = 1.0*dwdx47;
+    J[616] = 1.0*dwdx49 - 1.0*dwdx50;
+    J[625] = -1.0*dwdx12;
+    J[634] = -1.0*dwdx34;
+    J[643] = 1.0*dwdx50;
+    J[644] = -1.0*dwdx51;
+    J[652] = 1.0*dwdx11;
+    J[654] = 1.0*dwdx17;
+    J[660] = 1.0*dwdx33;
+    J[666] = 1.0*dwdx43;
+    J[672] = -1.0*dwdx52 + 1.0*dwdx53 + 1.0*dwdx54;
+    J[673] = -1.0*dwdx55;
+    J[674] = -1.0*dwdx58;
+    J[676] = -1.0*dwdx2;
+    J[677] = -1.0*dwdx5 + 1.0*dwdx6;
+    J[683] = 1.0*dwdx21;
+    J[685] = -1.0*dwdx23;
+    J[687] = -1.0*dwdx29;
+    J[699] = -1.0*dwdx52;
+    J[700] = -1.0*dwdx55 - 1.0*dwdx56 - 1.0*dwdx57;
+    J[701] = -1.0*dwdx58 + 1.0*dwdx59;
+    J[726] = 1.0*dwdx52;
+    J[727] = 1.0*dwdx55;
+    J[728] = 1.0*dwdx58 - 1.0*dwdx59;
+}

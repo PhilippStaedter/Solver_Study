@@ -1,0 +1,17 @@
+observableId	preequilibrationConditionId	simulationConditionId	measurement	time	observableParameters	noiseParameters	observableTransformation	noiseDistribution
+task0_model0_perelson1_V		condition1	1860000	0		1	log10	normal
+task0_model0_perelson1_V		condition1	1979066.83767021	0.105		1	log10	normal
+task0_model0_perelson1_V		condition1	2036200.64768543	0.169		1	log10	normal
+task0_model0_perelson1_V		condition1	2110606.25511657	0.282		1	log10	normal
+task0_model0_perelson1_V		condition1	2170390.34220352	0.492		1	log10	normal
+task0_model0_perelson1_V		condition1	2133023.69683197	0.757		1	log10	normal
+task0_model0_perelson1_V		condition1	2007905.79108049	1.029		1	log10	normal
+task0_model0_perelson1_V		condition1	1866546.33475327	1.253		1	log10	normal
+task0_model0_perelson1_V		condition1	1667337.01919718	1.533		1	log10	normal
+task0_model0_perelson1_V		condition1	1508600.53031728	1.75		1	log10	normal
+task0_model0_perelson1_V		condition1	1304247.64379938	2.038		1	log10	normal
+task0_model0_perelson1_V		condition1	745167.617170311	3.013		1	log10	normal
+task0_model0_perelson1_V		condition1	404807.835292604	3.987		1	log10	normal
+task0_model0_perelson1_V		condition1	214727.902550339	4.968		1	log10	normal
+task0_model0_perelson1_V		condition1	111384.131489616	5.972		1	log10	normal
+task0_model0_perelson1_V		condition1	57734.7306157058	6.973		1	log10	normal
