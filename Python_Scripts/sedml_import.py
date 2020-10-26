@@ -109,4 +109,4 @@ def download_sbml_model(sbml_url, sbml_file):
                 open(sbml_file, 'wb') as f:
             shutil.copyfileobj(response, f)
     except Exception as e:
-        logger.warn(f"Failed to download sbml model from {sbml_url}, {e}.")
+        logger.warning(f"Failed to download sbml model from {sbml_url}, {e}.")

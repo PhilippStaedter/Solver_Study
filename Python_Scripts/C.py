@@ -39,9 +39,20 @@ DIR_DATA_TOLERANCES = os.path.join(DIR_DATA, 'TolerancesStudy')
 ###############################################################################
 # Model directory
 
+# Base folder for all models
 DIR_MODELS = os.path.join(DIR_BASE, 'Models')
+# Folder for sedml and sbml model definitions
 DIR_MODELS_SEDML = os.path.join(DIR_MODELS, 'sedml')
+# Folder for a copy of the biomodels models
 DIR_MODELS_BIOMODELS = os.path.join(DIR_MODELS, 'biomodels')  # TODO remove
+# Base folder for the AMICI compilation files
 DIR_MODELS_AMICI_BASE = os.path.join(DIR_MODELS, 'amici')
+# Folder for all possible AMICI compilation files
 DIR_MODELS_AMICI = os.path.join(DIR_MODELS_AMICI_BASE, 'models')
-DIR_MODELS_JSON = os.path.join(DIR_MODELS, 'json_files')  # TODO remove
+# Folder for only the final models for the main part of the study
+DIR_MODELS_AMICI_FINAL = os.path.join(DIR_MODELS_AMICI_BASE, 'models_final')
+# Folder for trajectories and trajectory comparison data
+DIR_MODELS_JSON = os.path.join(DIR_MODELS, 'json_files')  # TODO change
+# Folder for reference trajectories
+DIR_MODELS_REF_TRAJECTORIES = os.path.join(
+    DIR_MODELS, 'reference_trajectories')
